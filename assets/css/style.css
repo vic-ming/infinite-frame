@@ -109,9 +109,72 @@ button {
 .side-panel .side-panel-menu-item.active .quill-icon .quill-active {
   opacity: 1;
 }
+
+.side-panel-menu-item.active span {
+  color: #429DFF;
+}
 .side-panel .side-panel-menu span{
   font-size: 16px;
   font-weight: 500;
+}
+
+/* 子菜單樣式 */
+.submenu-level-1,
+.submenu-level-2 {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  margin-left: 20px;
+}
+
+.submenu-level-1.expanded,
+.submenu-level-2.expanded {
+  max-height: 1000px;
+}
+
+/* 箭頭圖標樣式 */
+.arrow-icon {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.side-panel-menu-item.expanded .arrow-icon {
+  transform: rotate(90deg);
+}
+
+.side-panel-menu-item.expanded {
+  background-color: #f4f8fc;
+  border-radius: 8px;
+  color: #429DFF;
+}
+
+.side-panel-menu-item.expanded .quill-icon .quill-normal {
+  opacity: 0;
+}
+
+.side-panel-menu-item.expanded .quill-icon .quill-active {
+  opacity: 1;
+}
+
+/* 有子菜單的項目樣式 */
+.side-panel-menu-item.has-submenu {
+  position: relative;
+}
+
+/* 子菜單項目的縮進 */
+.submenu-level-1 .side-panel-menu-item {
+  padding-left: 20px;
+}
+
+.submenu-level-2 .side-panel-menu-item {
+  padding-left: 40px;
 }
 
 .content-panel{
