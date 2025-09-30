@@ -240,4 +240,18 @@ button {
   background-color: #ECF0F2;
   border-radius: 10px;
   border: 1px solid #DCDCDC;
+  overflow: hidden;
+}
+.content-panel .content-panel-content-default-title{
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(270deg, #E0C583 0%, #887341 100%);
+  padding: 16px;
+  color: #fff;
+  
+}
+.content-panel .content-panel-content-default-content{
+  font-size: 16px;
+  font-weight: 400;
+  padding: 16px;
 }
