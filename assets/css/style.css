@@ -242,6 +242,8 @@ button {
   border: 1px solid #DCDCDC;
   overflow: hidden;
 }
+
+/* default */
 .content-panel .content-panel-content-default-title{
   font-size: 20px;
   font-weight: 700;
@@ -254,4 +256,112 @@ button {
   font-size: 16px;
   font-weight: 400;
   padding: 16px;
+}
+
+/* tab */
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-title{
+  display: flex;
+  gap: 0;
+  height: 61px;
+  align-items: center;
+  padding: 12px 24px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #DCDCDC;
+}
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-title span{
+  font-size: 16px;
+  color: #9E7F54;
+  padding: 12px 32px 6px;
+  min-width: 100px;
+  height: 100%;
+  border-bottom: 5px solid #fff;
+  cursor: pointer;
+}
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-title span.active{
+  color: #9E7F54;
+  font-weight: 700;
+  border-bottom: 5px solid #F5D93F;
+}
+
+/* tab 內容樣式 */
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-content{
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-content-item{
+  display: none;
+  font-size: 16px;
+  color: #292929;
+}
+
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-content-item.active{
+  display: block;
+}
+
+/* 操作導航 */
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-content-item .common-operate-nav{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.content-panel .content-panel-content.common-tab-content .content-panel-content-tab-content-item .common-operate-nav-item{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 元件 */
+
+/* 下拉選單 */
+.common-select-item{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.common-select-item label{
+  font-size: 16px;
+  font-weight: 400;
+}
+.common-select-item select{
+  min-width: 156px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #BDBDBD;
+  padding: 0 16px;
+  appearance: none;
+  background-image: url('../images/icon_arrow_down.svg');
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center right 18px;
+  outline: none;
+}
+
+/* 按鈕 */
+.common-button{
+  min-width: 192px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #004D71;
+  padding: 0 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.common-button.primary{
+  background-color: #004D71;
+  color: #fff;
+}
+.common-button:hover{
+  opacity: 0.8;
+}
+.common-button.primary-outline{
+  background-color: #fff;
+  color: #004D71;
+  border: 1px solid #004D71;
 }
