@@ -339,6 +339,116 @@ button {
   outline: none;
 }
 
+.common-select-item select:hover{
+  box-shadow: 0 0 0 2px #9E7F54;
+}
+
+.common-select-dropdown-item{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.common-select-dropdown-item label{
+  font-size: 16px;
+  font-weight: 400;
+  color: #292929;
+}
+.common-select-dropdown-item label span{
+  color: #FF0000;
+}
+
+
+
+/* Custom Dropdown Styles */
+.custom-dropdown {
+  position: relative;
+  min-width: 156px;
+}
+
+.dropdown-input {
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #BDBDBD;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #fff;
+  transition: border-color 0.2s ease;
+  background-image: url('../images/icon_arrow_down.svg');
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center right 18px;
+}
+
+.dropdown-input:hover {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 1px #9E7F54;
+}
+
+.dropdown-input.active {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 1px #9E7F54;
+}
+
+.dropdown-placeholder {
+  color: #9E9E9E;
+  font-size: 16px;
+}
+
+.dropdown-arrow {
+  color: #9E7F54;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-input.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-options {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  
+  border-top: none;
+  border-radius: 8px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  z-index: 1000;
+}
+
+.dropdown-options.active {
+  max-height: 270px;
+  border: 1px solid #7C7C7C;
+}
+
+.dropdown-option {
+  padding: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #292929;
+  border-bottom: 1px solid #DCDCDC;
+  transition: background-color 0.2s ease;
+  line-height: 1;
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.dropdown-option:hover {
+  color: #9E7F54;
+}
+
+.dropdown-option.selected {
+  color: #9E7F54;
+}
+
 /* 按鈕 */
 .common-button{
   min-width: 192px;
@@ -357,11 +467,16 @@ button {
   background-color: #004D71;
   color: #fff;
 }
-.common-button:hover{
-  opacity: 0.8;
+.common-button.primary:hover{
+  background-color: #013D59;
 }
 .common-button.primary-outline{
   background-color: #fff;
+  color: #004D71;
+  border: 1px solid #004D71;
+}
+.common-button.primary-outline:hover{
+  background-color: rgba(0, 77, 113, 0.1);
   color: #004D71;
   border: 1px solid #004D71;
 }
