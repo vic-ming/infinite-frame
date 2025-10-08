@@ -30,7 +30,7 @@ button {
 
 /* side panel */
 .side-panel{
-  width: 300px;
+  width: 240px;
   height: 100vh;
   background-color: #fff;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -40,15 +40,15 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 33px;
+  gap: 24px;
 }
 .side-panel .side-panel-header{
-  padding: 33px 32px 30px;
+  padding: 20px 32px 20px;
   text-align: left;
   border-bottom: 1px solid #BDBDBD;
 }
 .side-panel .side-panel-header img{
-  width: 160px;
+  width: 120px;
 }
 .side-panel .side-panel-menu{
   flex: 1;
@@ -174,7 +174,7 @@ button {
 }
 
 .submenu-level-2 .side-panel-menu-item {
-  padding-left: 40px;
+  padding-left: 45px;
 }
 
 .content-panel{
@@ -188,8 +188,8 @@ button {
 
 /* header */
 .content-panel .content-panel-header{
-  height: 51px;
-  padding: 24px 24px 32px;
+  height: 42px;
+  padding: 18px 24px 18px;
   box-sizing: content-box;
   display: flex;
   align-items: center;
@@ -202,9 +202,13 @@ button {
   gap: 16px;
 }
 .content-panel .content-panel-nav-item{
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
+}
+.content-panel .content-panel-nav-item img{
+  width: 25px;
+  height: 25px;
 }
 .content-panel .content-panel-nav-item:hover{
   opacity: 0.8;
@@ -213,8 +217,12 @@ button {
 .content-panel .content-panel-nav-user{
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 5px;
   cursor: pointer;
+}
+.content-panel .content-panel-nav-user img{
+  width: 27px;
+  height: 27px;
 }
 .content-panel .content-panel-nav-user:hover{
   opacity: 0.8;
@@ -222,14 +230,15 @@ button {
 .content-panel .content-panel-nav-user-name{
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   line-height: 1.2;
 }
 .content-panel .content-panel-nav-user-name-text{
-  font-size: 18px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .content-panel .content-panel-nav-user-name-ip{
-  font-size: 16px;
+  font-size: 12px;
   color: #7C7C7C;
 }
 
@@ -245,17 +254,17 @@ button {
 
 /* default */
 .content-panel .content-panel-content-default-title{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   background: linear-gradient(270deg, #E0C583 0%, #887341 100%);
-  padding: 16px;
+  padding: 12px;
   color: #fff;
   
 }
 .content-panel .content-panel-content-default-content{
   font-size: 16px;
   font-weight: 400;
-  padding: 16px;
+  padding: 12px;
 }
 
 /* tab */
