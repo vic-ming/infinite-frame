@@ -43,7 +43,7 @@ button {
   gap: 24px;
 }
 .side-panel .side-panel-header{
-  padding: 20px 32px 20px;
+  padding: 18px 32px 18px;
   text-align: left;
   border-bottom: 1px solid #BDBDBD;
 }
@@ -189,7 +189,7 @@ button {
 /* header */
 .content-panel .content-panel-header{
   height: 42px;
-  padding: 18px 24px 18px;
+  padding: 15px 24px 15px;
   box-sizing: content-box;
   display: flex;
   align-items: center;
@@ -271,7 +271,7 @@ button {
 .content-panel .content-panel-content.common-tab-content .content-panel-content-tab-title{
   display: flex;
   gap: 0;
-  height: 61px;
+  height: 51px;
   align-items: center;
   padding: 12px 24px 0;
   background-color: #fff;
@@ -280,7 +280,7 @@ button {
 .content-panel .content-panel-content.common-tab-content .content-panel-content-tab-title span{
   font-size: 16px;
   color: #9E7F54;
-  padding: 12px 32px 6px;
+  padding: 0px 32px 6px;
   min-width: 100px;
   height: 100%;
   border-bottom: 5px solid #fff;
@@ -328,15 +328,16 @@ button {
 .common-select-item{
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .common-select-item label{
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
 }
 .common-select-item select{
   min-width: 156px;
-  height: 44px;
+  height: 34px;
+  font-size: 14px;
   border-radius: 8px;
   border: 1px solid #BDBDBD;
   padding: 0 16px;
@@ -344,7 +345,7 @@ button {
   background-image: url('../images/icon_arrow_down.svg');
   background-size: 24px;
   background-repeat: no-repeat;
-  background-position: center right 18px;
+  background-position: center right 10px;
   outline: none;
 }
 
@@ -355,10 +356,10 @@ button {
 .common-select-dropdown-item{
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .common-select-dropdown-item label{
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: #292929;
 }
@@ -371,11 +372,12 @@ button {
 /* Custom Dropdown Styles */
 .custom-dropdown {
   position: relative;
-  min-width: 156px;
+  min-width: 192px;
+  font-size: 14px;
 }
 
 .dropdown-input {
-  height: 44px;
+  height: 34px;
   border-radius: 8px;
   border: 1px solid #BDBDBD;
   padding: 0 16px;
@@ -460,8 +462,8 @@ button {
 
 /* 按鈕 */
 .common-button{
-  min-width: 192px;
-  height: 44px;
+  min-width: 112px;
+  height: 32px;
   border-radius: 8px;
   border: 1px solid #004D71;
   padding: 0 16px;
