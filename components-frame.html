@@ -107,6 +107,13 @@
               </div>
               <span>Tab頁面</span>
             </div>
+            <div class="side-panel-menu-item" onclick="window.location.href='tab-table-frame.html'">
+              <div class="quill-icon">
+                <img src="./assets/images/quill.svg" alt="quill" class="quill-normal">
+                <img src="./assets/images/quill-active.svg" alt="quill-active" class="quill-active">
+              </div>
+              <span>Tab + Table 頁面</span>
+            </div>
             <div class="side-panel-menu-item" onclick="window.location.href='components-frame.html'">
               <div class="quill-icon">
                 <img src="./assets/images/quill.svg" alt="quill" class="quill-normal">
@@ -147,61 +154,65 @@
           <div class="content-panel-content-tab-content">
             <!-- 內容1 -->
             <div class="content-panel-content-tab-content-item active">
-              <h3 style="margin: 16px 0;">選單元件</h3>
-              <div class="common-operate-nav" style="flex-direction: column; align-items: flex-start;">
-                <div class="common-select-item">
-                  <label for="select-1">Select</label>
-                  <select name="select-1" id="select-1">
-                    <option value="" disabled selected>請選擇</option>
-                    <option value="2">選項2</option>
-                    <option value="3">選項3</option>
-                  </select>
-                </div>
-                <div class="common-select-dropdown-item">
-                  <label for="select-2">DropDown <span>*</span></label>
-                  <div class="custom-dropdown">
-                    <div class="dropdown-input" id="select-2">
-                      <span class="dropdown-placeholder">請選擇</span>
-                    </div>
-                    <div class="dropdown-options">
-                      <div class="dropdown-option" data-value="option-a">選項 A</div>
-                      <div class="dropdown-option" data-value="option-b">選項 B</div>
-                      <div class="dropdown-option" data-value="option-c">選項 C</div>
-                      <div class="dropdown-option" data-value="option-d">選項 D</div>
-                      <div class="dropdown-option" data-value="option-e">選項 E</div>
+              <div class="content-panel-content-tab-content-item-main">
+                <h3 style="margin: 16px 0;">選單元件</h3>
+                <div class="common-operate-nav" style="flex-direction: column; align-items: flex-start;">
+                  <div class="common-select-item">
+                    <label for="select-1">Select</label>
+                    <select name="select-1" id="select-1">
+                      <option value="" disabled selected>請選擇</option>
+                      <option value="2">選項2</option>
+                      <option value="3">選項3</option>
+                    </select>
+                  </div>
+                  <div class="common-select-dropdown-item">
+                    <label for="select-2">DropDown <span>*</span></label>
+                    <div class="custom-dropdown">
+                      <div class="dropdown-input" id="select-2">
+                        <span class="dropdown-placeholder">請選擇</span>
+                      </div>
+                      <div class="dropdown-options">
+                        <div class="dropdown-option" data-value="option-a">選項 A</div>
+                        <div class="dropdown-option" data-value="option-b">選項 B</div>
+                        <div class="dropdown-option" data-value="option-c">選項 C</div>
+                        <div class="dropdown-option" data-value="option-d">選項 D</div>
+                        <div class="dropdown-option" data-value="option-e">選項 E</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
 
-              <h3 style="margin: 16px 0;">按鈕元件</h3>
-              <div class="common-operate-nav">
+                <h3 style="margin: 16px 0;">按鈕元件</h3>
+                <div class="common-operate-nav">
+                  
+                  <div class="common-operate-nav-item">
+                    <button class="common-button primary">
+                      <img src="./assets/images/edit-white.svg" alt="edit-white">
+                      按鈕
+                    </button>
+                  </div>
+                  <div class="common-operate-nav-item">
+                    <button class="common-button primary">按鈕</button>
+                  </div>
+                  <div class="common-operate-nav-item">
+                    <button class="common-button primary-outline">
+                      <img src="./assets/images/edit.svg" alt="edit">
+                      按鈕
+                    </button>
+                  </div>
+                  <div class="common-operate-nav-item">
+                    <button class="common-button primary-outline">按鈕</button>
+                  </div>
                 
-                <div class="common-operate-nav-item">
-                  <button class="common-button primary">
-                    <img src="./assets/images/edit-white.svg" alt="edit-white">
-                    按鈕
-                  </button>
                 </div>
-                <div class="common-operate-nav-item">
-                  <button class="common-button primary">按鈕</button>
-                </div>
-                <div class="common-operate-nav-item">
-                  <button class="common-button primary-outline">
-                    <img src="./assets/images/edit.svg" alt="edit">
-                    按鈕
-                  </button>
-                </div>
-                <div class="common-operate-nav-item">
-                  <button class="common-button primary-outline">按鈕</button>
-                </div>
-               
               </div>
             </div>
             <!-- 內容2 -->
             <div class="content-panel-content-tab-content-item">
-              內容2
+              <div class="content-panel-content-tab-content-item-main">
+                內容2
+              </div>
             </div>
           </div>
         </div>
