@@ -165,21 +165,7 @@
                       <option value="3">選項3</option>
                     </select>
                   </div>
-                  <div class="common-select-dropdown-item">
-                    <label for="select-2">DropDown <span>*</span></label>
-                    <div class="custom-dropdown">
-                      <div class="dropdown-input" id="select-2">
-                        <span class="dropdown-placeholder">請選擇</span>
-                      </div>
-                      <div class="dropdown-options">
-                        <div class="dropdown-option" data-value="option-a">選項 A</div>
-                        <div class="dropdown-option" data-value="option-b">選項 B</div>
-                        <div class="dropdown-option" data-value="option-c">選項 C</div>
-                        <div class="dropdown-option" data-value="option-d">選項 D</div>
-                        <div class="dropdown-option" data-value="option-e">選項 E</div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
 
 
@@ -206,6 +192,406 @@
                   </div>
                 
                 </div>
+
+                <h3 style="margin: 16px 0;">input 元件</h3>
+                <hr class="input-section-divider">
+                
+                <!-- 基本輸入框類型 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">基本輸入框</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
+                  <!-- 單一輸入框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>輸入框標題</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field" placeholder="請輸入">
+                    </div>
+                  </div>
+
+                  <!-- 多行文本框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>輸入框標題</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <textarea class="input-field input-textarea" placeholder="請輸入"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 帶單位的輸入框類型 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">帶單位的輸入框</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
+                  <!-- 帶單位的輸入框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>輸入框標題</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <div style="position: relative; flex: 1; display: flex;">
+                        <input type="text" class="input-field with-unit" placeholder="請輸入">
+                        <div class="input-unit-inline">
+                          <span>萬元</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 下拉選單與輸入框組合 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>輸入框標題</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <div class="input-dropdown-container">
+                        <select class="input-dropdown">
+                          <option value="" disabled selected>請選擇</option>
+                          <option value="1">選項1</option>
+                          <option value="2">選項2</option>
+                        </select>
+                        <div style="position: relative; flex: 1; display: flex;">
+                          <input type="text" class="input-field with-unit" placeholder="請輸入">
+                          <div class="input-unit-inline">
+                            <span>萬元</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 帶圖標的輸入框類型 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">帶圖標的輸入框</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
+                  <!-- 帶搜索圖標的輸入框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>輸入框標題</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                      <button class="input-button">
+                        <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                        <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                        按鈕
+                      </button>
+                    </div>
+                    <div class="input-container">
+                      <div class="input-search-container">
+                        <input type="text" class="input-field with-search" placeholder="請輸入">
+                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 標籤輸入框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>輸入框標題</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <div class="input-tags-container">
+                        <div class="input-tag">
+                          <span>選項B</span>
+                          <span class="input-tag-remove">×</span>
+                        </div>
+                        <div class="input-tag">
+                          <span>選項C</span>
+                          <span class="input-tag-remove">×</span>
+                        </div>
+                        <input type="text" class="input-tags-field" placeholder="請輸入">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 不同狀態展示 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">不同狀態展示</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
+                  <!-- 默認狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>默認狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field" placeholder="請輸入">
+                    </div>
+                  </div>
+
+                  <!-- 聚焦狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>聚焦狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field" style="border-color: #9E7F54; box-shadow: 0 0 0 2px rgba(158, 127, 84, 0.2);">
+                    </div>
+                  </div>
+
+                  <!-- 錯誤狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>錯誤狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field error" value="內容">
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+                </div>
+
+                <!-- 禁用狀態展示 -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
+                  <!-- 禁用狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>禁用狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field disabled" value="內容" disabled>
+                    </div>
+                  </div>
+
+                  <!-- 有內容狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>有內容狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field" value="內容">
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <h3 style="margin: 16px 0;">dropdown 元件</h3>
+                
+                <hr class="input-section-divider">
+
+                <!-- 一般下拉選單 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">一般下拉</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選下拉</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown single-dropdown">
+                          <div class="dropdown-input" id="single-dropdown">
+                            <span class="dropdown-placeholder">請選擇</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                            <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                            <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                            <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                            <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>多選下拉</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown multiple-dropdown">
+                          <div class="dropdown-input" id="multiple-dropdown">
+                            <div class="dropdown-tags-container">
+                              <div class="dropdown-tag">
+                                <span>選項 B</span>
+                                <span class="dropdown-tag-remove">×</span>
+                              </div>
+                              <div class="dropdown-tag">
+                                <span>選項 C</span>
+                                <span class="dropdown-tag-remove">×</span>
+                              </div>
+                            </div>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-option" data-value="option-a">選項 A</div>
+                            <div class="dropdown-option" data-value="option-b">選項 B <span class="checkmark">✓</span></div>
+                            <div class="dropdown-option" data-value="option-c">選項 C <span class="checkmark">✓</span></div>
+                            <div class="dropdown-option" data-value="option-d">選項 D</div>
+                            <div class="dropdown-option" data-value="option-e">選項 E</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- 可搜尋式下拉選單 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">可搜尋式下拉</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  <!-- Single Selection - Default/Open State -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選 - 可搜尋式下拉</span>
+                          <span class="required">*</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown searchable-single-dropdown">
+                          <div class="dropdown-input" id="searchable-single-dropdown-1">
+                            <span class="dropdown-placeholder">請選擇</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-search-container">
+                              <input type="text" class="dropdown-search-input" placeholder="搜尋">
+                              <img src="./assets/images/search.svg" alt="search" class="dropdown-search-icon">
+                            </div>
+                            <div class="dropdown-options-list">
+                              <div class="dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                              <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                              <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                              <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                              <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Multiple Selection - Default/Open State -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>多選 - 可搜尋式下拉</span>
+                          <span class="required">*</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown searchable-multiple-dropdown">
+                          <div class="dropdown-input" id="searchable-multiple-dropdown-1">
+                            <div class="dropdown-tags-container">
+                              <span class="dropdown-placeholder">請選擇</span>
+                            </div>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-search-container">
+                              <input type="text" class="dropdown-search-input" placeholder="搜尋">
+                              <img src="./assets/images/search.svg" alt="search" class="dropdown-search-icon">
+                            </div>
+                            <div class="dropdown-options-list">
+                              <div class="dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                              <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                              <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                              <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                              <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+        
               </div>
             </div>
             <!-- 內容2 -->
@@ -225,13 +611,50 @@
     <!-- JavaScript -->
     <script src="./assets/js/sidepanel.js"></script>
     <script src="./assets/js/tab.js"></script>
+    <script src="./assets/js/input-components.js"></script>
     <script>
-      // Custom Dropdown Functionality
+      // Enhanced Dropdown Functionality
       document.addEventListener('DOMContentLoaded', function() {
-        const dropdownInput = document.querySelector('.dropdown-input');
-        const dropdownOptions = document.querySelector('.dropdown-options');
-        const dropdownPlaceholder = document.querySelector('.dropdown-placeholder');
-        const options = document.querySelectorAll('.dropdown-option');
+        // Initialize all dropdowns
+        initializeDropdowns();
+
+        // 示例：監聽 input 元件事件
+        document.addEventListener('input-change', function(e) {
+          console.log('Input changed:', e.detail);
+        });
+        
+        document.addEventListener('input-search', function(e) {
+          console.log('Search triggered:', e.detail);
+        });
+      });
+
+      function initializeDropdowns() {
+        // Initialize single selection dropdowns
+        document.querySelectorAll('.single-dropdown').forEach(dropdown => {
+          initializeSingleDropdown(dropdown);
+        });
+
+        // Initialize multiple selection dropdowns
+        document.querySelectorAll('.multiple-dropdown').forEach(dropdown => {
+          initializeMultipleDropdown(dropdown);
+        });
+
+        // Initialize searchable single selection dropdowns
+        document.querySelectorAll('.searchable-single-dropdown').forEach(dropdown => {
+          initializeSearchableSingleDropdown(dropdown);
+        });
+
+        // Initialize searchable multiple selection dropdowns
+        document.querySelectorAll('.searchable-multiple-dropdown').forEach(dropdown => {
+          initializeSearchableMultipleDropdown(dropdown);
+        });
+      }
+
+      function initializeSingleDropdown(dropdown) {
+        const dropdownInput = dropdown.querySelector('.dropdown-input');
+        const dropdownOptions = dropdown.querySelector('.dropdown-options');
+        const placeholder = dropdown.querySelector('.dropdown-placeholder');
+        const options = dropdown.querySelectorAll('.dropdown-option');
 
         // Toggle dropdown
         dropdownInput.addEventListener('click', function(e) {
@@ -239,12 +662,7 @@
           const isActive = dropdownInput.classList.contains('active');
           
           // Close all other dropdowns
-          document.querySelectorAll('.dropdown-input').forEach(input => {
-            input.classList.remove('active');
-          });
-          document.querySelectorAll('.dropdown-options').forEach(options => {
-            options.classList.remove('active');
-          });
+          closeAllDropdowns();
           
           // Toggle current dropdown
           if (!isActive) {
@@ -265,20 +683,321 @@
             this.classList.add('selected');
             
             // Update placeholder text
-            dropdownPlaceholder.textContent = this.textContent;
-            dropdownPlaceholder.style.color = '#292929';
+            placeholder.textContent = this.textContent.trim();
+            placeholder.style.color = '#292929';
             
             // Close dropdown
-            dropdownInput.classList.remove('active');
-            dropdownOptions.classList.remove('active');
+            closeDropdown(dropdownInput, dropdownOptions);
+          });
+        });
+      }
+
+      function initializeMultipleDropdown(dropdown) {
+        const dropdownInput = dropdown.querySelector('.dropdown-input');
+        const dropdownOptions = dropdown.querySelector('.dropdown-options');
+        const tagsContainer = dropdown.querySelector('.dropdown-tags-container');
+        const options = dropdown.querySelectorAll('.dropdown-option');
+        let selectedValues = new Set();
+
+        // Initialize with pre-selected options
+        options.forEach(option => {
+          if (option.classList.contains('selected')) {
+            const value = option.dataset.value;
+            const text = option.textContent.replace(' ✓', '').trim();
+            selectedValues.add(value);
+            createTag(tagsContainer, text, value);
+          }
+        });
+
+        // Toggle dropdown
+        dropdownInput.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isActive = dropdownInput.classList.contains('active');
+          
+          // Close all other dropdowns
+          closeAllDropdowns();
+          
+          // Toggle current dropdown
+          if (!isActive) {
+            dropdownInput.classList.add('active');
+            dropdownOptions.classList.add('active');
+          }
+        });
+
+        // Handle option selection
+        options.forEach(option => {
+          option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            const value = this.dataset.value;
+            const text = this.textContent.replace(' ✓', '').trim();
+            
+            if (selectedValues.has(value)) {
+              // Remove selection
+              selectedValues.delete(value);
+              this.classList.remove('selected');
+              this.innerHTML = text;
+              removeTag(tagsContainer, value);
+            } else {
+              // Add selection
+              selectedValues.add(value);
+              this.classList.add('selected');
+              this.innerHTML = text + ' <span class="checkmark">✓</span>';
+              createTag(tagsContainer, text, value);
+            }
           });
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function() {
-          dropdownInput.classList.remove('active');
-          dropdownOptions.classList.remove('active');
+        // Handle tag removal
+        tagsContainer.addEventListener('click', function(e) {
+          if (e.target.classList.contains('dropdown-tag-remove')) {
+            e.stopPropagation();
+            const tag = e.target.closest('.dropdown-tag');
+            const value = tag.dataset.value;
+            
+            // Remove from selected values
+            selectedValues.delete(value);
+            
+            // Update option
+            const option = dropdownOptions.querySelector(`[data-value="${value}"]`);
+            if (option) {
+              option.classList.remove('selected');
+              option.innerHTML = option.textContent.replace(' ✓', '').trim();
+            }
+            
+            // Remove tag
+            tag.remove();
+          }
         });
+      }
+
+
+      function createTag(container, text, value) {
+        const tag = document.createElement('div');
+        tag.className = 'dropdown-tag';
+        tag.dataset.value = value;
+        tag.innerHTML = `
+          <span>${text}</span>
+          <span class="dropdown-tag-remove">×</span>
+        `;
+        container.appendChild(tag);
+      }
+
+      function removeTag(container, value) {
+        const tag = container.querySelector(`[data-value="${value}"]`);
+        if (tag) tag.remove();
+      }
+
+      function closeDropdown(dropdownInput, dropdownOptions) {
+        dropdownInput.classList.remove('active');
+        dropdownOptions.classList.remove('active');
+      }
+
+      function initializeSearchableSingleDropdown(dropdown) {
+        const dropdownInput = dropdown.querySelector('.dropdown-input');
+        const dropdownOptions = dropdown.querySelector('.dropdown-options');
+        const placeholder = dropdown.querySelector('.dropdown-placeholder');
+        const searchInput = dropdown.querySelector('.dropdown-search-input');
+        const optionsList = dropdown.querySelector('.dropdown-options-list');
+        const options = optionsList.querySelectorAll('.dropdown-option');
+
+        // Toggle dropdown
+        dropdownInput.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isActive = dropdownInput.classList.contains('active');
+          
+          // Close all other dropdowns
+          closeAllDropdowns();
+          
+          // Toggle current dropdown
+          if (!isActive) {
+            dropdownInput.classList.add('active');
+            dropdownOptions.classList.add('active');
+            if (searchInput) searchInput.focus();
+          }
+        });
+
+        // Handle search input in dropdown
+        const dropdownSearchInput = dropdownOptions.querySelector('.dropdown-search-input');
+        const dropdownSearchContainer = dropdownOptions.querySelector('.dropdown-search-container');
+        
+        if (dropdownSearchInput) {
+          dropdownSearchInput.addEventListener('input', function(e) {
+            e.stopPropagation();
+            const searchTerm = this.value.toLowerCase();
+            filterOptions(options, searchTerm);
+          });
+        }
+        
+        // Prevent dropdown from closing when clicking on search container
+        if (dropdownSearchContainer) {
+          dropdownSearchContainer.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+
+        // Handle option selection
+        options.forEach(option => {
+          option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Remove selected class from all options
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            
+            // Update placeholder text
+            placeholder.textContent = this.textContent.trim();
+            placeholder.style.color = '#292929';
+            
+            // Close dropdown
+            closeDropdown(dropdownInput, dropdownOptions);
+          });
+        });
+      }
+
+      function initializeSearchableMultipleDropdown(dropdown) {
+        const dropdownInput = dropdown.querySelector('.dropdown-input');
+        const dropdownOptions = dropdown.querySelector('.dropdown-options');
+        const tagsContainer = dropdown.querySelector('.dropdown-tags-container');
+        const placeholder = tagsContainer.querySelector('.dropdown-placeholder');
+        const optionsList = dropdown.querySelector('.dropdown-options-list');
+        const options = optionsList.querySelectorAll('.dropdown-option');
+        let selectedValues = new Set();
+
+        // Initialize with pre-selected options
+        options.forEach(option => {
+          if (option.classList.contains('selected')) {
+            const value = option.dataset.value;
+            const text = option.textContent.replace(' ✓', '').trim();
+            selectedValues.add(value);
+            createTag(tagsContainer, text, value);
+          }
+        });
+
+        // Hide placeholder if there are selected values
+        if (selectedValues.size > 0 && placeholder) {
+          placeholder.style.display = 'none';
+        }
+
+        // Toggle dropdown
+        dropdownInput.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isActive = dropdownInput.classList.contains('active');
+          
+          // Close all other dropdowns
+          closeAllDropdowns();
+          
+          // Toggle current dropdown
+          if (!isActive) {
+            dropdownInput.classList.add('active');
+            dropdownOptions.classList.add('active');
+          }
+        });
+
+        // Handle search input in dropdown
+        const dropdownSearchInput = dropdownOptions.querySelector('.dropdown-search-input');
+        const dropdownSearchContainer = dropdownOptions.querySelector('.dropdown-search-container');
+        
+        if (dropdownSearchInput) {
+          dropdownSearchInput.addEventListener('input', function(e) {
+            e.stopPropagation();
+            const searchTerm = this.value.toLowerCase();
+            filterOptions(options, searchTerm);
+          });
+        }
+        
+        // Prevent dropdown from closing when clicking on search container
+        if (dropdownSearchContainer) {
+          dropdownSearchContainer.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+
+        // Handle option selection
+        options.forEach(option => {
+          option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            const value = this.dataset.value;
+            const text = this.textContent.replace(' ✓', '').trim();
+            
+            if (selectedValues.has(value)) {
+              // Remove selection
+              selectedValues.delete(value);
+              this.classList.remove('selected');
+              this.innerHTML = text;
+              removeTag(tagsContainer, value);
+            } else {
+              // Add selection
+              selectedValues.add(value);
+              this.classList.add('selected');
+              this.innerHTML = text + ' <span class="checkmark">✓</span>';
+              createTag(tagsContainer, text, value);
+            }
+            
+            // Show/hide placeholder based on selection
+            if (placeholder) {
+              placeholder.style.display = selectedValues.size > 0 ? 'none' : 'block';
+            }
+            
+            // Clear search input
+            if (dropdownSearchInput) dropdownSearchInput.value = '';
+          });
+        });
+
+        // Handle tag removal
+        tagsContainer.addEventListener('click', function(e) {
+          if (e.target.classList.contains('dropdown-tag-remove')) {
+            e.stopPropagation();
+            const tag = e.target.closest('.dropdown-tag');
+            const value = tag.dataset.value;
+            
+            // Remove from selected values
+            selectedValues.delete(value);
+            
+            // Update option
+            const option = optionsList.querySelector(`[data-value="${value}"]`);
+            if (option) {
+              option.classList.remove('selected');
+              option.innerHTML = option.textContent.replace(' ✓', '').trim();
+            }
+            
+            // Remove tag
+            tag.remove();
+            
+            // Show placeholder if no selections left
+            if (placeholder && selectedValues.size === 0) {
+              placeholder.style.display = 'block';
+            }
+          }
+        });
+      }
+
+      function filterOptions(options, searchTerm) {
+        options.forEach(option => {
+          const text = option.textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            option.style.display = 'flex';
+          } else {
+            option.style.display = 'none';
+          }
+        });
+      }
+
+      function closeAllDropdowns() {
+        document.querySelectorAll('.dropdown-input').forEach(input => {
+          input.classList.remove('active');
+        });
+        document.querySelectorAll('.dropdown-options').forEach(options => {
+          options.classList.remove('active');
+        });
+      }
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function() {
+        closeAllDropdowns();
       });
     </script>
   </body>
