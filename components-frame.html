@@ -282,7 +282,7 @@
                     <div class="input-container">
                       <div class="input-dropdown-container">
                         <select class="input-dropdown">
-                          <option value="" disabled selected>請選擇</option>
+                          <option value="" selected>請選擇</option>
                           <option value="1">選項1</option>
                           <option value="2">選項2</option>
                         </select>
@@ -494,21 +494,14 @@
                         <div class="custom-dropdown multiple-dropdown">
                           <div class="dropdown-input" id="multiple-dropdown">
                             <div class="dropdown-tags-container">
-                              <div class="dropdown-tag">
-                                <span>選項 B</span>
-                                <span class="dropdown-tag-remove">×</span>
-                              </div>
-                              <div class="dropdown-tag">
-                                <span>選項 C</span>
-                                <span class="dropdown-tag-remove">×</span>
-                              </div>
+                              <span class="dropdown-placeholder">請選擇</span>
                             </div>
                             <div class="dropdown-arrow"></div>
                           </div>
                           <div class="dropdown-options">
                             <div class="dropdown-option" data-value="option-a">選項 A</div>
-                            <div class="dropdown-option" data-value="option-b">選項 B <span class="checkmark">✓</span></div>
-                            <div class="dropdown-option" data-value="option-c">選項 C <span class="checkmark">✓</span></div>
+                            <div class="dropdown-option" data-value="option-b">選項 B</div>
+                            <div class="dropdown-option" data-value="option-c">選項 C</div>
                             <div class="dropdown-option" data-value="option-d">選項 D</div>
                             <div class="dropdown-option" data-value="option-e">選項 E</div>
                           </div>
@@ -676,15 +669,23 @@
           option.addEventListener('click', function(e) {
             e.stopPropagation();
             
-            // Remove selected class from all options
-            options.forEach(opt => opt.classList.remove('selected'));
-            
-            // Add selected class to clicked option
-            this.classList.add('selected');
-            
-            // Update placeholder text
-            placeholder.textContent = this.textContent.trim();
-            placeholder.style.color = '#292929';
+            // Check if clicking on already selected option
+            if (this.classList.contains('selected')) {
+              // Deselect current option
+              this.classList.remove('selected');
+              placeholder.textContent = '請選擇';
+              placeholder.style.color = '#9E9E9E';
+            } else {
+              // Remove selected class from all options
+              options.forEach(opt => opt.classList.remove('selected'));
+              
+              // Add selected class to clicked option
+              this.classList.add('selected');
+              
+              // Update placeholder text
+              placeholder.textContent = this.textContent.trim();
+              placeholder.style.color = '#292929';
+            }
             
             // Close dropdown
             closeDropdown(dropdownInput, dropdownOptions);
@@ -696,6 +697,7 @@
         const dropdownInput = dropdown.querySelector('.dropdown-input');
         const dropdownOptions = dropdown.querySelector('.dropdown-options');
         const tagsContainer = dropdown.querySelector('.dropdown-tags-container');
+        const placeholder = tagsContainer.querySelector('.dropdown-placeholder');
         const options = dropdown.querySelectorAll('.dropdown-option');
         let selectedValues = new Set();
 
@@ -708,6 +710,11 @@
             createTag(tagsContainer, text, value);
           }
         });
+
+        // Hide placeholder if there are selected values
+        if (selectedValues.size > 0 && placeholder) {
+          placeholder.style.display = 'none';
+        }
 
         // Toggle dropdown
         dropdownInput.addEventListener('click', function(e) {
@@ -745,6 +752,11 @@
               this.innerHTML = text + ' <span class="checkmark">✓</span>';
               createTag(tagsContainer, text, value);
             }
+            
+            // Show/hide placeholder based on selection
+            if (placeholder) {
+              placeholder.style.display = selectedValues.size > 0 ? 'none' : 'block';
+            }
           });
         });
 
@@ -767,6 +779,11 @@
             
             // Remove tag
             tag.remove();
+            
+            // Show placeholder if no selections left
+            if (placeholder && selectedValues.size === 0) {
+              placeholder.style.display = 'block';
+            }
           }
         });
       }
@@ -841,15 +858,23 @@
           option.addEventListener('click', function(e) {
             e.stopPropagation();
             
-            // Remove selected class from all options
-            options.forEach(opt => opt.classList.remove('selected'));
-            
-            // Add selected class to clicked option
-            this.classList.add('selected');
-            
-            // Update placeholder text
-            placeholder.textContent = this.textContent.trim();
-            placeholder.style.color = '#292929';
+            // Check if clicking on already selected option
+            if (this.classList.contains('selected')) {
+              // Deselect current option
+              this.classList.remove('selected');
+              placeholder.textContent = '請選擇';
+              placeholder.style.color = '#9E9E9E';
+            } else {
+              // Remove selected class from all options
+              options.forEach(opt => opt.classList.remove('selected'));
+              
+              // Add selected class to clicked option
+              this.classList.add('selected');
+              
+              // Update placeholder text
+              placeholder.textContent = this.textContent.trim();
+              placeholder.style.color = '#292929';
+            }
             
             // Close dropdown
             closeDropdown(dropdownInput, dropdownOptions);
