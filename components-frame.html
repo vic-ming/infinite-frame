@@ -25,7 +25,61 @@
           <div class="side-panel-header">
             <img src="./assets/images/logo.png" alt="logo">
           </div>
+          <div class="side-panel-role-select">
+            <div class="dropdown-component">
+              <div class="input-component" style="width: 184px; gap: 8px;">
+                <div class="input-header">
+                  <label class="input-label" style="font-size: 12px;">
+                    <span>角色</span>
+                  </label>
+                </div>
+                <div class="input-container">
+                  <div class="custom-dropdown single-dropdown">
+                    <div class="dropdown-input" id="single-dropdown">
+                      <span class="dropdown-placeholder" style="font-size: 12px;">請選擇</span>
+                      <div class="dropdown-arrow"></div>
+                    </div>
+                    <div class="dropdown-options">
+                      <div class="dropdown-option" data-value="12345678" data-text="租賃-分期企金業務">租賃-分期企金業務</div>
+                      <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                      <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                      <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                      <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-component">
+              <div class="input-component" style="width: 184px; gap: 8px;">
+                <div class="input-header">
+                  <label class="input-label" style="font-size: 12px;">
+                    <span>部門</span>
+                  </label>
+                </div>
+                <div class="input-container">
+                  <div class="custom-dropdown single-dropdown">
+                    <div class="dropdown-input" id="single-dropdown">
+                      <span class="dropdown-placeholder" style="font-size: 12px;">請選擇</span>
+                      <div class="dropdown-arrow"></div>
+                    </div>
+                    <div class="dropdown-options">
+                      <div class="dropdown-option" data-value="12345678" data-text="日盛台駿租賃-企金1科(台中一)">日盛台駿租賃-企金1科(台中一)</div>
+                      <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                      <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                      <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                      <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="side-panel-menu">
+
+    
+            
             <!-- 功能目錄 -->
             <div class="side-panel-menu-item has-submenu" data-menu="functions">
               <div class="quill-icon">
@@ -155,44 +209,262 @@
             <!-- 內容1 -->
             <div class="content-panel-content-tab-content-item active">
               <div class="content-panel-content-tab-content-item-main">
-                <h3 style="margin: 16px 0;">選單元件</h3>
-                <div class="common-operate-nav" style="flex-direction: column; align-items: flex-start;">
-                  <div class="common-select-item">
-                    <label for="select-1">Select</label>
-                    <select name="select-1" id="select-1">
-                      <option value="" disabled selected>請選擇</option>
-                      <option value="2">選項2</option>
-                      <option value="3">選項3</option>
-                    </select>
+                <h3 style="margin: 16px 0;">按鈕元件</h3>
+                <hr class="input-section-divider">
+                
+                <!-- Button Showcase Grid -->
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  
+                  <!-- Column 1: Dark Blue Filled -->
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Primary</div>
+                    <button class="common-button primary">
+                      <img src="./assets/images/edit-white.svg" alt="camera">
+                      按鈕
+                    </button>
+                  </div>
+                  <!-- Column 2: Dark Blue Outline -->
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Primary Outline</div>
+                    <button class="common-button primary-outline">
+                      <img src="./assets/images/edit.svg" alt="camera">
+                      按鈕
+                    </button>
                   </div>
                   
+                  <!-- Column 3: Brown Filled -->
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Brown</div>
+                    <button class="common-button brown">
+                      <img src="./assets/images/edit-white.svg" alt="camera">
+                      按鈕
+                    </button>
+                  </div>
+                  
+                  <!-- Column 4: Brown Outline -->
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Brown Outline</div>
+                    <button class="common-button brown-outline">
+                      <img src="./assets/images/edit.svg" alt="camera">
+                      按鈕
+                    </button>
+                  </div>
+                  
+                  <!-- Column 5: Yellow Filled -->
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Yellow</div>
+                    <button class="common-button yellow">
+                      <img src="./assets/images/edit.svg" alt="camera">
+                      按鈕
+                    </button>
+                  </div>
+
+                  <!-- Column 6: Blue Filled -->
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Blue</div>
+                    <button class="common-button blue">
+                      <img src="./assets/images/edit-white.svg" alt="camera">
+                      按鈕
+                    </button>
+                  </div>
+                </div>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Disabled</div>
+                    <button class="common-button primary" disabled>
+                      <img src="./assets/images/edit.svg" alt="camera">
+                      按鈕
+                    </button>
+                  </div>
+                  <div>
+                    <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Disabled</div>
+                    <button class="common-button primary-outline" disabled>
+                      <img src="./assets/images/edit.svg" alt="camera">
+                      按鈕
+                    </button>
+                  </div>
                 </div>
 
 
-                <h3 style="margin: 16px 0;">按鈕元件</h3>
-                <div class="common-operate-nav">
+                <h3 style="margin: 16px 0;">checkbox 元件</h3>
+                <hr class="input-section-divider">
+                
+                <!-- Checkbox Showcase Grid -->
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
                   
-                  <div class="common-operate-nav-item">
-                    <button class="common-button primary">
-                      <img src="./assets/images/edit-white.svg" alt="edit-white">
-                      按鈕
-                    </button>
+                  <!-- Unchecked Enabled -->
+                  <div class="checkbox-component">
+                    <input type="checkbox" id="checkbox-unchecked-enabled" class="checkbox-input">
+                    <label for="checkbox-unchecked-enabled" class="checkbox-label">
+                      <span class="checkbox-text">未勾選 - 啟用</span>
+                    </label>
                   </div>
-                  <div class="common-operate-nav-item">
-                    <button class="common-button primary">按鈕</button>
+                 
+                  
+                  <!-- Checked Enabled -->
+                  <div class="checkbox-component">
+                    <input type="checkbox" id="checkbox-checked-enabled" class="checkbox-input" checked>
+                    <label for="checkbox-checked-enabled" class="checkbox-label">
+                      <span class="checkbox-text">已勾選 - 啟用</span>
+                    </label>
                   </div>
-                  <div class="common-operate-nav-item">
-                    <button class="common-button primary-outline">
-                      <img src="./assets/images/edit.svg" alt="edit">
-                      按鈕
-                    </button>
+                       
+                  <!-- Unchecked Disabled -->
+                  <div class="checkbox-component">
+                    <input type="checkbox" id="checkbox-unchecked-disabled" class="checkbox-input" disabled>
+                    <label for="checkbox-unchecked-disabled" class="checkbox-label disabled">
+                      <span class="checkbox-text">未勾選 - 禁用</span>
+                    </label>
                   </div>
-                  <div class="common-operate-nav-item">
-                    <button class="common-button primary-outline">按鈕</button>
+                  
+                  <!-- Checked Disabled -->
+                  <div class="checkbox-component">
+                    <input type="checkbox" id="checkbox-checked-disabled" class="checkbox-input" checked disabled>
+                    <label for="checkbox-checked-disabled" class="checkbox-label disabled">
+                      <span class="checkbox-text">已勾選 - 禁用</span>
+                    </label>
                   </div>
                 
                 </div>
 
+                <!-- Checkbox Usage Examples -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">使用範例</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  
+                  <!-- Single Checkbox -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>單一勾選項</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="checkbox-component">
+                        <input type="checkbox" id="checkbox-single" class="checkbox-input">
+                        <label for="checkbox-single" class="checkbox-label">
+                          <span class="checkbox-text">我同意服務條款</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Multiple Checkboxes -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>多選勾選項</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="checkbox-group">
+                        <div class="checkbox-component">
+                          <input type="checkbox" id="checkbox-multiple-1" class="checkbox-input">
+                          <label for="checkbox-multiple-1" class="checkbox-label">
+                            <span class="checkbox-text">選項 A</span>
+                          </label>
+                        </div>
+                        <div class="checkbox-component">
+                          <input type="checkbox" id="checkbox-multiple-2" class="checkbox-input">
+                          <label for="checkbox-multiple-2" class="checkbox-label">
+                            <span class="checkbox-text">選項 B</span>
+                          </label>
+                        </div>
+                        <div class="checkbox-component">
+                          <input type="checkbox" id="checkbox-multiple-3" class="checkbox-input">
+                          <label for="checkbox-multiple-3" class="checkbox-label">
+                            <span class="checkbox-text">選項 C</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+
+                <h3 style="margin: 16px 0;">radio 元件</h3>
+                <hr class="input-section-divider">
+                
+                <!-- Radio Showcase Grid -->
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  
+                  <!-- Unselected Enabled -->
+                  <div class="radio-component">
+                    <input type="radio" id="radio-unselected-enabled" name="radio-showcase" class="radio-input">
+                    <label for="radio-unselected-enabled" class="radio-label">
+                      <span class="radio-text">未選取 - 啟用</span>
+                    </label>
+                  </div>
+                  
+                  <!-- Selected Enabled -->
+                  <div class="radio-component">
+                    <input type="radio" id="radio-selected-enabled" name="radio-showcase" class="radio-input" checked>
+                    <label for="radio-selected-enabled" class="radio-label">
+                      <span class="radio-text">已選取 - 啟用</span>
+                    </label>
+                  </div>
+                       
+                  <!-- Unselected Disabled -->
+                  <div class="radio-component">
+                    <input type="radio" id="radio-unselected-disabled" name="radio-showcase2" class="radio-input" disabled>
+                    <label for="radio-unselected-disabled" class="radio-label disabled">
+                      <span class="radio-text">未選取 - 禁用</span>
+                    </label>
+                  </div>
+                  
+                  <!-- Selected Disabled -->
+                  <div class="radio-component">
+                    <input type="radio" id="radio-selected-disabled" name="radio-showcase2" class="radio-input" checked disabled>
+                    <label for="radio-selected-disabled" class="radio-label disabled">
+                      <span class="radio-text">已選取 - 禁用</span>
+                    </label>
+                  </div>
+                
+                </div>
+
+                <!-- Radio Usage Examples -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">使用範例</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  
+                  <!-- Single Radio Group -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>單選選項</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="radio-group">
+                        <div class="radio-component">
+                          <input type="radio" id="radio-example-1" name="radio-example" class="radio-input">
+                          <label for="radio-example-1" class="radio-label">
+                            <span class="radio-text">選項 1</span>
+                          </label>
+                        </div>
+                        <div class="radio-component">
+                          <input type="radio" id="radio-example-2" name="radio-example" class="radio-input">
+                          <label for="radio-example-2" class="radio-label">
+                            <span class="radio-text">選項 2</span>
+                          </label>
+                        </div>
+                        <div class="radio-component">
+                          <input type="radio" id="radio-example-3" name="radio-example" class="radio-input">
+                          <label for="radio-example-3" class="radio-label">
+                            <span class="radio-text">選項 3</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+                 
+                
+  
                 <h3 style="margin: 16px 0;">input 元件</h3>
                 <hr class="input-section-divider">
                 
@@ -509,6 +781,68 @@
                       </div>
                     </div>
                   </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  <!-- 單選下拉 - 禁用狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選下拉 - 禁用</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown single-dropdown disabled">
+                          <div class="dropdown-input" id="single-dropdown-disabled">
+                            <span class="dropdown-placeholder">12345678 - 公司A</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-option selected" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                            <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                            <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                            <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                            <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 多選下拉 - 禁用狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>多選下拉 - 禁用</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown multiple-dropdown disabled">
+                          <div class="dropdown-input" id="multiple-dropdown-disabled">
+                            <div class="dropdown-tags-container">
+                              <div class="dropdown-tag">
+                                <span>選項 B</span>
+                                <span class="dropdown-tag-remove">×</span>
+                              </div>
+                              <div class="dropdown-tag">
+                                <span>選項 C</span>
+                                <span class="dropdown-tag-remove">×</span>
+                              </div>
+                            </div>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-option" data-value="option-a">選項 A</div>
+                            <div class="dropdown-option selected" data-value="option-b">選項 B <span class="checkmark">✓</span></div>
+                            <div class="dropdown-option selected" data-value="option-c">選項 C <span class="checkmark">✓</span></div>
+                            <div class="dropdown-option" data-value="option-d">選項 D</div>
+                            <div class="dropdown-option" data-value="option-e">選項 E</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
 
@@ -573,6 +907,82 @@
                               <div class="dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
                               <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
                               <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                              <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                              <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  <!-- 單選 - 可搜尋式下拉 - 禁用狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選 - 可搜尋式下拉 - 禁用</span>
+                          <span class="required">*</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown searchable-single-dropdown disabled">
+                          <div class="dropdown-input" id="searchable-single-dropdown-disabled">
+                            <span class="dropdown-placeholder">12345678 - 公司A</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-search-container">
+                              <input type="text" class="dropdown-search-input" placeholder="搜尋">
+                              <img src="./assets/images/search.svg" alt="search" class="dropdown-search-icon">
+                            </div>
+                            <div class="dropdown-options-list">
+                              <div class="dropdown-option selected" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                              <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                              <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                              <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                              <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 多選 - 可搜尋式下拉 - 禁用狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>多選 - 可搜尋式下拉 - 禁用</span>
+                          <span class="required">*</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown searchable-multiple-dropdown disabled">
+                          <div class="dropdown-input" id="searchable-multiple-dropdown-disabled">
+                            <div class="dropdown-tags-container">
+                              <div class="dropdown-tag">
+                                <span>12355578 - 公司B</span>
+                                <span class="dropdown-tag-remove">×</span>
+                              </div>
+                              <div class="dropdown-tag">
+                                <span>12300023 - 公司C</span>
+                                <span class="dropdown-tag-remove">×</span>
+                              </div>
+                            </div>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-search-container">
+                              <input type="text" class="dropdown-search-input" placeholder="搜尋">
+                              <img src="./assets/images/search.svg" alt="search" class="dropdown-search-icon">
+                            </div>
+                            <div class="dropdown-options-list">
+                              <div class="dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                              <div class="dropdown-option selected" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B <span class="checkmark">✓</span></div>
+                              <div class="dropdown-option selected" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C <span class="checkmark">✓</span></div>
                               <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
                               <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
                             </div>
