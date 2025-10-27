@@ -508,6 +508,27 @@
                       <textarea class="input-field input-textarea" placeholder="請輸入"></textarea>
                     </div>
                   </div>
+                  <!-- 多行文本框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>輸入框標題</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <textarea class="input-field input-textarea error" placeholder="請輸入"></textarea>
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+
+                  
                 </div>
 
                 <!-- 帶單位的輸入框類型 -->
@@ -994,6 +1015,33 @@
 
                 </div>
 
+
+
+
+                <h3 style="margin: 16px 0;">彈窗元件</h3>
+                <hr class="input-section-divider">
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="openPopup('blankPopup')">
+                    空白彈窗
+                  </button>
+                  <button class="common-button primary" onclick="openPopup('formPopup')">
+                    Form彈窗
+                  </button>
+                  <button class="common-button primary" onclick="openPopup('listPopup')">
+                    列表彈窗
+                  </button>
+                  <button class="common-button primary">
+                    列表 check 彈窗
+                  </button>
+                  <button class="common-button primary">
+                    右側彈窗
+                  </button>
+                  
+                </div>
+
+                
+
         
               </div>
             </div>
@@ -1008,6 +1056,9 @@
       </div>
     </div>
     
+    <!-- Popup Components will be loaded here -->
+    <div id="popup-components"></div>
+    
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
@@ -1015,6 +1066,7 @@
     <script src="./assets/js/sidepanel.js"></script>
     <script src="./assets/js/tab.js"></script>
     <script src="./assets/js/input-components.js"></script>
+    <script src="./assets/js/popup.js"></script>
     <script>
       // Enhanced Dropdown Functionality
       document.addEventListener('DOMContentLoaded', function() {
@@ -1434,6 +1486,94 @@
       document.addEventListener('click', function() {
         closeAllDropdowns();
       });
+    </script>
+
+    <!-- Load Popup Components -->
+    <script>
+      // Load popup components dynamically
+      async function loadPopupComponents() {
+        try {
+          // 確保 popupManager 已載入
+          if (typeof popupManager === 'undefined') {
+            console.error('popupManager is not defined');
+            return;
+          }
+          
+          // Load blank popup
+          const blankResponse = await fetch('./components/popup-blank.html');
+          const blankHtml = await blankResponse.text();
+          
+          // Load form popup
+          const formResponse = await fetch('./components/popup-form.html');
+          const formHtml = await formResponse.text();
+          
+          // Load list popup
+          const listResponse = await fetch('./components/popup-list.html');
+          const listHtml = await listResponse.text();
+          
+          // Combine all popups
+          document.getElementById('popup-components').innerHTML = blankHtml + formHtml + listHtml;
+          
+          // Register blank popup
+          popupManager.register('blankPopup');
+          popupManager.onConfirm('blankPopup', () => {
+            console.log('Blank popup confirmed');
+          });
+          popupManager.onCancel('blankPopup', () => {
+            console.log('Blank popup cancelled');
+          });
+          
+          // Register form popup
+          popupManager.register('formPopup');
+          popupManager.onConfirm('formPopup', () => {
+            console.log('Form popup confirmed');
+            // Get form data here
+          });
+          popupManager.onCancel('formPopup', () => {
+            console.log('Form popup cancelled');
+          });
+          
+          // Register list popup
+          popupManager.register('listPopup');
+          popupManager.onConfirm('listPopup', () => {
+            console.log('List popup confirmed');
+            // Get selected data here
+          });
+          popupManager.onCancel('listPopup', () => {
+            console.log('List popup cancelled');
+          });
+          
+          // Initialize dropdowns inside form popup
+          setTimeout(() => {
+            initializeFormDropdowns();
+          }, 200);
+          
+        } catch (error) {
+          console.error('Error loading popup components:', error);
+        }
+      }
+      
+      // Initialize dropdowns in form popup
+      function initializeFormDropdowns() {
+        const formDropdowns = document.querySelectorAll('#formPopup .custom-dropdown');
+        formDropdowns.forEach(dropdown => {
+          const isSearchable = dropdown.classList.contains('searchable-single-dropdown') || 
+                             dropdown.classList.contains('searchable-multiple-dropdown');
+          
+          if (isSearchable) {
+            initializeSearchableSingleDropdown(dropdown);
+          } else if (dropdown.classList.contains('single-dropdown')) {
+            initializeSingleDropdown(dropdown);
+          } else if (dropdown.classList.contains('multiple-dropdown')) {
+            initializeMultipleDropdown(dropdown);
+          }
+        });
+      }
+      
+      // Load popup components after popup.js is loaded
+      setTimeout(() => {
+        loadPopupComponents();
+      }, 100);
     </script>
   </body>
 </html>
