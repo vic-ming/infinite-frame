@@ -43,10 +43,14 @@ button {
   gap: 13px;
 }
 .side-panel .side-panel-header{
-  padding: 5px 32px 18px;
+  padding: 0 32px 0 23px;
   text-align: left;
   /* border-bottom: 1px solid #BDBDBD; */
   background-color: #fff;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .side-panel .side-panel-header img{
   width: 120px;
@@ -915,6 +919,8 @@ button {
 /* 表格容器 */
 .table-container{
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 350px);
 }
 
 /* 自定义滚动条样式 */
@@ -938,13 +944,20 @@ button {
 }
 
 /* 表格 */
+.common-tab-content-table{
+  overflow: hidden !important;
+}
 .common-table{
   width: 100%;
   min-width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   background-color: #fff;
   font-size: 14px;
   border-radius: 8px;
+}
+
+.common-table:not(.sticky-header){
   overflow: hidden;
 }
 
@@ -958,10 +971,17 @@ button {
   text-align: left;
   font-weight: 400;
   color: #004D71;
+  border-top: 1px solid #DCDCDC;
+  border-left: none;
+  border-right: none;
   border-bottom: 1px solid #DCDCDC;
   white-space: nowrap;
   background-color: #EEF5F8;
   min-width: 162px;
+}
+
+.common-table thead tr th:last-child{
+  border-right: none;
 }
 
 .common-table tbody tr{
@@ -973,17 +993,53 @@ button {
   border-bottom: none;
 }
 
+.common-table tbody tr:nth-child(even){
+  background-color: #FBFBFB;
+}
+
 .common-table tbody tr:hover{
-  background-color: #F9F9F9;
+  background-color: #F2F2F2;
 }
 
 .common-table tbody tr td{
-  padding: 12px 16px;
+  padding: 8px 16px;
   text-align: left;
   color: #292929;
   font-size: 14px;
   vertical-align: middle;
   min-width: 100px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid #DCDCDC;
+}
+
+
+.common-table tbody tr:last-child td{
+  border-bottom: 1px solid #DCDCDC;
+}
+
+/* Sticky header support */
+.common-table.sticky-header thead {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.common-table.sticky-header thead tr th{
+  background-color: #EEF5F8 !important;
+  position: relative;
+}
+
+.common-table.sticky-header thead tr th::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05));
+  pointer-events: none;
 }
 
 
@@ -1010,6 +1066,9 @@ button {
 
 .table-pagination-info{
   color: #292929;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .table-pagination-info strong{
@@ -1036,6 +1095,10 @@ button {
   font-size: 16px;
   color: #292929;
   transition: all 0.2s ease;
+}
+.pagination-button img{
+  width: 24px;
+  height: 24px;
 }
 
 .pagination-button:hover{
@@ -1069,12 +1132,54 @@ button {
   box-shadow: 0 0 0 1px #9E7F54;
 }
 
+.pagination-select-wrapper{
+  position: relative;
+  display: inline-block;
+}
+
+.pagination-select{
+  width: 60px;
+  height: 32px;
+  border: 1px solid #BDBDBD;
+  border-radius: 6px;
+  padding: 0 22px 0 8px;
+  text-align: center;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  background-color: #fff;
+  color: #292929;
+  transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.pagination-select:focus{
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 1px #9E7F54;
+}
+
+.pagination-select:hover{
+  border-color: #9E7F54;
+}
+
+.pagination-select-arrow{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
 /* Input 元件樣式 */
 .input-component {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   width: 360px;
 }
 
