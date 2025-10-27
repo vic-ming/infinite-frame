@@ -187,7 +187,7 @@
           <div class="content-panel-nav">
             <div class="content-panel-nav-item"><img src="./assets/images/ring.svg"></div>
             <div class="content-panel-nav-item"><img src="./assets/images/earth.svg"></div>
-            <div class="content-panel-nav-item"><img src="./assets/images/data.svg"></div>
+            <div class="content-panel-nav-item"><img src="./assets/images/star.svg"></div>
             <div class="content-panel-nav-item"><img src="./assets/images/setting.svg"></div>
             <div class="content-panel-nav-user">
               <img src="./assets/images/user.svg">
@@ -1031,17 +1031,255 @@
                   <button class="common-button primary" onclick="openPopup('listPopup')">
                     列表彈窗
                   </button>
-                  <button class="common-button primary">
+                  <button class="common-button primary" onclick="openPopup('listCheckPopup')">
                     列表 check 彈窗
                   </button>
-                  <button class="common-button primary">
+                  <button class="common-button primary" onclick="openPopup('sidePopup')">
                     右側彈窗
                   </button>
                   
                 </div>
 
-                
 
+                <h3 style="margin: 32px 0 16px 0;">Collapse 元件</h3>
+                <hr class="input-section-divider">
+
+                <!-- Collapse Component Demo -->
+                <div class="collapse-container" id="collapseDemo">
+                  <!-- Collapse Item 1 -->
+                  <div class="collapse-item active" data-index="0">
+                    <div class="collapse-header">
+                      <span class="collapse-title">標題一</span>
+                      <div class="collapse-actions">
+                        <button class="collapse-action-btn collapse-btn-add" onclick="addCollapseItem('collapseDemo')" title="添加">
+                          <img src="./assets/images/add_white.svg">
+                        </button>
+                        <button class="collapse-action-btn collapse-btn-delete" onclick="deleteCollapseItem(this)" title="刪除">
+                          <img src="./assets/images/trash.svg">
+                        </button>
+                        <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
+                          <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
+                          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-brown">
+                        </button>
+                      </div>
+                    </div>
+                    <div class="collapse-content">
+                      <div style="font-size: 14px; color: #757575; margin-bottom: 24px;">
+                        提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
+                      </div>
+                      
+                      <!-- Two Column Form Layout -->
+                      <div class="popup-form-grid">
+                        <!-- Left Column -->
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                          <!-- Dropdown -->
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>選單標題</span>
+                                <span class="required">*</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <div class="custom-dropdown single-dropdown">
+                                <div class="dropdown-input">
+                                  <span class="dropdown-placeholder">請選擇</span>
+                                  <div class="dropdown-arrow"></div>
+                                </div>
+                                <div class="dropdown-options">
+                                  <div class="dropdown-option" data-value="option1" data-text="選項一">選項一</div>
+                                  <div class="dropdown-option" data-value="option2" data-text="選項二">選項二</div>
+                                  <div class="dropdown-option" data-value="option3" data-text="選項三">選項三</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Checkboxes -->
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>標題</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <div class="checkbox-group">
+                                <div class="checkbox-component">
+                                  <input type="checkbox" id="collapse-check-1-1" class="checkbox-input" checked>
+                                  <label for="collapse-check-1-1" class="checkbox-label">
+                                    <span class="checkbox-text">勾選項</span>
+                                  </label>
+                                </div>
+                                <div class="checkbox-component">
+                                  <input type="checkbox" id="collapse-check-1-2" class="checkbox-input" checked>
+                                  <label for="collapse-check-1-2" class="checkbox-label">
+                                    <span class="checkbox-text">勾選項</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <!-- Right Column -->
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                          <!-- Dropdown -->
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>選單標題</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <div class="custom-dropdown single-dropdown">
+                                <div class="dropdown-input">
+                                  <span class="dropdown-placeholder">選項一</span>
+                                  <div class="dropdown-arrow"></div>
+                                </div>
+                                <div class="dropdown-options">
+                                  <div class="dropdown-option selected" data-value="option1" data-text="選項一">選項一</div>
+                                  <div class="dropdown-option" data-value="option2" data-text="選項二">選項二</div>
+                                  <div class="dropdown-option" data-value="option3" data-text="選項三">選項三</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Radio Buttons -->
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>標題</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <div class="radio-group">
+                                <div class="radio-component">
+                                  <input type="radio" id="collapse-radio-1-1" name="collapse-radio-1" class="radio-input" checked>
+                                  <label for="collapse-radio-1-1" class="radio-label">
+                                    <span class="radio-text">單選項</span>
+                                  </label>
+                                </div>
+                                <div class="radio-component">
+                                  <input type="radio" id="collapse-radio-1-2" name="collapse-radio-1" class="radio-input">
+                                  <label for="collapse-radio-1-2" class="radio-label">
+                                    <span class="radio-text">單選項</span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Collapse Item 2 -->
+                  <div class="collapse-item collapsed" data-index="1">
+                    <div class="collapse-header">
+                      <span class="collapse-title">標題二</span>
+                      <div class="collapse-actions">
+                        <button class="collapse-action-btn collapse-btn-add" onclick="addCollapseItem('collapseDemo')" title="添加">
+                          <img src="./assets/images/add_white.svg">
+                        </button>
+                        <button class="collapse-action-btn collapse-btn-delete" onclick="deleteCollapseItem(this)" title="刪除">
+                          <img src="./assets/images/trash.svg">
+                        </button>
+                        <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
+                          <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
+                          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-brown">
+                        </button>
+                      </div>
+                    </div>
+                    <div class="collapse-content">
+                      <div style="font-size: 14px; color: #757575; margin-bottom: 24px;">
+                        提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
+                      </div>
+                      
+                      <!-- Two Column Form Layout -->
+                      <div class="popup-form-grid">
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>輸入框標題</span>
+                                <span class="required">*</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <input type="text" class="input-field" placeholder="請輸入">
+                            </div>
+                          </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>輸入框標題</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <input type="text" class="input-field" placeholder="請輸入">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Collapse Item 3 -->
+                  <div class="collapse-item collapsed" data-index="2">
+                    <div class="collapse-header">
+                      <span class="collapse-title">標題三</span>
+                      <div class="collapse-actions">
+                        <button class="collapse-action-btn collapse-btn-add" onclick="addCollapseItem('collapseDemo')" title="添加">
+                          <img src="./assets/images/add_white.svg">
+                        </button>
+                        <button class="collapse-action-btn collapse-btn-delete" onclick="deleteCollapseItem(this)" title="刪除">
+                          <img src="./assets/images/trash.svg">
+                        </button>
+                        <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
+                          <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
+                          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-brown">
+                        </button>
+                      </div>
+                    </div>
+                    <div class="collapse-content">
+                      <div style="font-size: 14px; color: #757575; margin-bottom: 24px;">
+                        提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
+                      </div>
+                      
+                      <!-- Two Column Form Layout -->
+                      <div class="popup-form-grid">
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>輸入框標題</span>
+                                <span class="required">*</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <input type="text" class="input-field" placeholder="請輸入">
+                            </div>
+                          </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                          <div class="input-component">
+                            <div class="input-header">
+                              <label class="input-label">
+                                <span>輸入框標題</span>
+                              </label>
+                            </div>
+                            <div class="input-container">
+                              <input type="text" class="input-field" placeholder="請輸入">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
         
               </div>
             </div>
@@ -1067,514 +1305,10 @@
     <script src="./assets/js/tab.js"></script>
     <script src="./assets/js/input-components.js"></script>
     <script src="./assets/js/popup.js"></script>
-    <script>
-      // Enhanced Dropdown Functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        // Initialize all dropdowns
-        initializeDropdowns();
+    <script src="./assets/js/popup-init.js"></script>
+    <script src="./assets/js/dropdown-init.js"></script>
+    <script src="./assets/js/collapse-init.js"></script>
 
-        // 示例：監聽 input 元件事件
-        document.addEventListener('input-change', function(e) {
-          console.log('Input changed:', e.detail);
-        });
-        
-        document.addEventListener('input-search', function(e) {
-          console.log('Search triggered:', e.detail);
-        });
-      });
-
-      function initializeDropdowns() {
-        // Initialize single selection dropdowns
-        document.querySelectorAll('.single-dropdown').forEach(dropdown => {
-          initializeSingleDropdown(dropdown);
-        });
-
-        // Initialize multiple selection dropdowns
-        document.querySelectorAll('.multiple-dropdown').forEach(dropdown => {
-          initializeMultipleDropdown(dropdown);
-        });
-
-        // Initialize searchable single selection dropdowns
-        document.querySelectorAll('.searchable-single-dropdown').forEach(dropdown => {
-          initializeSearchableSingleDropdown(dropdown);
-        });
-
-        // Initialize searchable multiple selection dropdowns
-        document.querySelectorAll('.searchable-multiple-dropdown').forEach(dropdown => {
-          initializeSearchableMultipleDropdown(dropdown);
-        });
-      }
-
-      function initializeSingleDropdown(dropdown) {
-        const dropdownInput = dropdown.querySelector('.dropdown-input');
-        const dropdownOptions = dropdown.querySelector('.dropdown-options');
-        const placeholder = dropdown.querySelector('.dropdown-placeholder');
-        const options = dropdown.querySelectorAll('.dropdown-option');
-
-        // Toggle dropdown
-        dropdownInput.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const isActive = dropdownInput.classList.contains('active');
-          
-          // Close all other dropdowns
-          closeAllDropdowns();
-          
-          // Toggle current dropdown
-          if (!isActive) {
-            dropdownInput.classList.add('active');
-            dropdownOptions.classList.add('active');
-          }
-        });
-
-        // Handle option selection
-        options.forEach(option => {
-          option.addEventListener('click', function(e) {
-            e.stopPropagation();
-            
-            // Check if clicking on already selected option
-            if (this.classList.contains('selected')) {
-              // Deselect current option
-              this.classList.remove('selected');
-              placeholder.textContent = '請選擇';
-              placeholder.style.color = '#9E9E9E';
-            } else {
-              // Remove selected class from all options
-              options.forEach(opt => opt.classList.remove('selected'));
-              
-              // Add selected class to clicked option
-              this.classList.add('selected');
-              
-              // Update placeholder text
-              placeholder.textContent = this.textContent.trim();
-              placeholder.style.color = '#292929';
-            }
-            
-            // Close dropdown
-            closeDropdown(dropdownInput, dropdownOptions);
-          });
-        });
-      }
-
-      function initializeMultipleDropdown(dropdown) {
-        const dropdownInput = dropdown.querySelector('.dropdown-input');
-        const dropdownOptions = dropdown.querySelector('.dropdown-options');
-        const tagsContainer = dropdown.querySelector('.dropdown-tags-container');
-        const placeholder = tagsContainer.querySelector('.dropdown-placeholder');
-        const options = dropdown.querySelectorAll('.dropdown-option');
-        let selectedValues = new Set();
-
-        // Initialize with pre-selected options
-        options.forEach(option => {
-          if (option.classList.contains('selected')) {
-            const value = option.dataset.value;
-            const text = option.textContent.replace(' ✓', '').trim();
-            selectedValues.add(value);
-            createTag(tagsContainer, text, value);
-          }
-        });
-
-        // Hide placeholder if there are selected values
-        if (selectedValues.size > 0 && placeholder) {
-          placeholder.style.display = 'none';
-        }
-
-        // Toggle dropdown
-        dropdownInput.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const isActive = dropdownInput.classList.contains('active');
-          
-          // Close all other dropdowns
-          closeAllDropdowns();
-          
-          // Toggle current dropdown
-          if (!isActive) {
-            dropdownInput.classList.add('active');
-            dropdownOptions.classList.add('active');
-          }
-        });
-
-        // Handle option selection
-        options.forEach(option => {
-          option.addEventListener('click', function(e) {
-            e.stopPropagation();
-            
-            const value = this.dataset.value;
-            const text = this.textContent.replace(' ✓', '').trim();
-            
-            if (selectedValues.has(value)) {
-              // Remove selection
-              selectedValues.delete(value);
-              this.classList.remove('selected');
-              this.innerHTML = text;
-              removeTag(tagsContainer, value);
-            } else {
-              // Add selection
-              selectedValues.add(value);
-              this.classList.add('selected');
-              this.innerHTML = text + ' <span class="checkmark">✓</span>';
-              createTag(tagsContainer, text, value);
-            }
-            
-            // Show/hide placeholder based on selection
-            if (placeholder) {
-              placeholder.style.display = selectedValues.size > 0 ? 'none' : 'block';
-            }
-          });
-        });
-
-        // Handle tag removal
-        tagsContainer.addEventListener('click', function(e) {
-          if (e.target.classList.contains('dropdown-tag-remove')) {
-            e.stopPropagation();
-            const tag = e.target.closest('.dropdown-tag');
-            const value = tag.dataset.value;
-            
-            // Remove from selected values
-            selectedValues.delete(value);
-            
-            // Update option
-            const option = dropdownOptions.querySelector(`[data-value="${value}"]`);
-            if (option) {
-              option.classList.remove('selected');
-              option.innerHTML = option.textContent.replace(' ✓', '').trim();
-            }
-            
-            // Remove tag
-            tag.remove();
-            
-            // Show placeholder if no selections left
-            if (placeholder && selectedValues.size === 0) {
-              placeholder.style.display = 'block';
-            }
-          }
-        });
-      }
-
-
-      function createTag(container, text, value) {
-        const tag = document.createElement('div');
-        tag.className = 'dropdown-tag';
-        tag.dataset.value = value;
-        tag.innerHTML = `
-          <span>${text}</span>
-          <span class="dropdown-tag-remove">×</span>
-        `;
-        container.appendChild(tag);
-      }
-
-      function removeTag(container, value) {
-        const tag = container.querySelector(`[data-value="${value}"]`);
-        if (tag) tag.remove();
-      }
-
-      function closeDropdown(dropdownInput, dropdownOptions) {
-        dropdownInput.classList.remove('active');
-        dropdownOptions.classList.remove('active');
-      }
-
-      function initializeSearchableSingleDropdown(dropdown) {
-        const dropdownInput = dropdown.querySelector('.dropdown-input');
-        const dropdownOptions = dropdown.querySelector('.dropdown-options');
-        const placeholder = dropdown.querySelector('.dropdown-placeholder');
-        const searchInput = dropdown.querySelector('.dropdown-search-input');
-        const optionsList = dropdown.querySelector('.dropdown-options-list');
-        const options = optionsList.querySelectorAll('.dropdown-option');
-
-        // Toggle dropdown
-        dropdownInput.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const isActive = dropdownInput.classList.contains('active');
-          
-          // Close all other dropdowns
-          closeAllDropdowns();
-          
-          // Toggle current dropdown
-          if (!isActive) {
-            dropdownInput.classList.add('active');
-            dropdownOptions.classList.add('active');
-            if (searchInput) searchInput.focus();
-          }
-        });
-
-        // Handle search input in dropdown
-        const dropdownSearchInput = dropdownOptions.querySelector('.dropdown-search-input');
-        const dropdownSearchContainer = dropdownOptions.querySelector('.dropdown-search-container');
-        
-        if (dropdownSearchInput) {
-          dropdownSearchInput.addEventListener('input', function(e) {
-            e.stopPropagation();
-            const searchTerm = this.value.toLowerCase();
-            filterOptions(options, searchTerm);
-          });
-        }
-        
-        // Prevent dropdown from closing when clicking on search container
-        if (dropdownSearchContainer) {
-          dropdownSearchContainer.addEventListener('click', function(e) {
-            e.stopPropagation();
-          });
-        }
-
-        // Handle option selection
-        options.forEach(option => {
-          option.addEventListener('click', function(e) {
-            e.stopPropagation();
-            
-            // Check if clicking on already selected option
-            if (this.classList.contains('selected')) {
-              // Deselect current option
-              this.classList.remove('selected');
-              placeholder.textContent = '請選擇';
-              placeholder.style.color = '#9E9E9E';
-            } else {
-              // Remove selected class from all options
-              options.forEach(opt => opt.classList.remove('selected'));
-              
-              // Add selected class to clicked option
-              this.classList.add('selected');
-              
-              // Update placeholder text
-              placeholder.textContent = this.textContent.trim();
-              placeholder.style.color = '#292929';
-            }
-            
-            // Close dropdown
-            closeDropdown(dropdownInput, dropdownOptions);
-          });
-        });
-      }
-
-      function initializeSearchableMultipleDropdown(dropdown) {
-        const dropdownInput = dropdown.querySelector('.dropdown-input');
-        const dropdownOptions = dropdown.querySelector('.dropdown-options');
-        const tagsContainer = dropdown.querySelector('.dropdown-tags-container');
-        const placeholder = tagsContainer.querySelector('.dropdown-placeholder');
-        const optionsList = dropdown.querySelector('.dropdown-options-list');
-        const options = optionsList.querySelectorAll('.dropdown-option');
-        let selectedValues = new Set();
-
-        // Initialize with pre-selected options
-        options.forEach(option => {
-          if (option.classList.contains('selected')) {
-            const value = option.dataset.value;
-            const text = option.textContent.replace(' ✓', '').trim();
-            selectedValues.add(value);
-            createTag(tagsContainer, text, value);
-          }
-        });
-
-        // Hide placeholder if there are selected values
-        if (selectedValues.size > 0 && placeholder) {
-          placeholder.style.display = 'none';
-        }
-
-        // Toggle dropdown
-        dropdownInput.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const isActive = dropdownInput.classList.contains('active');
-          
-          // Close all other dropdowns
-          closeAllDropdowns();
-          
-          // Toggle current dropdown
-          if (!isActive) {
-            dropdownInput.classList.add('active');
-            dropdownOptions.classList.add('active');
-          }
-        });
-
-        // Handle search input in dropdown
-        const dropdownSearchInput = dropdownOptions.querySelector('.dropdown-search-input');
-        const dropdownSearchContainer = dropdownOptions.querySelector('.dropdown-search-container');
-        
-        if (dropdownSearchInput) {
-          dropdownSearchInput.addEventListener('input', function(e) {
-            e.stopPropagation();
-            const searchTerm = this.value.toLowerCase();
-            filterOptions(options, searchTerm);
-          });
-        }
-        
-        // Prevent dropdown from closing when clicking on search container
-        if (dropdownSearchContainer) {
-          dropdownSearchContainer.addEventListener('click', function(e) {
-            e.stopPropagation();
-          });
-        }
-
-        // Handle option selection
-        options.forEach(option => {
-          option.addEventListener('click', function(e) {
-            e.stopPropagation();
-            
-            const value = this.dataset.value;
-            const text = this.textContent.replace(' ✓', '').trim();
-            
-            if (selectedValues.has(value)) {
-              // Remove selection
-              selectedValues.delete(value);
-              this.classList.remove('selected');
-              this.innerHTML = text;
-              removeTag(tagsContainer, value);
-            } else {
-              // Add selection
-              selectedValues.add(value);
-              this.classList.add('selected');
-              this.innerHTML = text + ' <span class="checkmark">✓</span>';
-              createTag(tagsContainer, text, value);
-            }
-            
-            // Show/hide placeholder based on selection
-            if (placeholder) {
-              placeholder.style.display = selectedValues.size > 0 ? 'none' : 'block';
-            }
-            
-            // Clear search input
-            if (dropdownSearchInput) dropdownSearchInput.value = '';
-          });
-        });
-
-        // Handle tag removal
-        tagsContainer.addEventListener('click', function(e) {
-          if (e.target.classList.contains('dropdown-tag-remove')) {
-            e.stopPropagation();
-            const tag = e.target.closest('.dropdown-tag');
-            const value = tag.dataset.value;
-            
-            // Remove from selected values
-            selectedValues.delete(value);
-            
-            // Update option
-            const option = optionsList.querySelector(`[data-value="${value}"]`);
-            if (option) {
-              option.classList.remove('selected');
-              option.innerHTML = option.textContent.replace(' ✓', '').trim();
-            }
-            
-            // Remove tag
-            tag.remove();
-            
-            // Show placeholder if no selections left
-            if (placeholder && selectedValues.size === 0) {
-              placeholder.style.display = 'block';
-            }
-          }
-        });
-      }
-
-      function filterOptions(options, searchTerm) {
-        options.forEach(option => {
-          const text = option.textContent.toLowerCase();
-          if (text.includes(searchTerm)) {
-            option.style.display = 'flex';
-          } else {
-            option.style.display = 'none';
-          }
-        });
-      }
-
-      function closeAllDropdowns() {
-        document.querySelectorAll('.dropdown-input').forEach(input => {
-          input.classList.remove('active');
-        });
-        document.querySelectorAll('.dropdown-options').forEach(options => {
-          options.classList.remove('active');
-        });
-      }
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function() {
-        closeAllDropdowns();
-      });
-    </script>
-
-    <!-- Load Popup Components -->
-    <script>
-      // Load popup components dynamically
-      async function loadPopupComponents() {
-        try {
-          // 確保 popupManager 已載入
-          if (typeof popupManager === 'undefined') {
-            console.error('popupManager is not defined');
-            return;
-          }
-          
-          // Load blank popup
-          const blankResponse = await fetch('./components/popup-blank.html');
-          const blankHtml = await blankResponse.text();
-          
-          // Load form popup
-          const formResponse = await fetch('./components/popup-form.html');
-          const formHtml = await formResponse.text();
-          
-          // Load list popup
-          const listResponse = await fetch('./components/popup-list.html');
-          const listHtml = await listResponse.text();
-          
-          // Combine all popups
-          document.getElementById('popup-components').innerHTML = blankHtml + formHtml + listHtml;
-          
-          // Register blank popup
-          popupManager.register('blankPopup');
-          popupManager.onConfirm('blankPopup', () => {
-            console.log('Blank popup confirmed');
-          });
-          popupManager.onCancel('blankPopup', () => {
-            console.log('Blank popup cancelled');
-          });
-          
-          // Register form popup
-          popupManager.register('formPopup');
-          popupManager.onConfirm('formPopup', () => {
-            console.log('Form popup confirmed');
-            // Get form data here
-          });
-          popupManager.onCancel('formPopup', () => {
-            console.log('Form popup cancelled');
-          });
-          
-          // Register list popup
-          popupManager.register('listPopup');
-          popupManager.onConfirm('listPopup', () => {
-            console.log('List popup confirmed');
-            // Get selected data here
-          });
-          popupManager.onCancel('listPopup', () => {
-            console.log('List popup cancelled');
-          });
-          
-          // Initialize dropdowns inside form popup
-          setTimeout(() => {
-            initializeFormDropdowns();
-          }, 200);
-          
-        } catch (error) {
-          console.error('Error loading popup components:', error);
-        }
-      }
-      
-      // Initialize dropdowns in form popup
-      function initializeFormDropdowns() {
-        const formDropdowns = document.querySelectorAll('#formPopup .custom-dropdown');
-        formDropdowns.forEach(dropdown => {
-          const isSearchable = dropdown.classList.contains('searchable-single-dropdown') || 
-                             dropdown.classList.contains('searchable-multiple-dropdown');
-          
-          if (isSearchable) {
-            initializeSearchableSingleDropdown(dropdown);
-          } else if (dropdown.classList.contains('single-dropdown')) {
-            initializeSingleDropdown(dropdown);
-          } else if (dropdown.classList.contains('multiple-dropdown')) {
-            initializeMultipleDropdown(dropdown);
-          }
-        });
-      }
-      
-      // Load popup components after popup.js is loaded
-      setTimeout(() => {
-        loadPopupComponents();
-      }, 100);
-    </script>
   </body>
 </html>
 <style scoped>

@@ -1043,13 +1043,19 @@ button {
 }
 
 
-.common-table thead tr th.xs-size, .common-table tbody tr td.xs-size{
+.common-table thead tr th.sm-size, .common-table tbody tr td.sm-size{
   /* font-weight: 500; */
   text-align: center;
   width: 80px;
   min-width: 80px;
 }
 
+.common-table thead tr th.xs-size, .common-table tbody tr td.xs-size{
+  /* font-weight: 500; */
+  text-align: center;
+  width: 50px;
+  min-width: 50px;
+}
 /* 表格分頁 */
 .table-pagination{
   display: flex;
@@ -1779,11 +1785,21 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
   z-index: 10000;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  transition: background-color 0.3s ease-out;
+}
+
+.popup-overlay.active,
+.popup-overlay.entering {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-overlay.exiting {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .popup-container {
@@ -1797,6 +1813,30 @@ button {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+/* 只对非侧边弹窗应用淡入缩放动画 */
+.popup-overlay:not(#sidePopup) .popup-container {
+  opacity: 0;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* 初始状态 - 缩放并上移 */
+.popup-overlay:not(#sidePopup):not(.active):not(.entering) .popup-container {
+  transform: scale(0.9) translateY(-20px);
+}
+
+/* 动画状态 - 正常大小和位置 */
+.popup-overlay.active:not(#sidePopup) .popup-container,
+.popup-overlay.entering:not(#sidePopup) .popup-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* 退出动画状态 */
+.popup-overlay.exiting:not(#sidePopup) .popup-container {
+  transform: scale(0.9) translateY(-20px);
+  opacity: 0;
 }
 
 .popup-header {
@@ -1856,6 +1896,196 @@ button {
   width: 200px !important;
   height: 33px;
   border-radius: 8px;
+}
+
+/* Side Popup (Right Side) */
+.popup-side-container {
+  background-color: #fff;
+  border-radius: 8px 0 0 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 800px;
+  max-width: 90vw;
+  max-height: 100vh;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 10001;
+}
+
+#sidePopup.active .popup-side-container {
+  transform: translateX(0);
+}
+
+#sidePopup.active {
+  display: flex !important;
+  justify-content: flex-end;
+}
+
+/* 侧边弹窗容器已经有定义，移除重复规则 */
+
+/* Collapse Component Styles */
+.collapse-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.collapse-item {
+  border: 1px solid #DCDCDC;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  background-color: #fff;
+}
+.collapse-item.active .collapse-header {
+  background-color: #FFF9E3;
+}
+
+.collapse-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #292929;
+  flex: 1;
+}
+.collapse-item.active .collapse-title {
+  color: #9E7F54;
+}
+
+.collapse-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collapse-action-btn {
+  width: 28px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.collapse-action-btn:hover {
+  transform: scale(1.1);
+}
+
+.collapse-action-btn:active {
+  transform: scale(0.95);
+}
+
+.collapse-btn-add {
+  background-color: #004D71;
+  border-color: #004D71;
+}
+
+
+.collapse-btn-delete {
+  background-color: white;
+  border: 1px solid #F0423C;
+}
+
+
+.collapse-btn-toggle {
+  background-color: transparent;
+}
+.collapse-item.active .collapse-btn-toggle {
+  transform: rotate(180deg);
+}
+
+.collapse-arrow {
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.3s ease;
+  display: block;
+  position: absolute;
+}
+
+/* 兩種箭頭都使用絕對定位在同一位置 */
+.collapse-btn-toggle {
+  position: relative;
+}
+
+.collapse-arrow-default,
+.collapse-arrow-brown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 未展開狀態：顯示預設箭頭 */
+.collapse-item.collapsed .collapse-arrow-default {
+  opacity: 1;
+  visibility: visible;
+}
+
+.collapse-item.collapsed .collapse-arrow-brown {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 展開狀態：顯示棕色箭頭並向上 */
+.collapse-item:not(.collapsed) .collapse-arrow-default {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.collapse-item:not(.collapsed) .collapse-arrow-brown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+}
+
+.collapse-btn-up,
+.collapse-btn-down {
+  background-color: #9E7F54;
+  color: #fff;
+}
+
+.collapse-btn-up:hover,
+.collapse-btn-down:hover {
+  background-color: #8B6C42;
+}
+
+.collapse-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease-in-out,
+              padding 0.4s ease-out;
+  padding: 0 24px;
+}
+
+.collapse-item:not(.collapsed) .collapse-content {
+  max-height: 3000px;
+  opacity: 1;
+  padding: 32px 24px;
 }
 
 /* 響應式設計 */

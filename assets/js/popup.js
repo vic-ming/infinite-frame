@@ -48,6 +48,24 @@ class PopupManager {
     popup.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 
+    // 強制重繪，確保瀏覽器應用初始狀態
+    void popup.offsetHeight;
+
+    // 添加 active 類來觸發動畫
+    popup.classList.add('active');
+    
+    // 對於側邊彈窗，已經有滑入動畫
+    // 對於其他彈窗，添加淡入動畫
+    if (popupId !== 'sidePopup') {
+      // 使用 requestAnimationFrame 確保瀏覽器渲染第一幀後再觸發動畫
+      requestAnimationFrame(() => {
+        // 再次使用 requestAnimationFrame 確保樣式已經應用
+        requestAnimationFrame(() => {
+          popup.classList.add('entering');
+        });
+      });
+    }
+
     // 觸發打開事件
     const customEvent = new CustomEvent('popup:opened', { detail: { popupId } });
     document.dispatchEvent(customEvent);
@@ -61,12 +79,37 @@ class PopupManager {
       return;
     }
 
-    popup.style.display = 'none';
-    document.body.style.overflow = 'auto';
+    // 移除 entering 類，添加 exiting 類來觸發退出動畫
+    popup.classList.remove('entering');
+    popup.classList.add('exiting');
 
-    // 觸發關閉事件
-    const customEvent = new CustomEvent('popup:closed', { detail: { popupId } });
-    document.dispatchEvent(customEvent);
+    // 對於側邊彈窗，同時觸發背景淡出和滑出動畫
+    if (popupId === 'sidePopup') {
+      // 立即移除 active 類來觸發滑出動畫，同時 exiting 類觸發背景淡出
+      popup.classList.remove('active');
+      
+      // 等待動畫完成
+      setTimeout(() => {
+        popup.style.display = 'none';
+        popup.classList.remove('exiting');
+        document.body.style.overflow = 'auto';
+        
+        // 觸發關閉事件
+        const customEvent = new CustomEvent('popup:closed', { detail: { popupId } });
+        document.dispatchEvent(customEvent);
+      }, 300);
+    } else {
+      // 對於其他彈窗，等待淡出動畫完成
+      setTimeout(() => {
+        popup.classList.remove('active', 'exiting');
+        popup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+
+        // 觸發關閉事件
+        const customEvent = new CustomEvent('popup:closed', { detail: { popupId } });
+        document.dispatchEvent(customEvent);
+      }, 300);
+    }
   }
 
   // 關閉所有彈窗

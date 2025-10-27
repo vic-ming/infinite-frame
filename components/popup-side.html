@@ -1,0 +1,193 @@
+<!-- Side Popup Component (Right Side) -->
+<div class="popup-overlay" id="sidePopup">
+  <div class="popup-side-container">
+    <div class="popup-header">
+      <span class="popup-title">側邊視窗標題</span>
+      <button class="popup-close">×</button>
+    </div>
+    <div class="popup-content">
+      <div style="font-size: 14px; color: #757575; margin-bottom: 24px;">
+        提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
+      </div>
+      
+      <!-- Two Column Form Layout -->
+      <div class="popup-form-grid">
+        
+        <!-- Left Column -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          
+          <!-- Dropdown -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>選單標題</span>
+                <span class="required">*</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <div class="custom-dropdown single-dropdown">
+                <div class="dropdown-input" id="side-dropdown-1">
+                  <span class="dropdown-placeholder">請選擇</span>
+                  <div class="dropdown-arrow"></div>
+                </div>
+                <div class="dropdown-options">
+                  <div class="dropdown-option" data-value="option1" data-text="選項一">選項一</div>
+                  <div class="dropdown-option" data-value="option2" data-text="選項二">選項二</div>
+                  <div class="dropdown-option" data-value="option3" data-text="選項三">選項三</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Input Field 1 -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>輸入框標題</span>
+                <span class="required">*</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <input type="text" class="input-field" placeholder="請輸入">
+            </div>
+          </div>
+          
+          <!-- Input Field with Unit -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>輸入框標題</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <div style="position: relative; flex: 1; display: flex;">
+                <input type="text" class="input-field with-unit" placeholder="請輸入">
+                <div class="input-unit-inline">
+                  <span>萬元</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Checkboxes -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>標題</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <div class="checkbox-group">
+                <div class="checkbox-component">
+                  <input type="checkbox" id="side-checkbox-1" class="checkbox-input" checked>
+                  <label for="side-checkbox-1" class="checkbox-label">
+                    <span class="checkbox-text">勾選項</span>
+                  </label>
+                </div>
+                <div class="checkbox-component">
+                  <input type="checkbox" id="side-checkbox-2" class="checkbox-input" checked>
+                  <label for="side-checkbox-2" class="checkbox-label">
+                    <span class="checkbox-text">勾選項</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right Column -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          
+          <!-- Dropdown -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>選單標題</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <div class="custom-dropdown single-dropdown">
+                <div class="dropdown-input" id="side-dropdown-2">
+                  <span class="dropdown-placeholder">選項一</span>
+                  <div class="dropdown-arrow"></div>
+                </div>
+                <div class="dropdown-options">
+                  <div class="dropdown-option selected" data-value="option1" data-text="選項一">選項一</div>
+                  <div class="dropdown-option" data-value="option2" data-text="選項二">選項二</div>
+                  <div class="dropdown-option" data-value="option3" data-text="選項三">選項三</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Input Field 2 -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>輸入框標題</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <input type="text" class="input-field" value="敘述敘述敘述">
+            </div>
+          </div>
+          
+          <!-- Input Field with Unit 2 -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>輸入框標題</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <div style="position: relative; flex: 1; display: flex;">
+                <input type="text" class="input-field with-unit" placeholder="請輸入">
+                <div class="input-unit-inline">
+                  <span>萬元</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Radio Buttons -->
+          <div class="input-component">
+            <div class="input-header">
+              <label class="input-label">
+                <span>標題</span>
+              </label>
+            </div>
+            <div class="input-container">
+              <div class="radio-group">
+                <div class="radio-component">
+                  <input type="radio" id="side-radio-1" name="side-radio" class="radio-input" checked>
+                  <label for="side-radio-1" class="radio-label">
+                    <span class="radio-text">單選項</span>
+                  </label>
+                </div>
+                <div class="radio-component">
+                  <input type="radio" id="side-radio-2" name="side-radio" class="radio-input">
+                  <label for="side-radio-2" class="radio-label">
+                    <span class="radio-text">單選項</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="popup-footer">
+      <button class="common-button brown-outline popup-cancel-btn">
+        取消
+      </button>
+      <button class="common-button brown popup-confirm-btn">
+        確定
+      </button>
+    </div>
+  </div>
+</div>
+
