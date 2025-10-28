@@ -38,9 +38,66 @@ components/
 - `.common-button.yellow` - 黃色按鈕
 - `.common-button.blue` - 藍色按鈕
 
+#### 按鈕圖標（使用 CSS Mask 方法）
+使用 CSS mask 方法實現動態圖標顏色，**無需多個 SVG 文件**！
+
+```html
+<!-- 基礎使用 -->
+<button class="common-button primary">
+  <span class="icon-edit"></span>
+  按鈕文字
+</button>
+
+<!-- 不同顏色自動適配 -->
+<button class="common-button primary-outline">
+  <span class="icon-edit"></span>
+  按鈕文字
+</button>
+
+<button class="common-button yellow">
+  <span class="icon-edit"></span>
+  按鈕文字
+</button>
+```
+
+**圖標顏色自動配置：**
+- Primary/Brown/Blue filled → 白色圖標
+- Yellow filled → 深灰色圖標 (#292929)
+- Primary outline → 深藍色圖標 (#004D71)
+- Brown outline → 棕色圖標 (#9E7F54)
+- Disabled → 灰色圖標 (#989898)
+
+**新增其他圖標：**
+在 CSS 中新增圖標類別，例如：
+```css
+.icon-xxx {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask-image: url('../images/xxx.svg');
+  -webkit-mask-image: url('../images/xxx.svg');
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  background-color: currentColor;
+}
+```
+
 #### 使用範例
 ```html
+<!-- 簡單按鈕 -->
 <button class="common-button primary">按鈕</button>
+
+<!-- 帶圖標的按鈕 -->
+<button class="common-button primary">
+  <span class="icon-edit"></span>
+  編輯
+</button>
+
+<!-- 禁用按鈕 -->
 <button class="common-button primary" disabled>禁用按鈕</button>
 ```
 

@@ -34,6 +34,11 @@ function initializeDropdowns() {
   document.querySelectorAll('.searchable-multiple-dropdown').forEach(dropdown => {
     initializeSearchableMultipleDropdown(dropdown);
   });
+
+  // Initialize editable dropdowns
+  document.querySelectorAll('.editable-dropdown').forEach(dropdown => {
+    initializeEditableDropdown(dropdown);
+  });
 }
 
 function initializeSingleDropdown(dropdown) {
@@ -412,8 +417,118 @@ function closeAllDropdowns() {
   });
 }
 
+// Editable Dropdown
+function initializeEditableDropdown(dropdown) {
+  const dropdownInput = dropdown.querySelector('.editable-dropdown-input');
+  const dropdownOptions = dropdown.querySelector('.editable-dropdown-options');
+  const inputField = dropdown.querySelector('.editable-dropdown-field');
+  const options = dropdown.querySelectorAll('.editable-dropdown-option');
+
+  // Open dropdown on focus
+  inputField.addEventListener('focus', function(e) {
+    e.stopPropagation();
+    closeAllEditableDropdowns();
+    dropdownInput.classList.add('active');
+    dropdownOptions.classList.add('active');
+  });
+
+  // Search functionality - filter options based on input
+  inputField.addEventListener('input', function(e) {
+    e.stopPropagation();
+    const searchTerm = this.value.toLowerCase().trim();
+    
+    // Keep dropdown open
+    dropdownInput.classList.add('active');
+    dropdownOptions.classList.add('active');
+    
+    // Filter options
+    options.forEach(option => {
+      const text = option.textContent.toLowerCase();
+      if (text.includes(searchTerm)) {
+        option.style.display = 'flex';
+      } else {
+        option.style.display = 'none';
+      }
+    });
+  });
+
+  // Toggle dropdown when clicking on container (not input)
+  dropdownInput.addEventListener('click', function(e) {
+    // Don't toggle if clicking on the input field
+    if (e.target !== inputField) {
+      const isActive = dropdownInput.classList.contains('active');
+      
+      // Close all other dropdowns
+      closeAllEditableDropdowns();
+      
+      // Toggle current dropdown
+      if (!isActive) {
+        dropdownInput.classList.add('active');
+        dropdownOptions.classList.add('active');
+      }
+    }
+  });
+
+  // Click on arrow should toggle dropdown
+  const arrow = dropdown.querySelector('.editable-dropdown-arrow');
+  if (arrow) {
+    arrow.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isActive = dropdownInput.classList.contains('active');
+      
+      closeAllEditableDropdowns();
+      
+      if (!isActive) {
+        dropdownInput.classList.add('active');
+        dropdownOptions.classList.add('active');
+      } else {
+        closeEditableDropdown(dropdownInput, dropdownOptions);
+      }
+    });
+  }
+
+  // Handle option selection
+  options.forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.stopPropagation();
+      
+      // Remove selected class from all options
+      options.forEach(opt => opt.classList.remove('selected'));
+      
+      // Add selected class to clicked option
+      this.classList.add('selected');
+      
+      // Update input field with selected text
+      inputField.value = this.textContent.trim();
+      
+      // Close dropdown
+      closeEditableDropdown(dropdownInput, dropdownOptions);
+    });
+  });
+
+  // Prevent closing when clicking inside input
+  inputField.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+}
+
+function closeEditableDropdown(dropdownInput, dropdownOptions) {
+  dropdownInput.classList.remove('active');
+  dropdownOptions.classList.remove('active');
+}
+
+function closeAllEditableDropdowns() {
+  document.querySelectorAll('.editable-dropdown-input').forEach(input => {
+    input.classList.remove('active');
+  });
+  document.querySelectorAll('.editable-dropdown-options').forEach(options => {
+    options.classList.remove('active');
+  });
+}
+
 // Close dropdown when clicking outside
 document.addEventListener('click', function() {
   closeAllDropdowns();
+  closeAllEditableDropdowns();
 });
 

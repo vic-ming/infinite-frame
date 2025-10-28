@@ -255,7 +255,7 @@ button {
 
 /* content */
 .content-panel .content-panel-content{
-  margin: 0 24px 24px;
+  margin: 0 8px 8px;
   flex: 1;
   background-color: #F0F0F0;
   border-radius: 10px;
@@ -800,6 +800,129 @@ button {
   color: #9E9E9E;
 }
 
+/* Editable Dropdown (Combobox) Styles */
+.editable-dropdown {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+}
+
+.editable-dropdown-input {
+  min-height: 34px;
+  border-radius: 8px;
+  border: 1px solid #BDBDBD;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.editable-dropdown-input:hover {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 1px #9E7F54;
+}
+
+.editable-dropdown-input.active {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 1px #9E7F54;
+}
+
+.editable-dropdown-field {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: #292929;
+  cursor: text;
+}
+
+.editable-dropdown-field::placeholder {
+  color: #9E9E9E;
+}
+
+.editable-dropdown-arrow {
+  width: 24px;
+  height: 24px;
+  background-image: url('../images/icon_arrow_down.svg');
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.editable-dropdown-input.active .editable-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.editable-dropdown-options {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  z-index: 1000;
+  font-size: 14px;
+}
+
+.editable-dropdown-options.active {
+  max-height: 270px;
+  border: 1px solid #7C7C7C;
+  overflow-y: auto;
+}
+
+.editable-dropdown-option {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #292929;
+  border-bottom: 1px solid #DCDCDC;
+  transition: background-color 0.2s ease;
+  display: flex;
+}
+
+.editable-dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.editable-dropdown-option:hover {
+  color: #9E7F54;
+  background-color: #F9F9F9;
+}
+
+.editable-dropdown-option.selected {
+  color: #9E7F54;
+  background-color: #F9F9F9;
+}
+
+/* Disabled state */
+.editable-dropdown.disabled .editable-dropdown-input {
+  background-color: #F5F5F5;
+  color: #9E9E9E;
+  cursor: not-allowed;
+  border-color: #E0E0E0;
+  pointer-events: none;
+}
+
+.editable-dropdown.disabled .editable-dropdown-field {
+  color: #9E9E9E;
+  cursor: not-allowed;
+}
+
+.editable-dropdown.disabled .editable-dropdown-arrow {
+  opacity: 0.5;
+}
+
 /* 按鈕 */
 .common-button{
   min-width: 112px;
@@ -875,17 +998,17 @@ button {
 
 /* Blue Variants */
 .common-button.blue{
-  background-color: #007BFF;
+  background-color: #429DFF;
   color: #fff;
-  border: 1px solid #007BFF;
+  border: 1px solid #429DFF;
 }
 .common-button.blue:hover{
-  background-color: #007BFF;
+  background-color: #3996FA;
 }
 .common-button.blue-outline{
   background-color: #fff;
-  color: #007BFF;
-  border: 1px solid #007BFF;
+  color: #429DFF;
+  border: 1px solid #429DFF;
 }
 .common-button.blue-outline:hover{
   background-color: rgba(0, 123, 255, 0.1);
@@ -910,10 +1033,60 @@ button {
   border: 1px solid #BDBDBD !important;
 }
 
-/* Button Icon Styles */
-.common-button img{
+/* Button Icon Styles - CSS Mask Method */
+/* 使用 CSS mask 方法，不需要多個 SVG 文件，可以通過 CSS 控制顏色 */
+
+.icon-edit {
+  display: inline-block;
   width: 16px;
   height: 16px;
+  /* 使用 SVG 作為 mask，配合 background-color 來控制顏色 */
+  mask-image: url('../images/edit.svg');
+  -webkit-mask-image: url('../images/edit.svg');
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  background-color: currentColor; /* 使用當前文字顏色 */
+}
+
+/* Filled 按鈕：白色圖標 */
+.common-button.primary .icon,
+.common-button.brown .icon,
+.common-button.blue .icon {
+  background-color: #fff;
+}
+
+/* Yellow filled 按鈕：深灰色圖標 */
+.common-button.yellow .icon {
+  background-color: #292929;
+}
+
+/* Primary outline：深藍色圖標 */
+.common-button.primary-outline .icon {
+  background-color: #004D71;
+}
+
+/* Brown outline：棕色圖標 */
+.common-button.brown-outline .icon {
+  background-color: #9E7F54;
+}
+
+/* Disabled 狀態：灰色圖標 */
+.common-button:disabled .icon {
+  background-color: #989898;
+}
+
+/* Yellow outline（如果需要的話）：棕色圖標 */
+.common-button.yellow-outline .icon {
+  background-color: #F5D93F;
+}
+
+/* Blue outline：藍色圖標 */
+.common-button.blue-outline .icon {
+  background-color: #007BFF;
 }
 
 /* 表格容器 */
@@ -998,7 +1171,7 @@ button {
 }
 
 .common-table tbody tr:hover{
-  background-color: #F2F2F2;
+  background-color: #FFFDF3;
 }
 
 .common-table tbody tr td{
@@ -1219,6 +1392,7 @@ button {
   color: #FF0000;
   font-size: 16px;
   font-weight: 400;
+  line-height: 16.8px;
 }
 
 .input-label .description {
@@ -1499,6 +1673,17 @@ button {
 .input-tags-container.disabled {
   background-color: #F5F5F5;
   border-color: #E0E0E0;
+  cursor: not-allowed;
+}
+
+.input-tags-container.disabled:hover {
+  border-color: #E0E0E0;
+  box-shadow: none;
+}
+
+.input-tags-container.disabled:focus-within {
+  border-color: #E0E0E0;
+  box-shadow: none;
 }
 
 .input-tag {
@@ -2107,4 +2292,241 @@ button {
   .radio-group {
     gap: 8px;
   }
+}
+
+/* Date Picker Styles */
+.date-picker-component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.date-picker-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.date-picker-field {
+  flex: 1;
+  width: 100%;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid #BDBDBD;
+  padding: 0 40px 0 16px;
+  font-size: 14px;
+  color: #292929;
+  background-color: #FFFFFF;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.date-picker-field::placeholder {
+  color: #9E9E9E;
+  font-size: 14px;
+}
+
+.date-picker-field:hover {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 1px #9E7F54;
+}
+
+.date-picker-field:focus {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 2px rgba(158, 127, 84, 0.2);
+}
+
+.date-picker-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+
+}
+
+.date-picker-calendar {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #DCDCDC;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  min-width: 280px;
+  z-index: 1000;
+  display: none;
+  max-height: 400px;
+}
+
+.date-picker-calendar.active {
+  display: block;
+}
+
+.date-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.date-picker-year-month {
+  font-size: 16px;
+  font-weight: 600;
+  color: #292929;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-picker-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-picker-nav-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.date-picker-nav-btn.prev-month img {
+  transform: rotate(180deg);
+}
+
+.date-picker-nav-btn:hover {
+  background-color: #F5F5F5;
+}
+
+.date-picker-nav-btn:active {
+  background-color: #E0E0E0;
+}
+
+.date-picker-nav-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.date-picker-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.date-picker-weekday {
+  font-size: 12px;
+  font-weight: 500;
+  color: #757575;
+  text-align: center;
+  padding: 4px;
+}
+
+.date-picker-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.date-picker-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #292929;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  padding: 4px;
+}
+
+.date-picker-day:hover:not(.disabled):not(.other-month) {
+  background-color: #004D71;
+  color: #fff;
+}
+
+.date-picker-day.selected {
+  background-color: #004D71;
+  color: #fff;
+}
+
+.date-picker-day.in-range {
+  background-color: #E7F1F5;
+  color: #004D71;
+}
+
+.date-picker-day.start-date,
+.date-picker-day.end-date {
+  background-color: #004D71;
+  color: #fff;
+}
+
+.date-picker-day.other-month {
+  color: #E0E0E0;
+}
+
+.date-picker-day.disabled {
+  color: #E0E0E0;
+  cursor: not-allowed;
+}
+
+.date-picker-day.disabled:hover {
+  background-color: transparent;
+}
+
+/* Range Picker Styles */
+.date-range-picker .date-picker-day {
+  border-radius: 0;
+}
+
+.date-range-picker .date-picker-day.start-date {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.date-range-picker .date-picker-day.end-date {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.date-range-picker .date-picker-day.start-date.in-range {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.date-range-picker .date-picker-day.end-date.in-range {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Disabled State */
+.date-picker-component.disabled .date-picker-field {
+  background-color: #F5F5F5;
+  color: #9E9E9E;
+  cursor: not-allowed;
+  border-color: #E0E0E0;
+}
+
+.date-picker-component.disabled .date-picker-icon {
+  opacity: 0.3;
 }

@@ -219,7 +219,7 @@
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Primary</div>
                     <button class="common-button primary">
-                      <img src="./assets/images/edit-white.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
                   </div>
@@ -227,43 +227,39 @@
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Primary Outline</div>
                     <button class="common-button primary-outline">
-                      <img src="./assets/images/edit.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
-                  </div>
-                  
+                  </div>          
                   <!-- Column 3: Brown Filled -->
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Brown</div>
                     <button class="common-button brown">
-                      <img src="./assets/images/edit-white.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
                   </div>
-                  
                   <!-- Column 4: Brown Outline -->
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Brown Outline</div>
                     <button class="common-button brown-outline">
-                      <img src="./assets/images/edit.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
                   </div>
-                  
                   <!-- Column 5: Yellow Filled -->
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Yellow</div>
                     <button class="common-button yellow">
-                      <img src="./assets/images/edit.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
                   </div>
-
                   <!-- Column 6: Blue Filled -->
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Blue</div>
                     <button class="common-button blue">
-                      <img src="./assets/images/edit-white.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
                   </div>
@@ -274,14 +270,14 @@
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Disabled</div>
                     <button class="common-button primary" disabled>
-                      <img src="./assets/images/edit.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
                   </div>
                   <div>
                     <div style="margin-bottom: 8px; font-size: 12px; text-align: center;">Disabled</div>
                     <button class="common-button primary-outline" disabled>
-                      <img src="./assets/images/edit.svg" alt="camera">
+                      <span class="icon icon-edit"></span>
                       按鈕
                     </button>
                   </div>
@@ -490,11 +486,52 @@
                     </div>
                   </div>
 
+                  <!-- 錯誤狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>錯誤狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field error" value="內容">
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+
+                  <!-- 禁用狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>禁用狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <input type="text" class="input-field disabled" value="內容" disabled>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 多行文本輸入框類型 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">多行文本輸入框</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
                   <!-- 多行文本框 -->
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>輸入框標題</span>
+                        <span>多行文本輸入框</span>
                         <span class="required">*</span>
                         <span class="description">敘述敘述敘述</span>
                       </label>
@@ -512,7 +549,7 @@
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>輸入框標題</span>
+                        <span>多行文本輸入框-錯誤狀態</span>
                         <span class="required">*</span>
                         <span class="description">敘述敘述敘述</span>
                       </label>
@@ -527,6 +564,24 @@
                     </div>
                     <div class="input-error-message">錯誤提示訊息</div>
                   </div>
+                  <!-- 多行文本框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>多行文本輸入框-禁用狀態</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <textarea class="input-field input-textarea disabled" placeholder="請輸入" disabled></textarea>
+                    </div>
+                  </div>
 
                   
                 </div>
@@ -538,7 +593,7 @@
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>輸入框標題</span>
+                        <span>帶單位的輸入框</span>
                         <span class="required">*</span>
                         <span class="description">敘述敘述敘述</span>
                       </label>
@@ -557,12 +612,65 @@
                       </div>
                     </div>
                   </div>
+                  
+                  <!-- 帶單位的輸入框 錯誤狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>帶單位的輸入框-錯誤狀態</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <div style="position: relative; flex: 1; display: flex;">
+                        <input type="text" class="input-field with-unit error" placeholder="請輸入">
+                        <div class="input-unit-inline">
+                          <span>萬元</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+
+                  <!-- 帶單位的輸入框 禁用狀態 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>帶單位的輸入框-禁用狀態</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <div style="position: relative; flex: 1; display: flex;">
+                        <input type="text" class="input-field with-unit disabled" placeholder="請輸入" disabled>
+                        <div class="input-unit-inline">
+                          <span>萬元</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">帶下拉的輸入框</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
 
                   <!-- 下拉選單與輸入框組合 -->
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>輸入框標題</span>
+                        <span>帶下拉的輸入框</span>
                         <span class="required">*</span>
                         <span class="description">敘述敘述敘述</span>
                       </label>
@@ -588,6 +696,69 @@
                       </div>
                     </div>
                   </div>
+
+                  <!-- 下拉選單與輸入框組合 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>帶下拉的輸入框-錯誤狀態</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <div class="input-dropdown-container">
+                        <select class="input-dropdown error">
+                          <option value="" selected>請選擇</option>
+                          <option value="1">選項1</option>
+                          <option value="2">選項2</option>
+                        </select>
+                        <div style="position: relative; flex: 1; display: flex;">
+                          <input type="text" class="input-field with-unit error" placeholder="請輸入">
+                          <div class="input-unit-inline">
+                            <span>萬元</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+
+                   <!-- 下拉選單與輸入框組合 -->
+                   <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>帶下拉的輸入框-禁用狀態</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                        <button class="input-button">
+                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                          按鈕
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <div class="input-dropdown-container">
+                        <select class="input-dropdown disabled" disabled>
+                          <option value="" selected>請選擇</option>
+                          <option value="1">選項1</option>
+                          <option value="2">選項2</option>
+                        </select>
+                        <div style="position: relative; flex: 1; display: flex;">
+                          <input type="text" class="input-field with-unit disabled" placeholder="請輸入" disabled>
+                          <div class="input-unit-inline">
+                            <span>萬元</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- 帶圖標的輸入框類型 -->
@@ -597,7 +768,7 @@
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>輸入框標題</span>
+                        <span>帶圖標的輸入框</span>
                         <span class="required">*</span>
                         <span class="description">敘述敘述敘述</span>
                       </label>
@@ -615,11 +786,59 @@
                     </div>
                   </div>
 
+                  <!-- 帶搜索圖標的輸入框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>帶圖標的輸入框-錯誤狀態</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                      <button class="input-button">
+                        <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                        <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                        按鈕
+                      </button>
+                    </div>
+                    <div class="input-container">
+                      <div class="input-search-container">
+                        <input type="text" class="input-field with-search error" placeholder="請輸入">
+                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon">
+                      </div>
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+                  <!-- 帶搜索圖標的輸入框 -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>帶圖標的輸入框-禁用狀態</span>
+                        <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
+                      </label>
+                      <button class="input-button">
+                        <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
+                        <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
+                        按鈕
+                      </button>
+                    </div>
+                    <div class="input-container">
+                      <div class="input-search-container">
+                        <input type="text" class="input-field with-search disabled" placeholder="請輸入" disabled>
+                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tag輸入框 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">Tag輸入框</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
                   <!-- 標籤輸入框 -->
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>輸入框標題</span>
+                        <span>Tag輸入框</span>
                         <span class="required">*</span>
                         <span class="description">敘述敘述敘述</span>
                       </label>
@@ -643,17 +862,14 @@
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 不同狀態展示 -->
-                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">不同狀態展示</h4>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
-                  <!-- 默認狀態 -->
+                  <!-- Tag輸入框 錯誤狀態 -->
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>默認狀態</span>
+                        <span>Tag輸入框-錯誤狀態</span>
                         <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
                       </label>
                         <button class="input-button">
                           <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
@@ -662,56 +878,28 @@
                         </button>
                     </div>
                     <div class="input-container">
-                      <input type="text" class="input-field" placeholder="請輸入">
-                    </div>
-                  </div>
-
-                  <!-- 聚焦狀態 -->
-                  <div class="input-component">
-                    <div class="input-header">
-                      <label class="input-label">
-                        <span>聚焦狀態</span>
-                        <span class="required">*</span>
-                      </label>
-                        <button class="input-button">
-                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
-                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
-                          按鈕
-                        </button>
-                    </div>
-                    <div class="input-container">
-                      <input type="text" class="input-field" style="border-color: #9E7F54; box-shadow: 0 0 0 2px rgba(158, 127, 84, 0.2);">
-                    </div>
-                  </div>
-
-                  <!-- 錯誤狀態 -->
-                  <div class="input-component">
-                    <div class="input-header">
-                      <label class="input-label">
-                        <span>錯誤狀態</span>
-                        <span class="required">*</span>
-                      </label>
-                        <button class="input-button">
-                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
-                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
-                          按鈕
-                        </button>
-                    </div>
-                    <div class="input-container">
-                      <input type="text" class="input-field error" value="內容">
+                      <div class="input-tags-container error">
+                        <div class="input-tag">
+                          <span>選項B</span>
+                          <span class="input-tag-remove">×</span>
+                        </div>
+                        <div class="input-tag">
+                          <span>選項C</span>
+                          <span class="input-tag-remove">×</span>
+                        </div>
+                        <input type="text" class="input-tags-field" placeholder="請輸入">
+                      </div>
                     </div>
                     <div class="input-error-message">錯誤提示訊息</div>
                   </div>
-                </div>
 
-                <!-- 禁用狀態展示 -->
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; ">
-                  <!-- 禁用狀態 -->
+                  <!-- Tag輸入框 禁用狀態 -->
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
-                        <span>禁用狀態</span>
+                        <span>Tag輸入框-禁用狀態</span>
                         <span class="required">*</span>
+                        <span class="description">敘述敘述敘述</span>
                       </label>
                         <button class="input-button">
                           <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
@@ -720,28 +908,15 @@
                         </button>
                     </div>
                     <div class="input-container">
-                      <input type="text" class="input-field disabled" value="內容" disabled>
-                    </div>
-                  </div>
-
-                  <!-- 有內容狀態 -->
-                  <div class="input-component">
-                    <div class="input-header">
-                      <label class="input-label">
-                        <span>有內容狀態</span>
-                        <span class="required">*</span>
-                      </label>
-                        <button class="input-button">
-                          <img src="./assets/images/scan.svg" alt="camera" class="input-button-icon">
-                          <img src="./assets/images/scan-white.svg" alt="camera" class="input-button-icon-white">
-                          按鈕
-                        </button>
-                    </div>
-                    <div class="input-container">
-                      <input type="text" class="input-field" value="內容">
+                      <div class="input-tags-container disabled">
+                      
+                        <input type="text" class="input-tags-field disabled" placeholder="請輸入" disabled>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+              
 
 
 
@@ -865,6 +1040,61 @@
                     </div>
                   </div>
 
+                </div>
+
+                <!-- 可編輯下拉框 -->
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">可編輯下拉框</h4>
+                <p style="margin-bottom: 16px; color: #757575; font-size: 14px;">支援輸入文字搜尋選項，可選擇選項或自訂輸入內容</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>可編輯下拉框</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="editable-dropdown">
+                          <div class="editable-dropdown-input">
+                            <input type="text" class="editable-dropdown-field" placeholder="請選擇或輸入">
+                            <div class="editable-dropdown-arrow"></div>
+                          </div>
+                          <div class="editable-dropdown-options">
+                            <div class="editable-dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                            <div class="editable-dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                            <div class="editable-dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                            <div class="editable-dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                            <div class="editable-dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>可編輯下拉框-禁用狀態</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="editable-dropdown disabled">
+                          <div class="editable-dropdown-input">
+                            <input type="text" class="editable-dropdown-field disabled" placeholder="請選擇或輸入" disabled>
+                            <div class="editable-dropdown-arrow"></div>
+                          </div>
+                          <div class="editable-dropdown-options">
+                            <div class="editable-dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                            <div class="editable-dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                            <div class="editable-dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                            <div class="editable-dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                            <div class="editable-dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- 可搜尋式下拉選單 -->
@@ -1018,6 +1248,143 @@
 
 
 
+                <h3 style="margin: 16px 0;">Date Picker 元件</h3>
+                <hr class="input-section-divider">
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">單日選擇</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>單日選擇</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="date-picker-component single-date-picker">
+                        <div class="date-picker-input-container">
+                          <input type="text" class="date-picker-field" placeholder="請選擇日期" readonly>
+                          <img src="./assets/images/date.svg" alt="calendar" class="date-picker-icon">
+                        </div>
+                        <div class="date-picker-calendar">
+                          <div class="date-picker-header">
+                            <div class="date-picker-year-month">
+                              <span class="year">2025</span>
+                              <span>年</span>
+                              <span class="month">9</span>
+                              <span>月</span>
+                            </div>
+                            <div class="date-picker-nav">
+                              <button class="date-picker-nav-btn prev-month" title="上一月">
+                                <img src="./assets/images/arrow-left.svg" alt="prev">
+                              </button>
+                              <button class="date-picker-nav-btn next-month" title="下一月">
+                                <img src="./assets/images/arrow-left.svg" alt="next">
+                              </button>
+                            </div>
+                          </div>
+                          <div class="date-picker-weekdays">
+                            <div class="date-picker-weekday">一</div>
+                            <div class="date-picker-weekday">二</div>
+                            <div class="date-picker-weekday">三</div>
+                            <div class="date-picker-weekday">四</div>
+                            <div class="date-picker-weekday">五</div>
+                            <div class="date-picker-weekday">六</div>
+                            <div class="date-picker-weekday">日</div>
+                          </div>
+                          <div class="date-picker-days">
+                            <!-- Days will be generated by JavaScript -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>日期單選-禁用狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="date-picker-component disabled single-date-picker">
+                        <div class="date-picker-input-container">
+                          <input type="text" class="date-picker-field" value="2025/09/15" readonly disabled>
+                          <img src="./assets/images/date.svg" alt="calendar" class="date-picker-icon">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h4 style="margin: 20px 0 16px 0; color: #9E7F54; font-size: 18px; font-weight: 600;">日期範圍選擇</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+          
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>日期範圍</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="date-picker-component date-range-picker">
+                        <div class="date-picker-input-container">
+                          <input type="text" class="date-picker-field" value="" placeholder="請選擇日期範圍" readonly>
+                          <img src="./assets/images/date.svg" alt="calendar" class="date-picker-icon">
+                        </div>
+                        <div class="date-picker-calendar">
+                          <div class="date-picker-header">
+                            <div class="date-picker-year-month">
+                              <span class="year">2025</span>
+                              <span>年</span>
+                              <span class="month">9</span>
+                              <span>月</span>
+                            </div>
+                            <div class="date-picker-nav">
+                              <button class="date-picker-nav-btn prev-month" title="上一月">
+                                <img src="./assets/images/arrow-left.svg" alt="prev">
+                              </button>
+                              <button class="date-picker-nav-btn next-month" title="下一月">
+                                <img src="./assets/images/arrow-left.svg" alt="next">
+                              </button>
+                            </div>
+                          </div>
+                          <div class="date-picker-weekdays">
+                            <div class="date-picker-weekday">一</div>
+                            <div class="date-picker-weekday">二</div>
+                            <div class="date-picker-weekday">三</div>
+                            <div class="date-picker-weekday">四</div>
+                            <div class="date-picker-weekday">五</div>
+                            <div class="date-picker-weekday">六</div>
+                            <div class="date-picker-weekday">日</div>
+                          </div>
+                          <div class="date-picker-days">
+                            <!-- Days will be generated by JavaScript -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>日期範圍-禁用狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="date-picker-component disabled date-range-picker">
+                        <div class="date-picker-input-container">
+                          <input type="text" class="date-picker-field" value="" readonly disabled>
+                          <img src="./assets/images/date.svg" alt="calendar" class="date-picker-icon">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>     
+
                 <h3 style="margin: 16px 0;">彈窗元件</h3>
                 <hr class="input-section-divider">
                 
@@ -1049,7 +1416,7 @@
                   <!-- Collapse Item 1 -->
                   <div class="collapse-item active" data-index="0">
                     <div class="collapse-header">
-                      <span class="collapse-title">標題一</span>
+                      <span class="collapse-title" onclick="toggleCollapseItem(this)">標題一</span>
                       <div class="collapse-actions">
                         <button class="collapse-action-btn collapse-btn-add" onclick="addCollapseItem('collapseDemo')" title="添加">
                           <img src="./assets/images/add_white.svg">
@@ -1177,7 +1544,7 @@
                   <!-- Collapse Item 2 -->
                   <div class="collapse-item collapsed" data-index="1">
                     <div class="collapse-header">
-                      <span class="collapse-title">標題二</span>
+                      <span class="collapse-title" onclick="toggleCollapseItem(this)">標題二</span>
                       <div class="collapse-actions">
                         <button class="collapse-action-btn collapse-btn-add" onclick="addCollapseItem('collapseDemo')" title="添加">
                           <img src="./assets/images/add_white.svg">
@@ -1230,7 +1597,7 @@
                   <!-- Collapse Item 3 -->
                   <div class="collapse-item collapsed" data-index="2">
                     <div class="collapse-header">
-                      <span class="collapse-title">標題三</span>
+                      <span class="collapse-title" onclick="toggleCollapseItem(this)">標題三</span>
                       <div class="collapse-actions">
                         <button class="collapse-action-btn collapse-btn-add" onclick="addCollapseItem('collapseDemo')" title="添加">
                           <img src="./assets/images/add_white.svg">
@@ -1308,6 +1675,7 @@
     <script src="./assets/js/popup-init.js"></script>
     <script src="./assets/js/dropdown-init.js"></script>
     <script src="./assets/js/collapse-init.js"></script>
+    <script src="./assets/js/date-picker-init.js"></script>
 
   </body>
 </html>
