@@ -800,6 +800,21 @@ button {
   color: #9E9E9E;
 }
 
+/* Error Dropdown Styles */
+.custom-dropdown.error .dropdown-input {
+  border-color: #F0423C;
+}
+
+.custom-dropdown.error .dropdown-input:hover {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
+.custom-dropdown.error .dropdown-input.active {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
 /* Editable Dropdown (Combobox) Styles */
 .editable-dropdown {
   position: relative;
@@ -923,6 +938,21 @@ button {
   opacity: 0.5;
 }
 
+/* Error state */
+.editable-dropdown.error .editable-dropdown-input {
+  border-color: #F0423C;
+}
+
+.editable-dropdown.error .editable-dropdown-input:hover {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
+.editable-dropdown.error .editable-dropdown-input.active {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
 /* 按鈕 */
 .common-button{
   min-width: 112px;
@@ -1036,8 +1066,11 @@ button {
 /* Button Icon Styles - CSS Mask Method */
 /* 使用 CSS mask 方法，不需要多個 SVG 文件，可以通過 CSS 控制顏色 */
 
-.icon-edit {
+.icon {
   display: inline-block;
+}
+
+.icon.icon-edit {
   width: 16px;
   height: 16px;
   /* 使用 SVG 作為 mask，配合 background-color 來控制顏色 */
@@ -1053,39 +1086,39 @@ button {
 }
 
 /* Filled 按鈕：白色圖標 */
-.common-button.primary .icon,
-.common-button.brown .icon,
-.common-button.blue .icon {
+.common-button.primary .icon.icon-edit,
+.common-button.brown .icon.icon-edit,
+.common-button.blue .icon.icon-edit {
   background-color: #fff;
 }
 
 /* Yellow filled 按鈕：深灰色圖標 */
-.common-button.yellow .icon {
+.common-button.yellow .icon.icon-edit {
   background-color: #292929;
 }
 
 /* Primary outline：深藍色圖標 */
-.common-button.primary-outline .icon {
+.common-button.primary-outline .icon.icon-edit {
   background-color: #004D71;
 }
 
 /* Brown outline：棕色圖標 */
-.common-button.brown-outline .icon {
+.common-button.brown-outline .icon.icon-edit {
   background-color: #9E7F54;
 }
 
 /* Disabled 狀態：灰色圖標 */
-.common-button:disabled .icon {
+.common-button:disabled .icon.icon-edit {
   background-color: #989898;
 }
 
 /* Yellow outline（如果需要的話）：棕色圖標 */
-.common-button.yellow-outline .icon {
+.common-button.yellow-outline .icon.icon-edit {
   background-color: #F5D93F;
 }
 
 /* Blue outline：藍色圖標 */
-.common-button.blue-outline .icon {
+.common-button.blue-outline .icon.icon-edit {
   background-color: #007BFF;
 }
 
@@ -1357,7 +1390,7 @@ button {
 .input-component {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 16px;
   width: 360px;
 }
@@ -1444,8 +1477,8 @@ button {
 }
 
 .input-field.error {
-  border-color: #FF0000;
-  box-shadow: 0 0 0 1px #FF0000;
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
 }
 
 .input-field.disabled {
@@ -1565,8 +1598,8 @@ button {
 }
 
 .input-error-message {
-  font-size: 12px;
-  color: #FF0000;
+  font-size: 14px;
+  color: #F0423C;
 }
 
 /* 下拉選單與輸入框組合 */
@@ -1601,8 +1634,7 @@ button {
 }
 
 .input-dropdown.error {
-  border-color: #FF0000;
-  box-shadow: 0 0 0 1px #FF0000;
+  border-color: #F0423C;
 }
 
 .input-dropdown.disabled {
@@ -1666,8 +1698,8 @@ button {
 }
 
 .input-tags-container.error {
-  border-color: #FF0000;
-  box-shadow: 0 0 0 1px #FF0000;
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
 }
 
 .input-tags-container.disabled {
@@ -2032,7 +2064,7 @@ button {
   justify-content: space-between;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  height: 74px;
+  height: 51px;
   border-bottom: 1px solid #DCDCDC;
 }
 
@@ -2134,13 +2166,13 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 8px 24px;
   cursor: pointer;
   user-select: none;
-  background-color: #fff;
+  background-color: #FFFBE3;
 }
 .collapse-item.active .collapse-header {
-  background-color: #FFF9E3;
+  background-color: #F5D93F;
 }
 
 .collapse-title {
@@ -2150,7 +2182,7 @@ button {
   flex: 1;
 }
 .collapse-item.active .collapse-title {
-  color: #9E7F54;
+  color: #292929;
 }
 
 .collapse-actions {
@@ -2215,7 +2247,7 @@ button {
 }
 
 .collapse-arrow-default,
-.collapse-arrow-brown {
+.collapse-arrow-black {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2229,7 +2261,7 @@ button {
   visibility: visible;
 }
 
-.collapse-item.collapsed .collapse-arrow-brown {
+.collapse-item.collapsed .collapse-arrow-black {
   opacity: 0;
   visibility: hidden;
 }
@@ -2240,7 +2272,7 @@ button {
   visibility: hidden;
 }
 
-.collapse-item:not(.collapsed) .collapse-arrow-brown {
+.collapse-item:not(.collapsed) .collapse-arrow-black {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, -50%);
@@ -2270,7 +2302,7 @@ button {
 .collapse-item:not(.collapsed) .collapse-content {
   max-height: 3000px;
   opacity: 1;
-  padding: 32px 24px;
+  padding: 16px;
 }
 
 /* 響應式設計 */
@@ -2529,4 +2561,19 @@ button {
 
 .date-picker-component.disabled .date-picker-icon {
   opacity: 0.3;
+}
+
+/* Error State */
+.date-picker-component.error .date-picker-field {
+  border-color: #F0423C;
+}
+
+.date-picker-component.error .date-picker-field:hover {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
+.date-picker-component.error .date-picker-field:focus {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
 }

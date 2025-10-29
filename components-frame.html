@@ -378,6 +378,40 @@
                       </div>
                     </div>
                   </div>
+
+                  <!-- Multiple Checkboxes -->
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>多選勾選項-錯誤狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="checkbox-group">
+                        <div class="checkbox-component">
+                          <input type="checkbox" id="checkbox-multiple-1" class="checkbox-input">
+                          <label for="checkbox-multiple-1" class="checkbox-label">
+                            <span class="checkbox-text">選項 A</span>
+                          </label>
+                        </div>
+                        <div class="checkbox-component">
+                          <input type="checkbox" id="checkbox-multiple-2" class="checkbox-input">
+                          <label for="checkbox-multiple-2" class="checkbox-label">
+                            <span class="checkbox-text">選項 B</span>
+                          </label>
+                        </div>
+                        <div class="checkbox-component">
+                          <input type="checkbox" id="checkbox-multiple-3" class="checkbox-input">
+                          <label for="checkbox-multiple-3" class="checkbox-label">
+                            <span class="checkbox-text">選項 C</span>
+                          </label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
                  </div>
 
                 <h3 style="margin: 16px 0;">radio 元件</h3>
@@ -454,6 +488,39 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                   <!-- Single Radio Group -->
+                   <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
+                        <span>單選選項-錯誤狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="radio-group">
+                        <div class="radio-component">
+                          <input type="radio" id="radio-example-1" name="radio-example" class="radio-input">
+                          <label for="radio-example-1" class="radio-label">
+                            <span class="radio-text">選項 1</span>
+                          </label>
+                        </div>
+                        <div class="radio-component">
+                          <input type="radio" id="radio-example-2" name="radio-example" class="radio-input">
+                          <label for="radio-example-2" class="radio-label">
+                            <span class="radio-text">選項 2</span>
+                          </label>
+                        </div>
+                        <div class="radio-component">
+                          <input type="radio" id="radio-example-3" name="radio-example" class="radio-input">
+                          <label for="radio-example-3" class="radio-label">
+                            <span class="radio-text">選項 3</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
                   </div>
                   
                 </div>
@@ -879,14 +946,6 @@
                     </div>
                     <div class="input-container">
                       <div class="input-tags-container error">
-                        <div class="input-tag">
-                          <span>選項B</span>
-                          <span class="input-tag-remove">×</span>
-                        </div>
-                        <div class="input-tag">
-                          <span>選項C</span>
-                          <span class="input-tag-remove">×</span>
-                        </div>
                         <input type="text" class="input-tags-field" placeholder="請輸入">
                       </div>
                     </div>
@@ -951,6 +1010,64 @@
                       </div>
                     </div>
                   </div>
+
+                  <!-- 單選下拉 - 錯誤狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選下拉 - 錯誤狀態</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown single-dropdown error">
+                          <div class="dropdown-input" id="single-dropdown-error">
+                            <span class="dropdown-placeholder">請選擇</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-option selected" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                            <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                            <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                            <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                            <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-error-message">錯誤提示訊息</div>
+                    </div>
+                  </div>
+                  <!-- 單選下拉 - 禁用狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選下拉 - 禁用狀態</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown single-dropdown disabled">
+                          <div class="dropdown-input" id="single-dropdown-disabled">
+                            <span class="dropdown-placeholder">12345678 - 公司A</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-option selected" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                            <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                            <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                            <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                            <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                  
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  
                   <div class="dropdown-component">
                     <div class="input-component">
                       <div class="input-header">
@@ -977,34 +1094,35 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
-                  <!-- 單選下拉 - 禁用狀態 -->
+
+                  <!-- 多選下拉 - 錯誤狀態 -->
                   <div class="dropdown-component">
                     <div class="input-component">
                       <div class="input-header">
                         <label class="input-label">
-                          <span>單選下拉 - 禁用</span>
+                          <span>多選下拉 - 錯誤狀態</span>
                         </label>
                       </div>
                       <div class="input-container">
-                        <div class="custom-dropdown single-dropdown disabled">
-                          <div class="dropdown-input" id="single-dropdown-disabled">
-                            <span class="dropdown-placeholder">12345678 - 公司A</span>
+                        <div class="custom-dropdown multiple-dropdown error">
+                          <div class="dropdown-input" id="multiple-dropdown-error">
+                            <div class="dropdown-tags-container">
+                              <span class="dropdown-placeholder">請選擇</span>
+                            </div>
                             <div class="dropdown-arrow"></div>
                           </div>
                           <div class="dropdown-options">
-                            <div class="dropdown-option selected" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
-                            <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
-                            <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
-                            <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
-                            <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                            <div class="dropdown-option" data-value="option-a">選項 A</div>
+                            <div class="dropdown-option" data-value="option-b">選項 B</div>
+                            <div class="dropdown-option" data-value="option-c">選項 C</div>
+                            <div class="dropdown-option" data-value="option-d">選項 D</div>
+                            <div class="dropdown-option" data-value="option-e">選項 E</div>
                           </div>
                         </div>
                       </div>
+                      <div class="input-error-message">錯誤提示訊息</div>
                     </div>
                   </div>
-
                   <!-- 多選下拉 - 禁用狀態 -->
                   <div class="dropdown-component">
                     <div class="input-component">
@@ -1039,6 +1157,8 @@
                       </div>
                     </div>
                   </div>
+                  
+
 
                 </div>
 
@@ -1070,6 +1190,32 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>可編輯下拉框-錯誤狀態</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="editable-dropdown error">
+                          <div class="editable-dropdown-input">
+                            <input type="text" class="editable-dropdown-field error" placeholder="請選擇或輸入">
+                            <div class="editable-dropdown-arrow"></div>
+                          </div>
+                          <div class="editable-dropdown-options">
+                            <div class="editable-dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                            <div class="editable-dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                            <div class="editable-dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                            <div class="editable-dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                            <div class="editable-dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-error-message">錯誤提示訊息</div>
+                    </div>
+                  </div>
                   
                   <div class="dropdown-component">
                     <div class="input-component">
@@ -1095,6 +1241,8 @@
                       </div>
                     </div>
                   </div>
+
+                  
                 </div>
 
                 <!-- 可搜尋式下拉選單 -->
@@ -1132,6 +1280,77 @@
                       </div>
                     </div>
                   </div>
+
+                  <!-- 單選 - 可搜尋式下拉 - 錯誤狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選 - 可搜尋式下拉 - 錯誤狀態</span>
+                          <span class="required">*</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown searchable-single-dropdown error">
+                          <div class="dropdown-input" id="searchable-single-dropdown-error">
+                            <span class="dropdown-placeholder">請選擇</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-search-container">
+                              <input type="text" class="dropdown-search-input error" placeholder="搜尋">
+                              <img src="./assets/images/search.svg" alt="search" class="dropdown-search-icon">
+                            </div>
+                            <div class="dropdown-options-list">
+                              <div class="dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                              <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                              <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                              <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                              <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-error-message">錯誤提示訊息</div>
+                    </div>
+                  </div>
+
+                  <!-- 單選 - 可搜尋式下拉 - 禁用狀態 -->
+                  <div class="dropdown-component">
+                    <div class="input-component">
+                      <div class="input-header">
+                        <label class="input-label">
+                          <span>單選 - 可搜尋式下拉 - 禁用</span>
+                          <span class="required">*</span>
+                        </label>
+                      </div>
+                      <div class="input-container">
+                        <div class="custom-dropdown searchable-single-dropdown disabled">
+                          <div class="dropdown-input" id="searchable-single-dropdown-disabled">
+                            <span class="dropdown-placeholder">12345678 - 公司A</span>
+                            <div class="dropdown-arrow"></div>
+                          </div>
+                          <div class="dropdown-options">
+                            <div class="dropdown-search-container">
+                              <input type="text" class="dropdown-search-input" placeholder="搜尋">
+                              <img src="./assets/images/search.svg" alt="search" class="dropdown-search-icon">
+                            </div>
+                            <div class="dropdown-options-list">
+                              <div class="dropdown-option selected" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                              <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
+                              <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
+                              <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
+                              <div class="dropdown-option" data-value="12389757" data-text="12389757 - 公司E">12389757 - 公司E</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                  
                   <!-- Multiple Selection - Default/Open State -->
                   <div class="dropdown-component">
                     <div class="input-component">
@@ -1166,30 +1385,31 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
-                  <!-- 單選 - 可搜尋式下拉 - 禁用狀態 -->
+
+                  <!-- 多選 - 可搜尋式下拉 - 錯誤狀態 -->
                   <div class="dropdown-component">
                     <div class="input-component">
                       <div class="input-header">
                         <label class="input-label">
-                          <span>單選 - 可搜尋式下拉 - 禁用</span>
+                          <span>多選 - 可搜尋式下拉 - 錯誤狀態</span>
                           <span class="required">*</span>
                         </label>
                       </div>
                       <div class="input-container">
-                        <div class="custom-dropdown searchable-single-dropdown disabled">
-                          <div class="dropdown-input" id="searchable-single-dropdown-disabled">
-                            <span class="dropdown-placeholder">12345678 - 公司A</span>
+                        <div class="custom-dropdown searchable-multiple-dropdown error">
+                          <div class="dropdown-input" id="searchable-multiple-dropdown-1">
+                            <div class="dropdown-tags-container">
+                              <span class="dropdown-placeholder">請選擇</span>
+                            </div>
                             <div class="dropdown-arrow"></div>
                           </div>
                           <div class="dropdown-options">
                             <div class="dropdown-search-container">
-                              <input type="text" class="dropdown-search-input" placeholder="搜尋">
+                              <input type="text" class="dropdown-search-input error" placeholder="搜尋">
                               <img src="./assets/images/search.svg" alt="search" class="dropdown-search-icon">
                             </div>
                             <div class="dropdown-options-list">
-                              <div class="dropdown-option selected" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
+                              <div class="dropdown-option" data-value="12345678" data-text="12345678 - 公司A">12345678 - 公司A</div>
                               <div class="dropdown-option" data-value="12355578" data-text="12355578 - 公司B">12355578 - 公司B</div>
                               <div class="dropdown-option" data-value="12300023" data-text="12300023 - 公司C">12300023 - 公司C</div>
                               <div class="dropdown-option" data-value="12300787" data-text="12300787 - 公司D">12300787 - 公司D</div>
@@ -1198,6 +1418,7 @@
                           </div>
                         </div>
                       </div>
+                      <div class="input-error-message">錯誤提示訊息</div>
                     </div>
                   </div>
 
@@ -1302,6 +1523,57 @@
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
+                        <span>單日選擇-錯誤狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="date-picker-component single-date-picker error">
+                        <div class="date-picker-input-container">
+                          <input type="text" class="date-picker-field error" placeholder="請選擇日期" readonly>
+                          <img src="./assets/images/date.svg" alt="calendar" class="date-picker-icon">
+                        </div>
+                        <div class="date-picker-calendar">
+                          <div class="date-picker-header">
+                            <div class="date-picker-year-month">
+                              <span class="year">2025</span>
+                              <span>年</span>
+                              <span class="month">9</span>
+                              <span>月</span>
+                            </div>
+                            <div class="date-picker-nav">
+                              <button class="date-picker-nav-btn prev-month" title="上一月">
+                                <img src="./assets/images/arrow-left.svg" alt="prev">
+                              </button>
+                              <button class="date-picker-nav-btn next-month" title="下一月">
+                                <img src="./assets/images/arrow-left.svg" alt="next">
+                              </button>
+                            </div>
+                          </div>
+                          <div class="date-picker-weekdays">
+                            <div class="date-picker-weekday">一</div>
+                            <div class="date-picker-weekday">二</div>
+                            <div class="date-picker-weekday">三</div>
+                            <div class="date-picker-weekday">四</div>
+                            <div class="date-picker-weekday">五</div>
+                            <div class="date-picker-weekday">六</div>
+                            <div class="date-picker-weekday">日</div>
+                          </div>
+                          <div class="date-picker-days">
+                            <!-- Days will be generated by JavaScript -->
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+
+                  
+
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
                         <span>日期單選-禁用狀態</span>
                         <span class="required">*</span>
                       </label>
@@ -1370,6 +1642,54 @@
                   <div class="input-component">
                     <div class="input-header">
                       <label class="input-label">
+                        <span>日期範圍-錯誤狀態</span>
+                        <span class="required">*</span>
+                      </label>
+                    </div>
+                    <div class="input-container">
+                      <div class="date-picker-component date-range-picker error">
+                        <div class="date-picker-input-container">
+                          <input type="text" class="date-picker-field error" value="" placeholder="請選擇日期範圍" readonly>
+                          <img src="./assets/images/date.svg" alt="calendar" class="date-picker-icon">
+                        </div>
+                        <div class="date-picker-calendar">
+                          <div class="date-picker-header">
+                            <div class="date-picker-year-month">
+                              <span class="year">2025</span>
+                              <span>年</span>
+                              <span class="month">9</span>
+                              <span>月</span>
+                            </div>
+                            <div class="date-picker-nav">
+                              <button class="date-picker-nav-btn prev-month" title="上一月">
+                                <img src="./assets/images/arrow-left.svg" alt="prev">
+                              </button>
+                              <button class="date-picker-nav-btn next-month" title="下一月">
+                                <img src="./assets/images/arrow-left.svg" alt="next">
+                              </button>
+                            </div>
+                          </div>
+                          <div class="date-picker-weekdays">
+                            <div class="date-picker-weekday">一</div>
+                            <div class="date-picker-weekday">二</div>
+                            <div class="date-picker-weekday">三</div>
+                            <div class="date-picker-weekday">四</div>
+                            <div class="date-picker-weekday">五</div>
+                            <div class="date-picker-weekday">六</div>
+                            <div class="date-picker-weekday">日</div>
+                          </div>
+                          <div class="date-picker-days">
+                            <!-- Days will be generated by JavaScript -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-error-message">錯誤提示訊息</div>
+                  </div>
+
+                  <div class="input-component">
+                    <div class="input-header">
+                      <label class="input-label">
                         <span>日期範圍-禁用狀態</span>
                         <span class="required">*</span>
                       </label>
@@ -1377,7 +1697,7 @@
                     <div class="input-container">
                       <div class="date-picker-component disabled date-range-picker">
                         <div class="date-picker-input-container">
-                          <input type="text" class="date-picker-field" value="" readonly disabled>
+                          <input type="text" class="date-picker-field" value="" placeholder="請選擇日期範圍" readonly disabled>
                           <img src="./assets/images/date.svg" alt="calendar" class="date-picker-icon">
                         </div>
                       </div>
@@ -1426,12 +1746,12 @@
                         </button>
                         <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
                           <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
-                          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-brown">
+                          <img src="./assets/images/icon_arrow_down_black.svg" class="collapse-arrow-black">
                         </button>
                       </div>
                     </div>
                     <div class="collapse-content">
-                      <div style="font-size: 14px; color: #757575; margin-bottom: 24px;">
+                      <div style="font-size: 16px; color: #757575; margin-bottom: 24px;">
                         提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
                       </div>
                       
@@ -1554,12 +1874,12 @@
                         </button>
                         <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
                           <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
-                          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-brown">
+                          <img src="./assets/images/icon_arrow_down_black.svg" class="collapse-arrow-black">
                         </button>
                       </div>
                     </div>
                     <div class="collapse-content">
-                      <div style="font-size: 14px; color: #757575; margin-bottom: 24px;">
+                      <div style="font-size: 16px; color: #757575; margin-bottom: 24px;">
                         提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
                       </div>
                       
@@ -1607,12 +1927,12 @@
                         </button>
                         <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
                           <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
-                          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-brown">
+                          <img src="./assets/images/icon_arrow_down_black.svg" class="collapse-arrow-black">
                         </button>
                       </div>
                     </div>
                     <div class="collapse-content">
-                      <div style="font-size: 14px; color: #757575; margin-bottom: 24px;">
+                      <div style="font-size: 16px; color: #757575; margin-bottom: 24px;">
                         提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
                       </div>
                       

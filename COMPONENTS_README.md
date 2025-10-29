@@ -327,7 +327,7 @@ components/
         <!-- 展開/收起按鈕 -->
         <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)">
           <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
-          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-brown">
+          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-black">
         </button>
       </div>
     </div>
