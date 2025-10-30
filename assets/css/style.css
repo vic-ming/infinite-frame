@@ -1630,11 +1630,12 @@ button {
 
 .input-dropdown:hover {
   border-color: #9E7F54;
-  box-shadow: 0 0 0 1px #9E7F54;
+  /* box-shadow: 0 0 0 1px #9E7F54; */
 }
 
 .input-dropdown.error {
   border-color: #F0423C;
+  
 }
 
 .input-dropdown.disabled {
