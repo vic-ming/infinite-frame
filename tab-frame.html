@@ -19,11 +19,28 @@
   </head>
   <body>
     <div class="infinite-container">
+      <!-- 側邊欄控制按鈕（收起時顯示） -->
+      <div class="sidebar-toggle-controls">
+        <button class="collapse-button sidebar-toggle" title="展開側邊欄">
+          <img src="./assets/images/arrow-end.svg" alt="arrow_right">
+        </button>
+        <button class="collapse-button header-toggle" title="切換頂部欄">
+          <img src="./assets/images/arrow-end.svg" alt="arrow_down">
+        </button>
+      </div>
       <!-- 左側目錄面板 -->
       <div class="side-panel">
         <div class="side-panel-content">
           <div class="side-panel-header">
             <img src="./assets/images/logo.png" alt="logo">
+            <div class="side-panel-collapse-buttons">
+              <button class="collapse-button side-panel-collapse">
+                <img src="./assets/images/arrow-end.svg" alt="arrow_left">
+              </button>
+              <button class="collapse-button header-collapse">
+                <img src="./assets/images/arrow-end.svg" alt="arrow_left">
+              </button>
+            </div>
           </div>
           <div class="side-panel-role-select">
             <div class="dropdown-component">
@@ -79,7 +96,7 @@
           <div class="side-panel-menu">
 
     
-            
+            <div class="side-panel-menu-category-title">分類一</div> 
             <!-- 功能目錄 -->
             <div class="side-panel-menu-item has-submenu" data-menu="functions">
               <div class="quill-icon">
@@ -147,6 +164,7 @@
             </div>
             
             <!-- 其他功能目錄 -->
+            <div class="side-panel-menu-category-title">分類二</div> 
             <div class="side-panel-menu-item" onclick="window.location.href='default-frame.html'">
               <div class="quill-icon">
                 <img src="./assets/images/quill.svg" alt="quill" class="quill-normal">

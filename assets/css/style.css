@@ -26,6 +26,56 @@ button {
 
 .infinite-container{
   display: flex;
+  background-color: #fafafa;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 固定高度的背景层，图片用cover方式填充 */
+.infinite-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 299px;
+  background-image: url('../images/blue-bg.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* brown 背景层（默认隐藏） */
+.infinite-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 299px;
+  background-image: url('../images/brown-bg.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* header 收起時，顯示 brown 背景，隱藏 blue 背景 */
+.infinite-container:has(.content-panel-header.collapsed)::before {
+  opacity: 0;
+}
+
+.infinite-container:has(.content-panel-header.collapsed)::after {
+  opacity: 1;
 }
 
 /* side panel */
@@ -34,6 +84,66 @@ button {
   height: 100vh;
   background: linear-gradient(0deg, #E9E9E9 0%, #F6F6F6 50%);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* 側邊欄收起狀態 */
+.side-panel.collapsed {
+  width: 0;
+  transform: translateX(-100%);
+}
+
+/* 側邊欄控制按鈕組（收起時顯示） */
+.sidebar-toggle-controls {
+  position: fixed;
+  left: 0;
+  top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 4px;
+  background: linear-gradient(0deg, #E9E9E9 0%, #F6F6F6 50%);
+  border-radius: 0 8px 8px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+/* header 收起時，控制按鈕上移到 8px */
+.infinite-container:has(.content-panel-header.collapsed) .sidebar-toggle-controls {
+  top: 8px;
+}
+
+/* 側邊欄收起時顯示控制按鈕 */
+.side-panel.collapsed ~ .sidebar-toggle-controls,
+.infinite-container:has(.side-panel.collapsed) .sidebar-toggle-controls {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sidebar-toggle-controls .collapse-button {
+  width: 32px;
+  height: 32px;
+}
+
+.sidebar-toggle-controls .sidebar-toggle img {
+  transform: rotate(0deg);
+}
+
+.sidebar-toggle-controls .header-toggle {
+  transform: rotate(-90deg);
+}
+
+/* header 收起時，header-toggle 按鈕旋轉 */
+.infinite-container:has(.content-panel-header.collapsed) .sidebar-toggle-controls .header-toggle {
+  transform: rotate(90deg);
 }
 .side-panel .side-panel-content{
   height: 100vh;
@@ -41,22 +151,67 @@ button {
   flex-direction: column;
   justify-content: space-between;
   gap: 13px;
+  overflow: auto;
 }
 .side-panel .side-panel-header{
-  padding: 0 32px 0 23px;
+  padding: 8px 16px 0 16px;
   text-align: left;
   /* border-bottom: 1px solid #BDBDBD; */
-  background-color: #fff;
-  min-height: 70px;
+  /* background-color: #fff; */
+  min-height: 72px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  position: relative;
 }
 .side-panel .side-panel-header img{
-  width: 120px;
+  width: 109px;
 }
+.side-panel .side-panel-collapse-buttons{
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.collapse-button{
+  width: 28px;
+  height: 28px;
+  border: 1px solid #BDBDBD;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #292929;
+  transition: all 0.2s ease;
+}
+.collapse-button img{
+  width: 16px !important;
+  height: 16px;
+}
+.side-panel-collapse{
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 側邊欄收起時，按鈕旋轉回來 */
+.side-panel.collapsed .side-panel-collapse {
+  transform: rotate(0deg);
+}
+.header-collapse{
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 頂部欄收起時，按鈕旋轉 */
+.header-collapse.collapsed {
+  transform: rotate(90deg);
+}
+
 .side-panel .side-panel-role-select{
-  padding: 16px 20px 0px ;
+  padding: 7px 20px 0px ;
   text-align: left;
   border-bottom: 1px solid #BDBDBD;
 }
@@ -69,6 +224,12 @@ button {
   justify-content: flex-start;
   gap: 4px;
 }
+.side-panel .side-panel-menu-category-title{
+  font-size: 14px;
+  font-weight: 500;
+  color: #7C7C7C;
+  padding: 8px 0px;
+}
 .side-panel .side-panel-menu-item{
   display: flex;
   align-items: center;
@@ -77,9 +238,27 @@ button {
   cursor: pointer;
 }
 .side-panel .side-panel-menu-item:hover{
-  background-color: #f4f8fc;
+  background-color: #fff;
   border-radius: 8px;
-  color: #429DFF;
+  color: #004D71;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+/* 當三級目錄顯示時，保持二級項目的hover效果 */
+.submenu-level-1 .side-panel-menu-item.has-submenu.show-submenu {
+  background-color: #fff;
+  border-radius: 8px;
+  color: #004D71;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+.submenu-level-1 .side-panel-menu-item.has-submenu.show-submenu .quill-icon .quill-normal {
+  opacity: 0;
+}
+
+.submenu-level-1 .side-panel-menu-item.has-submenu.show-submenu .quill-icon .quill-active {
+  opacity: 1;
 }
 .side-panel .side-panel-menu img{
   width: 16px;
@@ -121,7 +300,7 @@ button {
 }
 
 .side-panel-menu-item.active span {
-  color: #429DFF;
+  color: #004D71;
 }
 .side-panel .side-panel-menu span{
   font-size: 14px;
@@ -129,18 +308,43 @@ button {
 }
 
 /* 子菜單樣式 */
-.submenu-level-1,
-.submenu-level-2 {
+.submenu-level-1 {
   max-height: 0;
-  overflow: hidden;
+  overflow: hidden; /* 保持hidden用於摺疊動畫 */
   transition: max-height 0.3s ease-in-out;
   margin-left: 20px;
+  position: relative;
 }
 
-.submenu-level-1.expanded,
-.submenu-level-2.expanded {
+.submenu-level-1.expanded {
   max-height: 1000px;
+  overflow: visible; /* 展開後改為visible，以便三級目錄顯示 */
 }
+
+/* 三級目錄樣式 - 改為右側彈出 */
+.submenu-level-2 {
+  position: fixed; /* 使用fixed定位，由JavaScript動態計算位置 */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
+
+  min-width: 180px;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  z-index: 1000;
+  max-height: none;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.submenu-level-2.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 
 /* 箭頭圖標樣式 */
 .arrow-icon {
@@ -162,7 +366,7 @@ button {
 .side-panel-menu-item.expanded {
   background-color: #f4f8fc;
   border-radius: 8px;
-  color: #429DFF;
+  color: #004D71;
 }
 
 .side-panel-menu-item.expanded .quill-icon .quill-normal {
@@ -178,33 +382,57 @@ button {
   position: relative;
 }
 
+/* 二級項目需要relative定位，以便三級目錄可以相對於它定位 */
+.submenu-level-1 .side-panel-menu-item.has-submenu {
+  position: relative;
+}
+
 /* 子菜單項目的縮進 */
 .submenu-level-1 .side-panel-menu-item {
   padding-left: 20px;
 }
 
 .submenu-level-2 .side-panel-menu-item {
-  padding-left: 45px;
+  padding-left: 12px;
+  padding-right: 12px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.submenu-level-2 .side-panel-menu-item:hover {
+  background-color: #f4f8fc;
+  border-radius: 4px;
 }
 
 .content-panel{
   flex: 1;
   height: 100vh;
-  background-color: #fafafa;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 /* header */
 .content-panel .content-panel-header{
-  height: 42px;
-  padding: 15px 24px 15px;
+  height: 44px;
+  padding: 8px 24px 4px;
   box-sizing: content-box;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  transition: height 0.3s ease-in-out, padding 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* 頂部欄收起狀態 */
+.content-panel-header.collapsed {
+  height: 0;
+  padding: 0 24px;
+  opacity: 0;
+  transform: translateY(-100%);
 }
 .content-panel .content-panel-nav{
   display: flex;
@@ -228,12 +456,14 @@ button {
 .content-panel .content-panel-nav-user{
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 16px;
   cursor: pointer;
+  position: relative;
+  top: 2px;
 }
 .content-panel .content-panel-nav-user img{
-  width: 27px;
-  height: 27px;
+  width: 25px;
+  height: 25px;
 }
 .content-panel .content-panel-nav-user:hover{
   opacity: 0.8;
@@ -241,21 +471,22 @@ button {
 .content-panel .content-panel-nav-user-name{
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   line-height: 1.2;
 }
 .content-panel .content-panel-nav-user-name-text{
   font-size: 14px;
   font-weight: 500;
+  color: #fff;
 }
 .content-panel .content-panel-nav-user-name-ip{
   font-size: 12px;
-  color: #7C7C7C;
+  color: #DCDCDC;
 }
 
 /* content */
 .content-panel .content-panel-content{
-  margin: 0 8px 8px;
+  margin: 8px;
   flex: 1;
   background-color: #F0F0F0;
   border-radius: 10px;
@@ -263,16 +494,31 @@ button {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* 側邊欄收起時，調整 content-panel-content 的左邊距 */
+.side-panel.collapsed ~ .content-panel .content-panel-content,
+.infinite-container:has(.side-panel.collapsed) .content-panel .content-panel-content {
+  margin: 8px 8px 8px 48px;
 }
 
 /* default */
 .content-panel .content-panel-content-default-title{
   font-size: 18px;
   font-weight: 700;
-  background: linear-gradient(270deg, #E0C583 0%, #887341 100%);
-  padding: 12px 16px;
-  color: #fff;
-  
+  background: linear-gradient(0deg, #D0D1D2 0%, #EFEFEF 100%);
+  min-height: 52px;
+  padding: 8px 16px;
+  color: #292929;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.content-panel .content-panel-content-default-title-right{
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .content-panel .content-panel-content-default-content{
   font-size: 16px;
@@ -964,7 +1210,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
   font-size: 14px;
   font-weight: 400;
   transition: all 0.2s ease;
@@ -1084,6 +1330,35 @@ button {
   -webkit-mask-position: center;
   background-color: currentColor; /* 使用當前文字顏色 */
 }
+.icon.icon-add {
+  width: 16px;
+  height: 16px;
+  /* 使用 SVG 作為 mask，配合 background-color 來控制顏色 */
+  mask-image: url('../images/add.svg');
+  -webkit-mask-image: url('../images/add.svg');
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  background-color: currentColor; /* 使用當前文字顏色 */
+}
+.icon.icon-save {
+  width: 16px;
+  height: 16px;
+  /* 使用 SVG 作為 mask，配合 background-color 來控制顏色 */
+  mask-image: url('../images/save.svg');
+  -webkit-mask-image: url('../images/save.svg');
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  background-color: currentColor; /* 使用當前文字顏色 */
+}
+
 
 /* Filled 按鈕：白色圖標 */
 .common-button.primary .icon.icon-edit,
