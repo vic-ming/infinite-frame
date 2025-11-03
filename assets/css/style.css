@@ -2816,7 +2816,7 @@ button {
 
 /* Range Picker Styles */
 .date-range-picker .date-picker-day {
-  border-radius: 0;
+  /* border-radius: 0; */
 }
 
 .date-range-picker .date-picker-day.start-date {
