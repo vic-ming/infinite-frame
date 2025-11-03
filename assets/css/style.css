@@ -78,6 +78,15 @@ button {
   opacity: 1;
 }
 
+/* sidebar 收起時，顯示 brown 背景，隱藏 blue 背景 */
+.infinite-container:has(.side-panel.collapsed)::before {
+  opacity: 0;
+}
+
+.infinite-container:has(.side-panel.collapsed)::after {
+  opacity: 1;
+}
+
 /* side panel */
 .side-panel{
   width: 240px;
