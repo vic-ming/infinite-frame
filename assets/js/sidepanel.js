@@ -128,6 +128,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // 處理 more-icon 點擊顯示/隱藏部門下拉選單
+  const moreIcon = document.querySelector('.side-panel-role-select .more-icon');
+  const roleSelectContainer = document.querySelector('.side-panel-role-select');
+  
+  if (moreIcon && roleSelectContainer) {
+    moreIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      roleSelectContainer.classList.toggle('show-department');
+    });
+    
+    // 點擊外部時關閉部門下拉選單
+    document.addEventListener('click', function(e) {
+      if (roleSelectContainer && !roleSelectContainer.contains(e.target)) {
+        roleSelectContainer.classList.remove('show-department');
+      }
+    });
+  }
+  
   // 處理收起狀態下的控制按鈕
   const sidebarToggle = document.querySelector('.sidebar-toggle');
   const headerToggle = document.querySelector('.header-toggle');

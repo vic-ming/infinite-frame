@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
       // 為對應的 tab 內容添加 active 類別
       if (tabContents[index]) {
         tabContents[index].classList.add('active');
+        // Reinitialize dropdowns in the newly active tab
+        if (typeof initializeDropdowns === 'function') {
+          setTimeout(() => {
+            initializeDropdowns();
+          }, 100);
+        }
       }
     });
   });
@@ -51,6 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
       // 為對應的內層 tab 內容添加 active 類別
       if (tab2Contents[index]) {
         tab2Contents[index].classList.add('active');
+        // Reinitialize dropdowns in the newly active tab
+        if (typeof initializeDropdowns === 'function') {
+          setTimeout(() => {
+            initializeDropdowns();
+          }, 100);
+        }
       }
     });
   });

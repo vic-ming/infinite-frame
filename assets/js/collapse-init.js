@@ -57,7 +57,7 @@ function addCollapseItem(containerId) {
   
   newItem.innerHTML = `
     <div class="collapse-header">
-      <span class="collapse-title">新增項目 ${newIndex + 1}</span>
+      <span class="collapse-title" onclick="toggleCollapseItem(this)">新增項目 ${newIndex + 1}</span>
       <div class="collapse-actions">
         <button class="collapse-action-btn collapse-btn-add" onclick="addCollapseItem('${containerId}')" title="添加">
           <img src="./assets/images/add_white.svg">
@@ -67,7 +67,7 @@ function addCollapseItem(containerId) {
         </button>
         <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
           <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
-          <img src="./assets/images/icon_arrow_down_brown.svg" class="collapse-arrow-black">
+          <img src="./assets/images/icon_arrow_down_black.svg" class="collapse-arrow-black">
         </button>
       </div>
     </div>

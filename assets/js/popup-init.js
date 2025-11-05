@@ -34,7 +34,10 @@
     // Combine all popups
     popupContainer.innerHTML = blankHtml + formHtml + listHtml + listCheckHtml + sideHtml;
     
-    // Note: Dropdown initialization is handled by dropdown-init.js
+    // Initialize dropdowns in dynamically loaded popup content
+    if (typeof initializeDropdowns === 'function') {
+      initializeDropdowns();
+    }
     
     // Register all popups
     popupManager.register('blankPopup');

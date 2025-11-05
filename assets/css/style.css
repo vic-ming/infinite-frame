@@ -220,9 +220,29 @@ button {
 }
 
 .side-panel .side-panel-role-select{
-  padding: 7px 20px 0px ;
+  padding: 7px 16px 0px ;
   text-align: left;
   border-bottom: 1px solid #BDBDBD;
+  position: relative;
+}
+.side-panel .side-panel-role-select .more-icon{
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* 默认隐藏部门下拉选单 */
+.side-panel .side-panel-role-select .dropdown-component:last-child {
+  display: none;
+}
+
+/* 显示部门下拉选单 */
+.side-panel .side-panel-role-select.show-department .dropdown-component:last-child {
+  display: block;
 }
 .side-panel .side-panel-menu{
   flex: 1;
@@ -520,8 +540,8 @@ button {
   font-size: 18px;
   font-weight: 700;
   background: linear-gradient(0deg, #D0D1D2 0%, #EFEFEF 100%);
-  min-height: 52px;
-  padding: 8px 16px;
+  min-height: 40px;
+  padding: 0px 16px;
   color: #292929;
   display: flex;
   align-items: center;
@@ -618,9 +638,10 @@ button {
 .content-panel .content-panel-content.common-tab-content .content-panel-content-tab-content-item-main{
   padding: 16px;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: visible;
   flex: 1;
   min-height: 0;
+  position: relative;
 }
 
 /* 主内容区滚动条样式 */
@@ -863,7 +884,7 @@ button {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease;
-  z-index: 1000;
+  z-index: 10001;
   font-size: 14px;
 }
 
@@ -1144,7 +1165,7 @@ button {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease;
-  z-index: 1000;
+  z-index: 10001;
   font-size: 14px;
 }
 
@@ -1945,7 +1966,8 @@ button {
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
-  pointer-events: none;
+  z-index: 1;
+  cursor: pointer;
 }
 
 .input-field.with-search {
@@ -2385,8 +2407,10 @@ button {
   padding: 32px 24px;
   flex: 1;
   overflow-y: auto;
+  overflow-x: visible;
   min-height: 245px;
   background-color: #fff;
+  position: relative;
 }
 
 .popup-footer {
@@ -2438,7 +2462,7 @@ button {
 .collapse-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   margin-bottom: 24px;
 }
 
@@ -2454,7 +2478,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 24px;
+  padding: 4px 24px;
   cursor: pointer;
   user-select: none;
   background-color: #FFFBE3;
@@ -2480,8 +2504,8 @@ button {
 }
 
 .collapse-action-btn {
-  width: 28px;
-  height: 32px;
+  width: 26px;
+  height: 30px;
   border: none;
   border-radius: 4px;
   cursor: pointer;

@@ -15,29 +15,34 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeDropdowns() {
-  // Initialize single selection dropdowns
-  document.querySelectorAll('.single-dropdown').forEach(dropdown => {
+  // Initialize single selection dropdowns (only if not already initialized)
+  document.querySelectorAll('.single-dropdown:not([data-dropdown-initialized])').forEach(dropdown => {
     initializeSingleDropdown(dropdown);
+    dropdown.setAttribute('data-dropdown-initialized', 'true');
   });
 
-  // Initialize multiple selection dropdowns
-  document.querySelectorAll('.multiple-dropdown').forEach(dropdown => {
+  // Initialize multiple selection dropdowns (only if not already initialized)
+  document.querySelectorAll('.multiple-dropdown:not([data-dropdown-initialized])').forEach(dropdown => {
     initializeMultipleDropdown(dropdown);
+    dropdown.setAttribute('data-dropdown-initialized', 'true');
   });
 
-  // Initialize searchable single selection dropdowns
-  document.querySelectorAll('.searchable-single-dropdown').forEach(dropdown => {
+  // Initialize searchable single selection dropdowns (only if not already initialized)
+  document.querySelectorAll('.searchable-single-dropdown:not([data-dropdown-initialized])').forEach(dropdown => {
     initializeSearchableSingleDropdown(dropdown);
+    dropdown.setAttribute('data-dropdown-initialized', 'true');
   });
 
-  // Initialize searchable multiple selection dropdowns
-  document.querySelectorAll('.searchable-multiple-dropdown').forEach(dropdown => {
+  // Initialize searchable multiple selection dropdowns (only if not already initialized)
+  document.querySelectorAll('.searchable-multiple-dropdown:not([data-dropdown-initialized])').forEach(dropdown => {
     initializeSearchableMultipleDropdown(dropdown);
+    dropdown.setAttribute('data-dropdown-initialized', 'true');
   });
 
-  // Initialize editable dropdowns
-  document.querySelectorAll('.editable-dropdown').forEach(dropdown => {
+  // Initialize editable dropdowns (only if not already initialized)
+  document.querySelectorAll('.editable-dropdown:not([data-dropdown-initialized])').forEach(dropdown => {
     initializeEditableDropdown(dropdown);
+    dropdown.setAttribute('data-dropdown-initialized', 'true');
   });
 }
 

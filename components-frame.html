@@ -43,6 +43,7 @@
             </div>
           </div>
           <div class="side-panel-role-select">
+            <img src="./assets/images/more.svg" alt="more" class="more-icon">
             <div class="dropdown-component">
               <div class="input-component" style="width: 184px; gap: 8px;">
                 <div class="input-header">
@@ -423,20 +424,20 @@
                     <div class="input-container">
                       <div class="checkbox-group">
                         <div class="checkbox-component">
-                          <input type="checkbox" id="checkbox-multiple-1" class="checkbox-input">
-                          <label for="checkbox-multiple-1" class="checkbox-label">
+                          <input type="checkbox" id="checkbox-multiple-error-1" class="checkbox-input">
+                          <label for="checkbox-multiple-error-1" class="checkbox-label">
                             <span class="checkbox-text">選項 A</span>
                           </label>
                         </div>
                         <div class="checkbox-component">
-                          <input type="checkbox" id="checkbox-multiple-2" class="checkbox-input">
-                          <label for="checkbox-multiple-2" class="checkbox-label">
+                          <input type="checkbox" id="checkbox-multiple-error-2" class="checkbox-input">
+                          <label for="checkbox-multiple-error-2" class="checkbox-label">
                             <span class="checkbox-text">選項 B</span>
                           </label>
                         </div>
                         <div class="checkbox-component">
-                          <input type="checkbox" id="checkbox-multiple-3" class="checkbox-input">
-                          <label for="checkbox-multiple-3" class="checkbox-label">
+                          <input type="checkbox" id="checkbox-multiple-error-3" class="checkbox-input">
+                          <label for="checkbox-multiple-error-3" class="checkbox-label">
                             <span class="checkbox-text">選項 C</span>
                           </label>
                         </div>
@@ -534,20 +535,20 @@
                     <div class="input-container">
                       <div class="radio-group">
                         <div class="radio-component">
-                          <input type="radio" id="radio-example-1" name="radio-example" class="radio-input">
-                          <label for="radio-example-1" class="radio-label">
+                          <input type="radio" id="radio-example-error-1" name="radio-example-error" class="radio-input">
+                          <label for="radio-example-error-1" class="radio-label">
                             <span class="radio-text">選項 1</span>
                           </label>
                         </div>
                         <div class="radio-component">
-                          <input type="radio" id="radio-example-2" name="radio-example" class="radio-input">
-                          <label for="radio-example-2" class="radio-label">
+                          <input type="radio" id="radio-example-error-2" name="radio-example-error" class="radio-input">
+                          <label for="radio-example-error-2" class="radio-label">
                             <span class="radio-text">選項 2</span>
                           </label>
                         </div>
                         <div class="radio-component">
-                          <input type="radio" id="radio-example-3" name="radio-example" class="radio-input">
-                          <label for="radio-example-3" class="radio-label">
+                          <input type="radio" id="radio-example-error-3" name="radio-example-error" class="radio-input">
+                          <label for="radio-example-error-3" class="radio-label">
                             <span class="radio-text">選項 3</span>
                           </label>
                         </div>
@@ -881,7 +882,7 @@
                     <div class="input-container">
                       <div class="input-search-container">
                         <input type="text" class="input-field with-search" placeholder="請輸入">
-                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon">
+                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon" onclick="openPopup('listPopup')">
                       </div>
                     </div>
                   </div>
@@ -903,7 +904,7 @@
                     <div class="input-container">
                       <div class="input-search-container">
                         <input type="text" class="input-field with-search error" placeholder="請輸入">
-                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon">
+                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon" onclick="openPopup('listPopup')">
                       </div>
                     </div>
                     <div class="input-error-message">錯誤提示訊息</div>
@@ -925,7 +926,7 @@
                     <div class="input-container">
                       <div class="input-search-container">
                         <input type="text" class="input-field with-search disabled" placeholder="請輸入" disabled>
-                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon">
+                        <img src="./assets/images/search.svg" alt="search" class="input-search-icon" onclick="openPopup('listPopup')">
                       </div>
                     </div>
                   </div>
