@@ -50,6 +50,69 @@ function initializeSingleDatePicker(component) {
     }
   });
 
+  // Handle manual input
+  let inputTimeout = null;
+  input.addEventListener('input', function(e) {
+    // Clear any existing timeout
+    if (inputTimeout) {
+      clearTimeout(inputTimeout);
+    }
+    
+    // Debounce validation - wait for user to finish typing
+    inputTimeout = setTimeout(function() {
+      validateAndUpdateInput();
+    }, 500);
+  });
+
+  input.addEventListener('blur', function(e) {
+    // Clear timeout and validate immediately on blur
+    if (inputTimeout) {
+      clearTimeout(inputTimeout);
+      inputTimeout = null;
+    }
+    validateAndUpdateInput();
+  });
+
+  function validateAndUpdateInput() {
+    const value = input.value.trim();
+    
+    if (!value) {
+      // Empty input - clear selection
+      selectedDate = null;
+      component.classList.remove('error');
+      input.classList.remove('error');
+      renderCalendar();
+      return;
+    }
+
+    // Try to parse the input
+    const parsedDate = parseDate(value);
+    
+    if (parsedDate && isValidDate(parsedDate)) {
+      // Valid date - update selection and format
+      selectedDate = parsedDate;
+      currentDate = new Date(parsedDate);
+      input.value = formatDate(parsedDate);
+      component.classList.remove('error');
+      input.classList.remove('error');
+      renderCalendar();
+      
+      // Trigger custom event
+      const event = new CustomEvent('date-selected', {
+        detail: { date: parsedDate, formatted: formatDate(parsedDate) }
+      });
+      component.dispatchEvent(event);
+    } else {
+      // Invalid date - add error class but don't clear input
+      component.classList.add('error');
+      input.classList.add('error');
+    }
+  }
+
+  function isValidDate(date) {
+    return date instanceof Date && !isNaN(date.getTime());
+  }
+
   // Navigate months
   prevBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -145,10 +208,54 @@ function initializeSingleDatePicker(component) {
   }
   
   function parseDate(dateString) {
+    if (!dateString) return null;
+    
+    // Try YYYYMMDD format (e.g., 20250303)
+    const trimmed = dateString.trim();
+    if (/^\d{8}$/.test(trimmed)) {
+      const year = parseInt(trimmed.substring(0, 4), 10);
+      const month = parseInt(trimmed.substring(4, 6), 10) - 1;
+      const day = parseInt(trimmed.substring(6, 8), 10);
+      
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        const date = new Date(year, month, day);
+        if (date.getFullYear() === year && date.getMonth() === month && date.getDate() === day) {
+          return date;
+        }
+      }
+    }
+    
+    // Try YYYY/MM/DD format
     const parts = dateString.split('/');
     if (parts.length === 3) {
-      return new Date(parts[0], parts[1] - 1, parts[2]);
+      const year = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const day = parseInt(parts[2], 10);
+      
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        const date = new Date(year, month, day);
+        // Verify the date is valid (handles invalid dates like 2025/02/30)
+        if (date.getFullYear() === year && date.getMonth() === month && date.getDate() === day) {
+          return date;
+        }
+      }
     }
+    
+    // Try YYYY-MM-DD format
+    const dashParts = dateString.split('-');
+    if (dashParts.length === 3) {
+      const year = parseInt(dashParts[0], 10);
+      const month = parseInt(dashParts[1], 10) - 1;
+      const day = parseInt(dashParts[2], 10);
+      
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        const date = new Date(year, month, day);
+        if (date.getFullYear() === year && date.getMonth() === month && date.getDate() === day) {
+          return date;
+        }
+      }
+    }
+    
     return null;
   }
   
@@ -193,6 +300,104 @@ function initializeRangeDatePicker(component) {
       renderCalendar();
     }
   });
+
+  // Handle manual input
+  let inputTimeout = null;
+  input.addEventListener('input', function(e) {
+    // Clear any existing timeout
+    if (inputTimeout) {
+      clearTimeout(inputTimeout);
+    }
+    
+    // Debounce validation - wait for user to finish typing
+    inputTimeout = setTimeout(function() {
+      validateAndUpdateInput();
+    }, 500);
+  });
+
+  input.addEventListener('blur', function(e) {
+    // Clear timeout and validate immediately on blur
+    if (inputTimeout) {
+      clearTimeout(inputTimeout);
+      inputTimeout = null;
+    }
+    validateAndUpdateInput();
+  });
+
+  function validateAndUpdateInput() {
+    const value = input.value.trim();
+    
+    if (!value) {
+      // Empty input - clear selection
+      startDate = null;
+      endDate = null;
+      selectingStart = true;
+      component.classList.remove('error');
+      input.classList.remove('error');
+      renderCalendar();
+      return;
+    }
+
+    // Check if it's a date range format (contains " - ")
+    if (value.includes(' - ')) {
+      const parts = value.split(' - ');
+      const parsedStart = parseDate(parts[0].trim());
+      const parsedEnd = parseDate(parts[1].trim());
+      
+      if (parsedStart && isValidDate(parsedStart) && parsedEnd && isValidDate(parsedEnd)) {
+        // Both dates are valid
+        if (parsedStart.getTime() <= parsedEnd.getTime()) {
+          startDate = parsedStart;
+          endDate = parsedEnd;
+          selectingStart = true;
+          currentDate = new Date(startDate);
+          input.value = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+          component.classList.remove('error');
+          input.classList.remove('error');
+          renderCalendar();
+          
+          // Trigger custom event
+          const event = new CustomEvent('date-range-selected', {
+            detail: { 
+              startDate: startDate, 
+              endDate: endDate,
+              formatted: `${formatDate(startDate)} - ${formatDate(endDate)}`
+            }
+          });
+          component.dispatchEvent(event);
+        } else {
+          // End date is before start date - invalid
+          component.classList.add('error');
+          input.classList.add('error');
+        }
+      } else {
+        // Invalid date format
+        component.classList.add('error');
+        input.classList.add('error');
+      }
+    } else {
+      // Single date input - treat as start date
+      const parsedDate = parseDate(value);
+      if (parsedDate && isValidDate(parsedDate)) {
+        startDate = parsedDate;
+        endDate = null;
+        selectingStart = false;
+        currentDate = new Date(parsedDate);
+        input.value = formatDate(parsedDate);
+        component.classList.remove('error');
+        input.classList.remove('error');
+        renderCalendar();
+      } else {
+        // Invalid date
+        component.classList.add('error');
+        input.classList.add('error');
+      }
+    }
+  }
+
+  function isValidDate(date) {
+    return date instanceof Date && !isNaN(date.getTime());
+  }
 
   // Navigate months
   prevBtn.addEventListener('click', function(e) {
@@ -323,10 +528,54 @@ function initializeRangeDatePicker(component) {
   }
   
   function parseDate(dateString) {
+    if (!dateString) return null;
+    
+    // Try YYYYMMDD format (e.g., 20250303)
+    const trimmed = dateString.trim();
+    if (/^\d{8}$/.test(trimmed)) {
+      const year = parseInt(trimmed.substring(0, 4), 10);
+      const month = parseInt(trimmed.substring(4, 6), 10) - 1;
+      const day = parseInt(trimmed.substring(6, 8), 10);
+      
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        const date = new Date(year, month, day);
+        if (date.getFullYear() === year && date.getMonth() === month && date.getDate() === day) {
+          return date;
+        }
+      }
+    }
+    
+    // Try YYYY/MM/DD format
     const parts = dateString.split('/');
     if (parts.length === 3) {
-      return new Date(parts[0], parts[1] - 1, parts[2]);
+      const year = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const day = parseInt(parts[2], 10);
+      
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        const date = new Date(year, month, day);
+        // Verify the date is valid (handles invalid dates like 2025/02/30)
+        if (date.getFullYear() === year && date.getMonth() === month && date.getDate() === day) {
+          return date;
+        }
+      }
     }
+    
+    // Try YYYY-MM-DD format
+    const dashParts = dateString.split('-');
+    if (dashParts.length === 3) {
+      const year = parseInt(dashParts[0], 10);
+      const month = parseInt(dashParts[1], 10) - 1;
+      const day = parseInt(dashParts[2], 10);
+      
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        const date = new Date(year, month, day);
+        if (date.getFullYear() === year && date.getMonth() === month && date.getDate() === day) {
+          return date;
+        }
+      }
+    }
+    
     return null;
   }
   
