@@ -601,13 +601,13 @@ button {
 
 @keyframes loading-pulse {
   0%, 24.99% {
-    opacity: 0.1;
+    opacity: 0.3;
   }
   25%, 49.99% {
     opacity: 1;
   }
   50%, 100% {
-    opacity: 0.1;
+    opacity: 0.3;
   }
 }
 /* default */
