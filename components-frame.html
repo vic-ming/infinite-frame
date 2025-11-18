@@ -222,6 +222,16 @@
         </div>
         <!-- 內容面板內容 -->
         <div class="content-panel-content common-tab-content">
+          <div class="content-panel-loading">
+            <div class="content-panel-loading-container">
+              <div class="content-panel-loading-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
           <div class="content-panel-content-default-title">
             Components
             <div class="content-panel-content-default-title-right">
@@ -1527,6 +1537,7 @@
                               <span>年</span>
                               <span class="month">9</span>
                               <span>月</span>
+                              <span class="year-month-indicator">▼</span>
                             </div>
                             <div class="date-picker-nav">
                               <button class="date-picker-nav-btn prev-month" title="上一月">
@@ -1574,6 +1585,7 @@
                               <span>年</span>
                               <span class="month">9</span>
                               <span>月</span>
+                              <span class="year-month-indicator">▼</span>
                             </div>
                             <div class="date-picker-nav">
                               <button class="date-picker-nav-btn prev-month" title="上一月">
@@ -1646,6 +1658,7 @@
                               <span>年</span>
                               <span class="month">9</span>
                               <span>月</span>
+                              <span class="year-month-indicator">▼</span>
                             </div>
                             <div class="date-picker-nav">
                               <button class="date-picker-nav-btn prev-month" title="上一月">
@@ -1693,6 +1706,7 @@
                               <span>年</span>
                               <span class="month">9</span>
                               <span>月</span>
+                              <span class="year-month-indicator">▼</span>
                             </div>
                             <div class="date-picker-nav">
                               <button class="date-picker-nav-btn prev-month" title="上一月">
@@ -1739,7 +1753,19 @@
                   </div>
                 </div>     
 
-                <h3 style="margin: 16px 0;">彈窗元件</h3>
+                <h3 style="margin: 16px 0;">Loading 元件</h3>
+                <hr class="input-section-divider">
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="showContentLoading()">
+                    顯示 Loading (預設3秒關閉)
+                  </button>
+                  <button class="common-button primary" onclick="hideContentLoading()">
+                    隱藏 Loading 
+                  </button>
+                </div>
+
+                <h3 style="margin: 32px 0 16px 0;">彈窗元件</h3>
                 <hr class="input-section-divider">
                 
                 <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
@@ -2029,6 +2055,7 @@
     <script src="./assets/js/popup-init.js"></script>
     <script src="./assets/js/dropdown-init.js"></script>
     <script src="./assets/js/collapse-init.js"></script>
+    <script src="./assets/js/content-loading.js"></script>
     <script src="./assets/js/date-picker-init.js"></script>
 
   </body>

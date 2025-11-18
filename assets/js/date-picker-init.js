@@ -31,6 +31,7 @@ function initializeSingleDatePicker(component) {
   
   let currentDate = new Date();
   let selectedDate = null;
+  let viewMode = 'day'; // 'day', 'year', 'month'
   
   // Parse initial value if exists
   if (input.value) {
@@ -45,6 +46,15 @@ function initializeSingleDatePicker(component) {
     if (!component.classList.contains('disabled') && !input.disabled) {
       e.stopPropagation();
       closeAllCalendars();
+      
+      // Reset state when opening calendar
+      viewMode = 'day';
+      
+      // If there's a selected date, use it for display
+      if (selectedDate) {
+        currentDate = new Date(selectedDate);
+      }
+      
       calendar.classList.toggle('active');
       renderCalendar();
     }
@@ -113,33 +123,99 @@ function initializeSingleDatePicker(component) {
     return date instanceof Date && !isNaN(date.getTime());
   }
 
-  // Navigate months
+  // Toggle year/month picker view
+  yearMonth.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (viewMode === 'day') {
+      viewMode = 'year';
+      renderCalendar();
+    } else if (viewMode === 'year') {
+      viewMode = 'month';
+      renderCalendar();
+    } else {
+      viewMode = 'day';
+      renderCalendar();
+    }
+  });
+
+  // Navigate months/years
   prevBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    currentDate.setMonth(currentDate.getMonth() - 1);
+    if (viewMode === 'year') {
+      currentDate.setFullYear(currentDate.getFullYear() - 20);
+    } else if (viewMode === 'month') {
+      currentDate.setFullYear(currentDate.getFullYear() - 1);
+    } else {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+    }
     renderCalendar();
   });
 
   nextBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    currentDate.setMonth(currentDate.getMonth() + 1);
+    if (viewMode === 'year') {
+      currentDate.setFullYear(currentDate.getFullYear() + 20);
+    } else if (viewMode === 'month') {
+      currentDate.setFullYear(currentDate.getFullYear() + 1);
+    } else {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+    }
     renderCalendar();
   });
 
   function renderCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
-    const today = new Date();
     
+    // Update year/month display
     yearMonth.querySelector('.year').textContent = year;
     yearMonth.querySelector('.month').textContent = month + 1;
+    
+    // Update indicator
+    const indicator = yearMonth.querySelector('.year-month-indicator');
+    if (indicator) {
+      indicator.textContent = viewMode === 'day' ? '▼' : '▲';
+    }
+    
+    // Hide/show weekdays based on view mode
+    const weekdays = calendar.querySelector('.date-picker-weekdays');
+    if (weekdays) {
+      weekdays.style.display = viewMode === 'day' ? 'grid' : 'none';
+    }
+    
+    // Hide/show tabs based on view mode
+    const yearMonthTabs = calendar.querySelector('.year-month-tabs');
+    if (yearMonthTabs) {
+      if (viewMode === 'day') {
+        yearMonthTabs.style.display = 'none';
+      } else {
+        yearMonthTabs.style.display = 'flex';
+      }
+    }
+    
+    daysContainer.innerHTML = '';
+    
+    if (viewMode === 'year') {
+      renderYearPicker();
+    } else if (viewMode === 'month') {
+      renderMonthPicker();
+    } else {
+      renderDayPicker();
+    }
+  }
+  
+  function renderDayPicker() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Reset grid layout for days
+    daysContainer.style.gridTemplateColumns = 'repeat(7, 1fr)';
+    daysContainer.style.gap = '4px';
     
     // Get first day of month and number of days
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const prevDaysInMonth = new Date(year, month, 0).getDate();
-    
-    daysContainer.innerHTML = '';
     
     // Previous month days
     for (let i = firstDay - 1; i >= 0; i--) {
@@ -182,8 +258,138 @@ function initializeSingleDatePicker(component) {
     }
   }
   
+  function renderYearPicker() {
+    const currentYear = currentDate.getFullYear();
+    const startYear = Math.floor(currentYear / 20) * 20;
+    
+    // Set grid layout for years
+    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    daysContainer.style.gap = '8px';
+    
+    // Create year picker tabs if not exists
+    let yearMonthTabs = calendar.querySelector('.year-month-tabs');
+    if (!yearMonthTabs) {
+      yearMonthTabs = document.createElement('div');
+      yearMonthTabs.className = 'year-month-tabs';
+      yearMonthTabs.innerHTML = `
+        <button class="year-month-tab active" data-tab="year">年份</button>
+        <button class="year-month-tab" data-tab="month">月份</button>
+      `;
+      const header = calendar.querySelector('.date-picker-header');
+      header.insertAdjacentElement('afterend', yearMonthTabs);
+      
+      // Tab switching
+      yearMonthTabs.querySelectorAll('.year-month-tab').forEach(tab => {
+        tab.addEventListener('click', function(e) {
+          e.stopPropagation();
+          yearMonthTabs.querySelectorAll('.year-month-tab').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          if (this.dataset.tab === 'year') {
+            viewMode = 'year';
+          } else {
+            viewMode = 'month';
+          }
+          renderCalendar();
+        });
+      });
+    } else {
+      yearMonthTabs.style.display = 'flex';
+      const yearTab = yearMonthTabs.querySelector('[data-tab="year"]');
+      const monthTab = yearMonthTabs.querySelector('[data-tab="month"]');
+      if (yearTab) yearTab.classList.add('active');
+      if (monthTab) monthTab.classList.remove('active');
+    }
+    
+    // Render years grid
+    for (let y = startYear - 9; y <= startYear + 10; y++) {
+      const button = document.createElement('button');
+      button.className = 'date-picker-year';
+      button.textContent = y;
+      
+      if (y === currentYear) {
+        button.classList.add('selected');
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Only update currentDate for display, don't update selectedDate
+        currentDate.setFullYear(y);
+        viewMode = 'month';
+        renderCalendar();
+      });
+      
+      daysContainer.appendChild(button);
+    }
+  }
+  
+  function renderMonthPicker() {
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    
+    // Set grid layout for months
+    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    daysContainer.style.gap = '8px';
+    
+    // Show year/month tabs
+    let yearMonthTabs = calendar.querySelector('.year-month-tabs');
+    if (!yearMonthTabs) {
+      yearMonthTabs = document.createElement('div');
+      yearMonthTabs.className = 'year-month-tabs';
+      yearMonthTabs.innerHTML = `
+        <button class="year-month-tab" data-tab="year">年份</button>
+        <button class="year-month-tab active" data-tab="month">月份</button>
+      `;
+      const header = calendar.querySelector('.date-picker-header');
+      header.insertAdjacentElement('afterend', yearMonthTabs);
+      
+      // Tab switching
+      yearMonthTabs.querySelectorAll('.year-month-tab').forEach(tab => {
+        tab.addEventListener('click', function(e) {
+          e.stopPropagation();
+          yearMonthTabs.querySelectorAll('.year-month-tab').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          if (this.dataset.tab === 'year') {
+            viewMode = 'year';
+          } else {
+            viewMode = 'month';
+          }
+          renderCalendar();
+        });
+      });
+    } else {
+      yearMonthTabs.style.display = 'flex';
+      const yearTab = yearMonthTabs.querySelector('[data-tab="year"]');
+      const monthTab = yearMonthTabs.querySelector('[data-tab="month"]');
+      if (yearTab) yearTab.classList.remove('active');
+      if (monthTab) monthTab.classList.add('active');
+    }
+    
+    // Render months grid
+    const monthNames = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+    monthNames.forEach((name, index) => {
+      const button = document.createElement('button');
+      button.className = 'date-picker-month';
+      button.textContent = name;
+      
+      if (index === currentMonth) {
+        button.classList.add('selected');
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Only update currentDate for display, don't update selectedDate
+        currentDate.setMonth(index);
+        viewMode = 'day';
+        renderCalendar();
+      });
+      
+      daysContainer.appendChild(button);
+    });
+  }
+  
   function selectDate(date) {
     selectedDate = date;
+    currentDate = new Date(date); // Update currentDate to match selectedDate
     input.value = formatDate(date);
     calendar.classList.remove('active');
     
@@ -280,6 +486,7 @@ function initializeRangeDatePicker(component) {
   let startDate = null;
   let endDate = null;
   let selectingStart = true;
+  let viewMode = 'day'; // 'day', 'year', 'month'
   
   // Parse initial value if exists
   if (input.value && input.value.includes(' - ')) {
@@ -296,6 +503,18 @@ function initializeRangeDatePicker(component) {
     if (!component.classList.contains('disabled') && !input.disabled) {
       e.stopPropagation();
       closeAllCalendars();
+      
+      // Reset state when opening calendar
+      viewMode = 'day';
+      selectingStart = true;
+      
+      // If there's a start date, use it for display
+      if (startDate) {
+        currentDate = new Date(startDate);
+      } else if (endDate) {
+        currentDate = new Date(endDate);
+      }
+      
       calendar.classList.toggle('active');
       renderCalendar();
     }
@@ -399,16 +618,43 @@ function initializeRangeDatePicker(component) {
     return date instanceof Date && !isNaN(date.getTime());
   }
 
-  // Navigate months
+  // Toggle year/month picker view
+  yearMonth.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (viewMode === 'day') {
+      viewMode = 'year';
+      renderCalendar();
+    } else if (viewMode === 'year') {
+      viewMode = 'month';
+      renderCalendar();
+    } else {
+      viewMode = 'day';
+      renderCalendar();
+    }
+  });
+
+  // Navigate months/years
   prevBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    currentDate.setMonth(currentDate.getMonth() - 1);
+    if (viewMode === 'year') {
+      currentDate.setFullYear(currentDate.getFullYear() - 20);
+    } else if (viewMode === 'month') {
+      currentDate.setFullYear(currentDate.getFullYear() - 1);
+    } else {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+    }
     renderCalendar();
   });
 
   nextBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    currentDate.setMonth(currentDate.getMonth() + 1);
+    if (viewMode === 'year') {
+      currentDate.setFullYear(currentDate.getFullYear() + 20);
+    } else if (viewMode === 'month') {
+      currentDate.setFullYear(currentDate.getFullYear() + 1);
+    } else {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+    }
     renderCalendar();
   });
 
@@ -416,15 +662,55 @@ function initializeRangeDatePicker(component) {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     
+    // Update year/month display
     yearMonth.querySelector('.year').textContent = year;
     yearMonth.querySelector('.month').textContent = month + 1;
+    
+    // Update indicator
+    const indicator = yearMonth.querySelector('.year-month-indicator');
+    if (indicator) {
+      indicator.textContent = viewMode === 'day' ? '▼' : '▲';
+    }
+    
+    // Hide/show weekdays based on view mode
+    const weekdays = calendar.querySelector('.date-picker-weekdays');
+    if (weekdays) {
+      weekdays.style.display = viewMode === 'day' ? 'grid' : 'none';
+    }
+    
+    // Hide/show tabs based on view mode
+    const yearMonthTabs = calendar.querySelector('.year-month-tabs');
+    if (yearMonthTabs) {
+      if (viewMode === 'day') {
+        yearMonthTabs.style.display = 'none';
+      } else {
+        yearMonthTabs.style.display = 'flex';
+      }
+    }
+    
+    daysContainer.innerHTML = '';
+    
+    if (viewMode === 'year') {
+      renderYearPicker();
+    } else if (viewMode === 'month') {
+      renderMonthPicker();
+    } else {
+      renderDayPicker();
+    }
+  }
+  
+  function renderDayPicker() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Reset grid layout for days
+    daysContainer.style.gridTemplateColumns = 'repeat(7, 1fr)';
+    daysContainer.style.gap = '4px';
     
     // Get first day of month and number of days
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const prevDaysInMonth = new Date(year, month, 0).getDate();
-    
-    daysContainer.innerHTML = '';
     
     // Previous month days
     for (let i = firstDay - 1; i >= 0; i--) {
@@ -432,6 +718,30 @@ function initializeRangeDatePicker(component) {
       const button = document.createElement('button');
       button.className = 'date-picker-day other-month';
       button.textContent = day;
+      
+      // Make other-month days clickable for range selection
+      const prevMonthDate = new Date(year, month - 1, day);
+      
+      // Check if in range (for cross-month range display)
+      if (startDate && endDate) {
+        if (isSameDay(prevMonthDate, startDate)) {
+          button.classList.add('start-date');
+        } else if (isSameDay(prevMonthDate, endDate)) {
+          button.classList.add('end-date');
+        } else if (prevMonthDate.getTime() >= startDate.getTime() && prevMonthDate.getTime() <= endDate.getTime()) {
+          button.classList.add('in-range');
+        }
+      } else if (startDate && isSameDay(prevMonthDate, startDate)) {
+        button.classList.add('selected');
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Navigate to previous month and select the date
+        currentDate.setMonth(month - 1);
+        selectDate(prevMonthDate);
+      });
+      
       daysContainer.appendChild(button);
     }
     
@@ -471,8 +781,161 @@ function initializeRangeDatePicker(component) {
       const button = document.createElement('button');
       button.className = 'date-picker-day other-month';
       button.textContent = day;
+      
+      // Make other-month days clickable for range selection
+      const nextMonthDate = new Date(year, month + 1, day);
+      
+      // Check if in range (for cross-month range display)
+      if (startDate && endDate) {
+        if (isSameDay(nextMonthDate, startDate)) {
+          button.classList.add('start-date');
+        } else if (isSameDay(nextMonthDate, endDate)) {
+          button.classList.add('end-date');
+        } else if (nextMonthDate.getTime() >= startDate.getTime() && nextMonthDate.getTime() <= endDate.getTime()) {
+          button.classList.add('in-range');
+        }
+      } else if (startDate && isSameDay(nextMonthDate, startDate)) {
+        button.classList.add('selected');
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Navigate to next month and select the date
+        currentDate.setMonth(month + 1);
+        selectDate(nextMonthDate);
+      });
+      
       daysContainer.appendChild(button);
     }
+  }
+  
+  function renderYearPicker() {
+    const currentYear = currentDate.getFullYear();
+    const startYear = Math.floor(currentYear / 20) * 20;
+    
+    // Set grid layout for years
+    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    daysContainer.style.gap = '8px';
+    
+    // Create year picker tabs if not exists
+    let yearMonthTabs = calendar.querySelector('.year-month-tabs');
+    if (!yearMonthTabs) {
+      yearMonthTabs = document.createElement('div');
+      yearMonthTabs.className = 'year-month-tabs';
+      yearMonthTabs.innerHTML = `
+        <button class="year-month-tab active" data-tab="year">年份</button>
+        <button class="year-month-tab" data-tab="month">月份</button>
+      `;
+      const header = calendar.querySelector('.date-picker-header');
+      header.insertAdjacentElement('afterend', yearMonthTabs);
+      
+      // Tab switching
+      yearMonthTabs.querySelectorAll('.year-month-tab').forEach(tab => {
+        tab.addEventListener('click', function(e) {
+          e.stopPropagation();
+          yearMonthTabs.querySelectorAll('.year-month-tab').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          if (this.dataset.tab === 'year') {
+            viewMode = 'year';
+          } else {
+            viewMode = 'month';
+          }
+          renderCalendar();
+        });
+      });
+    } else {
+      yearMonthTabs.style.display = 'flex';
+      const yearTab = yearMonthTabs.querySelector('[data-tab="year"]');
+      const monthTab = yearMonthTabs.querySelector('[data-tab="month"]');
+      if (yearTab) yearTab.classList.add('active');
+      if (monthTab) monthTab.classList.remove('active');
+    }
+    
+    // Render years grid
+    for (let y = startYear - 9; y <= startYear + 10; y++) {
+      const button = document.createElement('button');
+      button.className = 'date-picker-year';
+      button.textContent = y;
+      
+      if (y === currentYear) {
+        button.classList.add('selected');
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Only update currentDate for display, don't update selectedDate
+        currentDate.setFullYear(y);
+        viewMode = 'month';
+        renderCalendar();
+      });
+      
+      daysContainer.appendChild(button);
+    }
+  }
+  
+  function renderMonthPicker() {
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    
+    // Set grid layout for months
+    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    daysContainer.style.gap = '8px';
+    
+    // Show year/month tabs
+    let yearMonthTabs = calendar.querySelector('.year-month-tabs');
+    if (!yearMonthTabs) {
+      yearMonthTabs = document.createElement('div');
+      yearMonthTabs.className = 'year-month-tabs';
+      yearMonthTabs.innerHTML = `
+        <button class="year-month-tab" data-tab="year">年份</button>
+        <button class="year-month-tab active" data-tab="month">月份</button>
+      `;
+      const header = calendar.querySelector('.date-picker-header');
+      header.insertAdjacentElement('afterend', yearMonthTabs);
+      
+      // Tab switching
+      yearMonthTabs.querySelectorAll('.year-month-tab').forEach(tab => {
+        tab.addEventListener('click', function(e) {
+          e.stopPropagation();
+          yearMonthTabs.querySelectorAll('.year-month-tab').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          if (this.dataset.tab === 'year') {
+            viewMode = 'year';
+          } else {
+            viewMode = 'month';
+          }
+          renderCalendar();
+        });
+      });
+    } else {
+      yearMonthTabs.style.display = 'flex';
+      const yearTab = yearMonthTabs.querySelector('[data-tab="year"]');
+      const monthTab = yearMonthTabs.querySelector('[data-tab="month"]');
+      if (yearTab) yearTab.classList.remove('active');
+      if (monthTab) monthTab.classList.add('active');
+    }
+    
+    // Render months grid
+    const monthNames = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+    monthNames.forEach((name, index) => {
+      const button = document.createElement('button');
+      button.className = 'date-picker-month';
+      button.textContent = name;
+      
+      if (index === currentMonth) {
+        button.classList.add('selected');
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Only update currentDate for display, don't update selectedDate
+        currentDate.setMonth(index);
+        viewMode = 'day';
+        renderCalendar();
+      });
+      
+      daysContainer.appendChild(button);
+    });
   }
   
   function selectDate(date) {

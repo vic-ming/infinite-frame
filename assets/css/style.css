@@ -527,6 +527,7 @@ button {
   display: flex;
   flex-direction: column;
   transition: margin-left 0.3s ease-in-out;
+  position: relative;
 }
 
 /* 側邊欄收起時，調整 content-panel-content 的左邊距 */
@@ -535,6 +536,80 @@ button {
   margin: 8px 8px 8px 48px;
 }
 
+/* Loading overlay */
+.content-panel-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border-radius: 10px;
+}
+
+.content-panel-content.loading .content-panel-loading {
+  display: flex;
+}
+
+.content-panel-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1001;
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.content-panel-loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 3px;
+  z-index: 1001;
+}
+.content-panel-loading-spinner div {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  opacity: 0.1;
+  animation: loading-pulse 0.8s steps(1, end) infinite;
+}
+.content-panel-loading-spinner div:nth-child(1) {
+  background-color: #024e71;
+  animation-delay: 0s;
+}
+.content-panel-loading-spinner div:nth-child(2) {
+  background-color: #9f7f55;
+  animation-delay: 0.2s;
+}
+.content-panel-loading-spinner div:nth-child(3) {
+  background-color: #f5d940;
+  animation-delay: 0.4s;
+}
+.content-panel-loading-spinner div:nth-child(4) {
+  background-color: #a9adae;
+  animation-delay: 0.6s;
+}
+
+@keyframes loading-pulse {
+  0%, 24.99% {
+    opacity: 0.1;
+  }
+  25%, 49.99% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.1;
+  }
+}
 /* default */
 .content-panel .content-panel-content-default-title{
   font-size: 18px;
@@ -2709,6 +2784,8 @@ button {
   z-index: 1000;
   display: none;
   max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .date-picker-calendar.active {
@@ -2729,6 +2806,19 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.date-picker-year-month:hover {
+  color: #004D71;
+}
+
+.year-month-indicator {
+  font-size: 12px;
+  margin-left: 4px;
+  transition: transform 0.2s ease;
 }
 
 .date-picker-nav {
@@ -2787,6 +2877,9 @@ button {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .date-picker-day {
@@ -2888,4 +2981,66 @@ button {
 .date-picker-component.error .date-picker-field:focus {
   border-color: #F0423C;
   box-shadow: 0 0 1px #F0423C;
+}
+
+/* Year/Month Picker Styles */
+.year-month-tabs {
+  display: none;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.year-month-tabs.active {
+  display: flex;
+}
+
+.year-month-tab {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #757575;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.year-month-tab:hover {
+  color: #004D71;
+}
+
+.year-month-tab.active {
+  color: #004D71;
+  border-bottom-color: #004D71;
+  font-weight: 600;
+}
+
+.date-picker-year,
+.date-picker-month {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #292929;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  padding: 0px;
+  height: 50px;
+  min-width: 50px;
+}
+
+.date-picker-year:hover:not(.selected),
+.date-picker-month:hover:not(.selected) {
+  background-color: #F5F5F5;
+}
+
+.date-picker-year.selected,
+.date-picker-month.selected {
+  background-color: #004D71;
+  color: #fff;
 }
