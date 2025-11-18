@@ -1,0 +1,41 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/default-frame.html"
+    },
+    {
+      "source": "/components",
+      "destination": "/components-frame.html"
+    },
+    {
+      "source": "/tab",
+      "destination": "/tab-frame.html"
+    },
+    {
+      "source": "/tab-table",
+      "destination": "/tab-table-frame.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
+

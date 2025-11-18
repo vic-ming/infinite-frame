@@ -224,7 +224,15 @@
         <div class="content-panel-content common-tab-content">
           <div class="content-panel-loading">
             <div class="content-panel-loading-container">
-              <div class="content-panel-loading-spinner">
+              <div class="content-panel-loading-rotate" id="content-panel-loading-style-1">
+                <div class="content-panel-loading-rotate-items">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <div class="content-panel-loading-spinner" id="content-panel-loading-style-2">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -1758,7 +1766,10 @@
                 
                 <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
                   <button class="common-button primary" onclick="showContentLoading()">
-                    顯示 Loading (預設3秒關閉)
+                    顯示 Loading 樣式一 (預設5秒關閉)
+                  </button>
+                  <button class="common-button primary" onclick="showContentLoading()">
+                    顯示 Loading 樣式二 (預設5秒關閉)
                   </button>
                   <button class="common-button primary" onclick="hideContentLoading()">
                     隱藏 Loading 
