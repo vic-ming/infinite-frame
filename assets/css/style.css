@@ -1579,7 +1579,10 @@ button {
 .table-container{
   overflow-x: auto;
   overflow-y: auto;
-  max-height: calc(100vh - 350px);
+  max-height: calc(100vh - 315px);
+}
+.table-container.height-auto{
+  max-height: unset !important;
 }
 
 /* 自定义滚动条样式 */
@@ -1715,6 +1718,72 @@ button {
   width: 50px;
   min-width: 50px;
 }
+
+/* 表格內輸入框樣式 */
+.common-table tbody tr td input,
+.common-table tbody tr td textarea {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #BDBDBD;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #292929;
+  background-color: #FFFFFF;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.common-table tbody tr td input::placeholder,
+.common-table tbody tr td textarea::placeholder {
+  color: #9E9E9E;
+  font-size: 14px;
+}
+
+.common-table tbody tr td input:hover,
+.common-table tbody tr td textarea:hover {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 1px #9E7F54;
+}
+
+.common-table tbody tr td input:focus,
+.common-table tbody tr td textarea:focus {
+  border-color: #9E7F54;
+  box-shadow: 0 0 0 2px rgba(158, 127, 84, 0.2);
+}
+
+.common-table tbody tr td input:disabled,
+.common-table tbody tr td textarea:disabled {
+  background-color: #F5F5F5;
+  color: #9E9E9E;
+  cursor: not-allowed;
+  border-color: #E0E0E0;
+}
+
+.common-table tbody tr td input:disabled:hover,
+.common-table tbody tr td textarea:disabled:hover {
+  border-color: #E0E0E0;
+  box-shadow: none;
+}
+
+.common-table tbody tr td textarea {
+  min-height: 60px;
+  padding: 8px 12px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.common-table tbody tr td {
+  padding: 4px;
+}
+
+.common-table tbody tr td.sm-size input {
+  text-align: center;
+}
+
 /* 表格分頁 */
 .table-pagination{
   display: flex;

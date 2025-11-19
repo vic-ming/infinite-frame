@@ -222,6 +222,7 @@
         </div>
         <!-- 內容面板內容 -->
         <div class="content-panel-content common-tab-content">
+          <!-- loading -->
           <div class="content-panel-loading">
             <div class="content-panel-loading-container">
               <div class="content-panel-loading-rotate" id="content-panel-loading-style-1">
@@ -254,8 +255,9 @@
             </div>
           </div>
           <div class="content-panel-content-tab-title">
-            <span class="active">標題1</span>
-            <span>標題2</span>
+            <span class="active">元件</span>
+            <span>一般表格</span>
+            <span>手輸表格</span>
           </div>
           <div class="content-panel-content-tab-content">
             <!-- 內容1 -->
@@ -1798,8 +1800,56 @@
                   
                 </div>
 
+                <h3 style="margin: 32px 0 16px 0;">獨立 Collapse 元件</h3>
+                <hr class="input-section-divider">
+                <div class="collapse-item active" style="margin-top: 16px;">
+                  <div class="collapse-header">
+                    <span class="collapse-title" onclick="toggleCollapseItem(this)">標題</span>
+                    <div class="collapse-actions">
+                      <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
+                        <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
+                        <img src="./assets/images/icon_arrow_down_black.svg" class="collapse-arrow-black">
+                      </button>
+                    </div>
+                  </div>
+                  <div class="collapse-content">
+                    <div style="font-size: 16px; color: #757575; margin-bottom: 24px;">
+                      提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容提示文字內容
+                    </div>
+                    
+                    <!-- Two Column Form Layout -->
+                    <div class="popup-form-grid">
+                      <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="input-component">
+                          <div class="input-header">
+                            <label class="input-label">
+                              <span>輸入框標題</span>
+                              <span class="required">*</span>
+                            </label>
+                          </div>
+                          <div class="input-container">
+                            <input type="text" class="input-field" placeholder="請輸入">
+                          </div>
+                        </div>
+                      </div>
+                      <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="input-component">
+                          <div class="input-header">
+                            <label class="input-label">
+                              <span>輸入框標題</span>
+                            </label>
+                          </div>
+                          <div class="input-container">
+                            <input type="text" class="input-field" placeholder="請輸入">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                <h3 style="margin: 32px 0 16px 0;">Collapse 元件</h3>
+
+                <h3 style="margin: 32px 0 16px 0;">群組 Collapse 元件</h3>
                 <hr class="input-section-divider">
 
                 <!-- Collapse Component Demo -->
@@ -2038,13 +2088,276 @@
                     </div>
                   </div>
                 </div>
+
+                
         
               </div>
             </div>
             <!-- 內容2 -->
             <div class="content-panel-content-tab-content-item">
               <div class="content-panel-content-tab-content-item-main">
-                內容2
+                <div class="table-container">
+                  <table  class="common-table sticky-header">
+                    <thead>
+                      <tr>
+                        <th class="sm-size">NO.</th>
+                        <th>申請時間</th>
+                        <th>申請單位</th>
+                        <th>申請人</th>
+                        <th style="min-width: 250px;">主旨</th>
+                        <th >目前關卡名稱</th>
+                        <th >前一關關卡名稱</th>
+                        <th >前一關送出時間</th>
+                        <th style="min-width: 300px;">前一關審核意見</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="sm-size">1</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">2</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">3</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">4</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">5</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">6</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">7</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">8</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">9</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">10</td>
+                        <td>2025/03/25 14:31:43</td>
+                        <td>企金科（台中一）</td>
+                        <td>徐一倫</td>
+                        <td>會計編號 A25030373-01<br> 朝境精機有限公司</td>
+                        <td>申請_營業科技</td>
+                        <td>申請_營業人員</td>
+                        <td>2025/03/25 14:30:58</td>
+                        <td>1. 舊戶，目前無本金餘額，已未往來多年，經供應商介紹再度招攬致有商機。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-pagination">
+                  <div class="table-pagination-info">
+                    <span>每頁顯示</span>
+                    <div class="pagination-select-wrapper">
+                      <select class="pagination-select">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                      </select>
+                      <img src="./assets/images/icon_arrow_down.svg" alt="arrow" class="pagination-select-arrow">
+                    </div>
+                    <span>筆，共 3000 筆</span>
+                  </div>
+                  <div class="table-pagination-controls">
+                    <button class="pagination-button">
+                      <img style="transform: rotate(180deg);" src="./assets/images/arrow-end.svg" alt="arrow_left">
+                    </button>
+                    <button class="pagination-button">
+                      <img style="transform: rotate(180deg);" src="./assets/images/arrow-left.svg" alt="arrow_left">
+                    </button>
+                    <span class="pagination-text">前往第</span>
+                    <input type="number" class="pagination-input" value="1" min="1" max="300">
+                    <span class="pagination-text">頁，共 300 頁</span>
+                    <button class="pagination-button">
+                      <img src="./assets/images/arrow-left.svg" alt="arrow_right">
+                    </button>
+                    <button class="pagination-button">
+                      <img src="./assets/images/arrow-end.svg" alt="arrow_left">
+                    </button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <!-- 內容3 -->
+            <div class="content-panel-content-tab-content-item">
+              <div class="content-panel-content-tab-content-item-main">
+                <h3 style="margin: 16px 0;">手輸表格</h3>
+                <hr class="input-section-divider">
+                <div class="table-container height-auto">
+                  <table  class="common-table sticky-header">
+                    <thead>
+                      <tr>
+                        <th class="sm-size">NO.</th>
+                        <th>申請時間</th>
+                        <th>申請人</th>
+                        <th style="min-width: 250px;">主旨</th>
+                        <th >目前關卡名稱</th>
+                        <th >前一關關卡名稱</th>
+                        <th style="min-width: 300px;">前一關審核意見</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="sm-size">1</td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="sm-size">2</td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                        <td><input type="text" placeholder="-"></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+             
+                <h3 style="margin: 16px 0;">Collapse + 手輸表格</h3>
+                <hr class="input-section-divider">
+                <div class="collapse-item active" style="margin-top: 16px;">
+                  <div class="collapse-header">
+                    <span class="collapse-title" onclick="toggleCollapseItem(this)">詳細資訊</span>
+                    <div class="collapse-actions">
+                      <button class="collapse-action-btn collapse-btn-toggle" onclick="toggleCollapseItem(this)" title="展開/收起">
+                        <img src="./assets/images/icon_arrow_down.svg" class="collapse-arrow-default">
+                        <img src="./assets/images/icon_arrow_down_black.svg" class="collapse-arrow-black">
+                      </button>
+                    </div>
+                  </div>
+                  <div class="collapse-content">
+                    <div class="table-container height-auto">
+                      <table  class="common-table sticky-header">
+                        <thead>
+                          <tr>
+                            <th class="sm-size">項次</th>
+                            <th>申請時間</th>
+                            <th>申請人</th>
+                            <th>身份證字號</th>
+                            <th>性別</th>
+                            <th style="min-width: 250px;">主旨</th>
+                            <th >目前關卡名稱</th>
+                            <th >前一關關卡名稱</th>
+                            <th style="min-width: 300px;">前一關審核意見</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="sm-size">1</td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                          </tr>
+                          <tr>
+                            <td class="sm-size">2</td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                            <td><input type="text" placeholder="-"></td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

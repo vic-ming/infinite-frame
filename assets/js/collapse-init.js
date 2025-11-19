@@ -9,12 +9,14 @@ function toggleCollapseItem(button) {
   if (!collapseItem.classList.contains('collapsed')) {
     // Close all other items and remove their active class
     const container = collapseItem.closest('.collapse-container');
-    container.querySelectorAll('.collapse-item').forEach(item => {
-      if (item !== collapseItem) {
-        item.classList.add('collapsed');
-        item.classList.remove('active');
-      }
-    });
+    if (container) {
+      container.querySelectorAll('.collapse-item').forEach(item => {
+        if (item !== collapseItem) {
+          item.classList.add('collapsed');
+          item.classList.remove('active');
+        }
+      });
+    }
     // Set as active
     collapseItem.classList.add('active');
   } else {
