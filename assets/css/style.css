@@ -1769,6 +1769,24 @@ button {
   box-shadow: none;
 }
 
+.common-table tbody tr td input.error,
+.common-table tbody tr td textarea.error {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
+.common-table tbody tr td input.error:hover,
+.common-table tbody tr td textarea.error:hover {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
+.common-table tbody tr td input.error:focus,
+.common-table tbody tr td textarea.error:focus {
+  border-color: #F0423C;
+  box-shadow: 0 0 1px #F0423C;
+}
+
 .common-table tbody tr td textarea {
   min-height: 60px;
   padding: 8px 12px;
