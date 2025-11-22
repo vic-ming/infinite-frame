@@ -1932,7 +1932,9 @@ button {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
-  width: 360px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .input-section-divider {
@@ -1980,15 +1982,19 @@ button {
   gap: 8px;
   position: relative;
   width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .input-field {
   flex: 1;
   width: 100%;
+  min-width: 0;
   height: 34px;
   border-radius: 8px;
   border: 1px solid #BDBDBD;
   padding: 0 16px;
+  box-sizing: border-box;
   font-size: 14px;
   color: #292929;
   background-color: #FFFFFF;
@@ -2527,12 +2533,50 @@ button {
 .popup-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 24px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
+/* Grid 中的 input-component 间距 */
+.popup-form-grid > .input-component {
+  margin-bottom: 0;
+}
+
+/* 當彈窗寬度小於 768px 時，改為單列布局 */
 @media (max-width: 768px) {
   .popup-form-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* 使用容器查詢實現響應式布局 */
+/* 小於 600px: 1 列 */
+@container (max-width: 600px) {
+  .popup-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 600px - 900px: 2 列（默認） */
+@container (min-width: 600px) and (max-width: 900px) {
+  .popup-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 900px - 1200px: 3 列 */
+@container (min-width: 900px) and (max-width: 1200px) {
+  .popup-form-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* 大於 1200px: 4 列 */
+@container (min-width: 1200px) {
+  .popup-form-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -2552,13 +2596,33 @@ button {
   transition: background-color 0.3s ease-out;
 }
 
+/* 允許背景交互的彈窗 - 背景不阻止點擊事件 */
+.popup-overlay[data-allow-background-interaction="true"] {
+  pointer-events: none;
+}
+
+.popup-overlay[data-allow-background-interaction="true"] .popup-container {
+  pointer-events: auto;
+}
+
 .popup-overlay.active,
 .popup-overlay.entering {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* 允許背景交互的彈窗 - 移除背景遮罩 */
+.popup-overlay[data-allow-background-interaction="true"].active,
+.popup-overlay[data-allow-background-interaction="true"].entering {
+  background-color: transparent;
+}
+
 .popup-overlay.exiting {
   background-color: rgba(0, 0, 0, 0);
+}
+
+/* 允許背景交互的彈窗 - 退出時也保持透明 */
+.popup-overlay[data-allow-background-interaction="true"].exiting {
+  background-color: transparent;
 }
 
 .popup-container {
@@ -2572,6 +2636,15 @@ button {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  container-type: inline-size;
+}
+
+/* 可縮放彈窗移除最大寬度和高度限制 */
+.popup-container[style*="width"] {
+  max-width: none;
+  max-height: none;
 }
 
 /* 只对非侧边弹窗应用淡入缩放动画 */
@@ -2635,14 +2708,80 @@ button {
   opacity: 0.7;
 }
 
+/* 弹窗窗口控制按钮 */
+.popup-window-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.popup-minimize-btn,
+.popup-maximize-btn,
+.popup-restore-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #5D4A2E;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity 0.2s ease;
+  line-height: 1;
+}
+
+.popup-minimize-btn:hover,
+.popup-maximize-btn:hover,
+.popup-restore-btn:hover {
+  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+/* 最小化状态 */
+.popup-container.minimized {
+  min-width: 300px;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+.popup-container.minimized .popup-header {
+  cursor: pointer;
+}
+
+.popup-container.minimized .popup-header:hover {
+  background-color: rgba(255, 249, 227, 0.8);
+}
+
+/* 最大化状态 */
+.popup-container.maximized {
+  border-radius: 0;
+}
+
+.popup-container.maximized .popup-header {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .popup-content {
   padding: 32px 24px;
   flex: 1;
   overflow-y: auto;
-  overflow-x: visible;
+  overflow-x: hidden;
   min-height: 245px;
   background-color: #fff;
   position: relative;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
 }
 
 .popup-footer {
@@ -2657,6 +2796,46 @@ button {
   width: 200px !important;
   height: 33px;
   border-radius: 8px;
+}
+
+/* Popup Resize Handle */
+.popup-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: nwse-resize;
+  z-index: 10;
+  background: linear-gradient(
+    -45deg,
+    transparent 0%,
+    transparent 30%,
+    #DCDCDC 30%,
+    #DCDCDC 35%,
+    transparent 35%,
+    transparent 65%,
+    #DCDCDC 65%,
+    #DCDCDC 70%,
+    transparent 70%
+  );
+  background-size: 100% 100%;
+  background-position: 0 0;
+}
+
+.popup-resize-handle:hover {
+  background: linear-gradient(
+    -45deg,
+    transparent 0%,
+    transparent 30%,
+    #9E7F54 30%,
+    #9E7F54 35%,
+    transparent 35%,
+    transparent 65%,
+    #9E7F54 65%,
+    #9E7F54 70%,
+    transparent 70%
+  );
 }
 
 /* Side Popup (Right Side) */

@@ -1781,6 +1781,17 @@
                 <h3 style="margin: 32px 0 16px 0;">彈窗元件</h3>
                 <hr class="input-section-divider">
                 
+                <h4 style="color: #9E7F54; font-size: 18px; font-weight: 600;">右側彈窗</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="openPopup('sidePopup')">
+                    右側彈窗
+                  </button>
+                  <button class="common-button primary" onclick="openPopup('sidePopup', null, { closeOnBackdropClick: true })">
+                    右側彈窗(可點擊背景關閉)
+                  </button>
+                </div>
+
+                <h4 style="color: #9E7F54; font-size: 18px; font-weight: 600;">可移動彈窗</h4>
                 <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
                   <button class="common-button primary" onclick="openPopup('blankPopup')">
                     空白彈窗
@@ -1794,11 +1805,51 @@
                   <button class="common-button primary" onclick="openPopup('listCheckPopup')">
                     列表 check 彈窗
                   </button>
-                  <button class="common-button primary" onclick="openPopup('sidePopup')">
-                    右側彈窗
-                  </button>
-                  
                 </div>
+
+
+                <h4 style="color: #9E7F54; font-size: 18px; font-weight: 600;">可點擊背景關閉彈窗</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="openPopup('formPopup', null, { closeOnBackdropClick: true })">
+                    可點擊背景關閉彈窗
+                  </button>
+                </div>
+
+
+                <h4 style="color: #9E7F54; font-size: 18px; font-weight: 600;">可縮放尺寸彈窗</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="openPopup('formPopup', null, { resizable: true })">
+                    可縮放尺寸彈窗
+                  </button>
+                </div>
+
+
+                <h4 style="color: #9E7F54; font-size: 18px; font-weight: 600;">背景可交互彈窗</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="openPopup('formPopup', null, { allowBackgroundInteraction: true })">
+                    Form(背景可交互)
+                  </button>
+                  <button class="common-button primary" onclick="openPopup('formPopup', null, { allowBackgroundInteraction: true, resizable: true })">
+                    Form(背景可交互+可縮放)
+                  </button>
+                </div>
+
+
+                <h4 style="color: #9E7F54; font-size: 18px; font-weight: 600;">背景可交互/可最大化/最小化彈窗</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="openPopup('formPopup', null, {allowBackgroundInteraction: true, resizable: true })">
+                    Form(背景可交互/可最大化/最小化)
+                  </button>
+                </div>
+
+                <h4 style="color: #9E7F54; font-size: 18px; font-weight: 600;">可多開彈窗（可縮放/最大化/最小化）</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+                  <button class="common-button primary" onclick="openMultiPopup('formPopup')">
+                    Form(可多開/背景可交互/可最大化/最小化)
+                  </button>
+                </div>
+
+
 
                 <h3 style="margin: 32px 0 16px 0;">獨立 Collapse 元件</h3>
                 <hr class="input-section-divider">
