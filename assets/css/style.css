@@ -2885,6 +2885,10 @@ button {
   transition: all 0.3s ease;
 }
 
+.collapse-item:not(.collapsed) {
+  overflow: visible;
+}
+
 .collapse-header {
   display: flex;
   align-items: center;
@@ -3026,6 +3030,7 @@ button {
   max-height: 3000px;
   opacity: 1;
   padding: 16px;
+  overflow: visible;
 }
 
 /* 響應式設計 */
