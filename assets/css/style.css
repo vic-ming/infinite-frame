@@ -3121,10 +3121,10 @@ button {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 16px;
-  min-width: 280px;
+  width: 312px;
   z-index: 1000;
   display: none;
-  max-height: 400px;
+  height: 305px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -3137,16 +3137,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 7px;
+  height: 27.6px;
 }
 
 .date-picker-year-month {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: #292929;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   cursor: pointer;
   user-select: none;
   transition: color 0.2s ease;
@@ -3157,20 +3158,32 @@ button {
 }
 
 .year-month-indicator {
-  font-size: 12px;
-  margin-left: 4px;
+  
   transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.year-month-indicator-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+  transform: rotate(180deg);
+}
+
+.year-month-indicator-icon.open {
+  transform: rotate(0deg);
 }
 
 .date-picker-nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .date-picker-nav-btn {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -3202,40 +3215,55 @@ button {
 .date-picker-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-bottom: 8px;
+  gap: 4px; 
 }
 
 .date-picker-weekday {
   font-size: 12px;
   font-weight: 500;
-  color: #757575;
+  color: #292929;
   text-align: center;
   padding: 4px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.date-picker-weekday:last-child {
+  color: #ff0000;
 }
 
 .date-picker-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 0px !important;
   max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
+  border-top: 1px solid #DCDCDC;
+  border-left: 1px solid #DCDCDC;
 }
 
 .date-picker-day {
-  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  color: #292929;
+  font-size: 12px;
+  color: #000000;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  border-radius: 4px;
   transition: all 0.2s ease;
-  padding: 4px;
+  border-right: 1px solid #DCDCDC;
+  border-bottom: 1px solid #DCDCDC;
+  height: 38px;
+  box-sizing: content-box;
+}
+
+.date-picker-day.sunday {
+  color: #F0423C;
 }
 
 .date-picker-day:hover:not(.disabled):not(.other-month) {
@@ -3260,7 +3288,8 @@ button {
 }
 
 .date-picker-day.other-month {
-  color: #E0E0E0;
+  color: #A8A8A8;
+  background-color: #F8F8F8;
 }
 
 .date-picker-day.disabled {
@@ -3328,8 +3357,7 @@ button {
 .year-month-tabs {
   display: none;
   gap: 8px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 7px;
 }
 
 .year-month-tabs.active {
@@ -3337,14 +3365,15 @@ button {
 }
 
 .year-month-tab {
-  padding: 8px 16px;
+  height: 29.4px;
   border: none;
   background: transparent;
-  color: #757575;
+  color: #BDBDBD;
   font-size: 14px;
   cursor: pointer;
-  border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
+  flex: 1;
+  font-weight: 600;
 }
 
 .year-month-tab:hover {
@@ -3353,26 +3382,30 @@ button {
 
 .year-month-tab.active {
   color: #004D71;
-  border-bottom-color: #004D71;
-  font-weight: 600;
 }
 
 .date-picker-year,
 .date-picker-month {
-  aspect-ratio: 1;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  color: #292929;
+  font-size: 11px;
+  color: #000000;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  border-radius: 4px;
   transition: all 0.2s ease;
   padding: 0px;
-  height: 50px;
-  min-width: 50px;
+  height: 47px;
+  min-width: 47px;
+  box-sizing: content-box;
+  border-right: 1px solid #DCDCDC;
+  border-bottom: 1px solid #DCDCDC;
+}
+.date-picker-month{
+  min-width: 43px;
+  height: 34px;
 }
 
 .date-picker-year:hover:not(.selected),

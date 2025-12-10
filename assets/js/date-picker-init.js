@@ -126,16 +126,9 @@ function initializeSingleDatePicker(component) {
   // Toggle year/month picker view
   yearMonth.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (viewMode === 'day') {
-      viewMode = 'year';
-      renderCalendar();
-    } else if (viewMode === 'year') {
-      viewMode = 'month';
-      renderCalendar();
-    } else {
-      viewMode = 'day';
-      renderCalendar();
-    }
+    const nextMode = viewMode === 'day' ? 'year' : 'day';
+    viewMode = nextMode;
+    renderCalendar();
   });
 
   // Navigate months/years
@@ -171,10 +164,19 @@ function initializeSingleDatePicker(component) {
     yearMonth.querySelector('.year').textContent = year;
     yearMonth.querySelector('.month').textContent = month + 1;
     
-    // Update indicator
+    // Update indicator with arrow icon
     const indicator = yearMonth.querySelector('.year-month-indicator');
     if (indicator) {
-      indicator.textContent = viewMode === 'day' ? '▼' : '▲';
+      let icon = indicator.querySelector('img');
+      if (!icon) {
+        icon = document.createElement('img');
+        icon.src = './assets/images/arrow_date.svg';
+        icon.alt = 'toggle';
+        icon.className = 'year-month-indicator-icon';
+        indicator.textContent = '';
+        indicator.appendChild(icon);
+      }
+      icon.classList.toggle('open', viewMode !== 'day');
     }
     
     // Hide/show weekdays based on view mode
@@ -217,12 +219,19 @@ function initializeSingleDatePicker(component) {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const prevDaysInMonth = new Date(year, month, 0).getDate();
     
-    // Previous month days
-    for (let i = firstDay - 1; i >= 0; i--) {
+    const MAX_CELLS = 35; // limit to 5 rows
+    const prevDaysToShow = Math.min(firstDay, MAX_CELLS - daysInMonth);
+    
+    // Previous month days (bounded to fit 5 rows)
+    for (let i = prevDaysToShow - 1; i >= 0; i--) {
       const day = prevDaysInMonth - i;
       const button = document.createElement('button');
+      const prevMonthDate = new Date(year, month - 1, day);
       button.className = 'date-picker-day other-month';
       button.textContent = day;
+      if (prevMonthDate.getDay() === 6) {
+        button.classList.add('sunday');
+      }
       daysContainer.appendChild(button);
     }
     
@@ -233,6 +242,9 @@ function initializeSingleDatePicker(component) {
       
       button.className = 'date-picker-day';
       button.textContent = day;
+      if (date.getDay() === 6) {
+        button.classList.add('sunday');
+      }
       
       // Check if selected
       if (selectedDate && isSameDay(date, selectedDate)) {
@@ -249,11 +261,15 @@ function initializeSingleDatePicker(component) {
     
     // Next month days (fill remaining grid)
     const totalCells = daysContainer.children.length;
-    const remainingCells = 42 - totalCells;
+    const remainingCells = Math.max(0, MAX_CELLS - totalCells);
     for (let day = 1; day <= remainingCells; day++) {
       const button = document.createElement('button');
+      const nextMonthDate = new Date(year, month + 1, day);
       button.className = 'date-picker-day other-month';
       button.textContent = day;
+      if (nextMonthDate.getDay() === 6) {
+        button.classList.add('sunday');
+      }
       daysContainer.appendChild(button);
     }
   }
@@ -262,8 +278,8 @@ function initializeSingleDatePicker(component) {
     const currentYear = currentDate.getFullYear();
     const startYear = Math.floor(currentYear / 20) * 20;
     
-    // Set grid layout for years
-    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    // Set grid layout for years (5 columns x 4 rows)
+    daysContainer.style.gridTemplateColumns = 'repeat(5, 1fr)';
     daysContainer.style.gap = '8px';
     
     // Create year picker tabs if not exists
@@ -277,6 +293,7 @@ function initializeSingleDatePicker(component) {
       `;
       const header = calendar.querySelector('.date-picker-header');
       header.insertAdjacentElement('afterend', yearMonthTabs);
+      yearMonthTabs.style.display = 'flex';
       
       // Tab switching
       yearMonthTabs.querySelectorAll('.year-month-tab').forEach(tab => {
@@ -300,8 +317,8 @@ function initializeSingleDatePicker(component) {
       if (monthTab) monthTab.classList.remove('active');
     }
     
-    // Render years grid
-    for (let y = startYear - 9; y <= startYear + 10; y++) {
+    // Render years grid (20 years -> 4 rows with 5 columns)
+    for (let y = startYear; y < startYear + 20; y++) {
       const button = document.createElement('button');
       button.className = 'date-picker-year';
       button.textContent = y;
@@ -326,8 +343,8 @@ function initializeSingleDatePicker(component) {
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     
-    // Set grid layout for months
-    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    // Set grid layout for months (2 rows x 6 columns)
+    daysContainer.style.gridTemplateColumns = 'repeat(6, 1fr)';
     daysContainer.style.gap = '8px';
     
     // Show year/month tabs
@@ -621,16 +638,9 @@ function initializeRangeDatePicker(component) {
   // Toggle year/month picker view
   yearMonth.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (viewMode === 'day') {
-      viewMode = 'year';
-      renderCalendar();
-    } else if (viewMode === 'year') {
-      viewMode = 'month';
-      renderCalendar();
-    } else {
-      viewMode = 'day';
-      renderCalendar();
-    }
+    const nextMode = viewMode === 'day' ? 'year' : 'day';
+    viewMode = nextMode;
+    renderCalendar();
   });
 
   // Navigate months/years
@@ -666,10 +676,20 @@ function initializeRangeDatePicker(component) {
     yearMonth.querySelector('.year').textContent = year;
     yearMonth.querySelector('.month').textContent = month + 1;
     
-    // Update indicator
+    // Update indicator with arrow icon
     const indicator = yearMonth.querySelector('.year-month-indicator');
+    
     if (indicator) {
-      indicator.textContent = viewMode === 'day' ? '▼' : '▲';
+      let icon = indicator.querySelector('img');
+      if (!icon) {
+        icon = document.createElement('img');
+        icon.src = './assets/images/arrow_date.svg';
+        icon.alt = 'toggle';
+        icon.className = 'year-month-indicator-icon';
+        indicator.textContent = '';
+        indicator.appendChild(icon);
+      }
+      icon.classList.toggle('open', viewMode !== 'day');
     }
     
     // Hide/show weekdays based on view mode
@@ -712,8 +732,11 @@ function initializeRangeDatePicker(component) {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const prevDaysInMonth = new Date(year, month, 0).getDate();
     
-    // Previous month days
-    for (let i = firstDay - 1; i >= 0; i--) {
+    const MAX_CELLS = 35; // limit to 5 rows
+    const prevDaysToShow = Math.min(firstDay, MAX_CELLS - daysInMonth);
+    
+    // Previous month days (bounded to fit 5 rows)
+    for (let i = prevDaysToShow - 1; i >= 0; i--) {
       const day = prevDaysInMonth - i;
       const button = document.createElement('button');
       button.className = 'date-picker-day other-month';
@@ -721,6 +744,9 @@ function initializeRangeDatePicker(component) {
       
       // Make other-month days clickable for range selection
       const prevMonthDate = new Date(year, month - 1, day);
+      if (prevMonthDate.getDay() === 6) {
+        button.classList.add('sunday');
+      }
       
       // Check if in range (for cross-month range display)
       if (startDate && endDate) {
@@ -752,6 +778,9 @@ function initializeRangeDatePicker(component) {
       
       button.className = 'date-picker-day';
       button.textContent = day;
+      if (date.getDay() === 6) {
+        button.classList.add('sunday');
+      }
       
       // Check if in range
       if (startDate && endDate) {
@@ -776,7 +805,7 @@ function initializeRangeDatePicker(component) {
     
     // Next month days
     const totalCells = daysContainer.children.length;
-    const remainingCells = 42 - totalCells;
+    const remainingCells = Math.max(0, MAX_CELLS - totalCells);
     for (let day = 1; day <= remainingCells; day++) {
       const button = document.createElement('button');
       button.className = 'date-picker-day other-month';
@@ -784,6 +813,9 @@ function initializeRangeDatePicker(component) {
       
       // Make other-month days clickable for range selection
       const nextMonthDate = new Date(year, month + 1, day);
+      if (nextMonthDate.getDay() === 6) {
+        button.classList.add('sunday');
+      }
       
       // Check if in range (for cross-month range display)
       if (startDate && endDate) {
@@ -813,8 +845,8 @@ function initializeRangeDatePicker(component) {
     const currentYear = currentDate.getFullYear();
     const startYear = Math.floor(currentYear / 20) * 20;
     
-    // Set grid layout for years
-    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    // Set grid layout for years (5 columns x 4 rows)
+    daysContainer.style.gridTemplateColumns = 'repeat(5, 1fr)';
     daysContainer.style.gap = '8px';
     
     // Create year picker tabs if not exists
@@ -828,6 +860,7 @@ function initializeRangeDatePicker(component) {
       `;
       const header = calendar.querySelector('.date-picker-header');
       header.insertAdjacentElement('afterend', yearMonthTabs);
+      yearMonthTabs.style.display = 'flex';
       
       // Tab switching
       yearMonthTabs.querySelectorAll('.year-month-tab').forEach(tab => {
@@ -851,8 +884,8 @@ function initializeRangeDatePicker(component) {
       if (monthTab) monthTab.classList.remove('active');
     }
     
-    // Render years grid
-    for (let y = startYear - 9; y <= startYear + 10; y++) {
+    // Render years grid (20 years -> 4 rows with 5 columns)
+    for (let y = startYear; y < startYear + 20; y++) {
       const button = document.createElement('button');
       button.className = 'date-picker-year';
       button.textContent = y;
@@ -877,8 +910,8 @@ function initializeRangeDatePicker(component) {
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     
-    // Set grid layout for months
-    daysContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    // Set grid layout for months (2 rows x 6 columns)
+    daysContainer.style.gridTemplateColumns = 'repeat(6, 1fr)';
     daysContainer.style.gap = '8px';
     
     // Show year/month tabs
