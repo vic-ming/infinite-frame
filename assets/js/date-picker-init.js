@@ -560,6 +560,35 @@ function initializeRangeDatePicker(component) {
     validateAndUpdateInput();
   });
 
+  function extractRangeDates(raw) {
+    const trimmed = raw.trim();
+    // Explicit " - " separator
+    if (trimmed.includes(' - ')) {
+      const parts = trimmed.split(' - ');
+      if (parts.length >= 2) {
+        return [parseDate(parts[0].trim()), parseDate(parts[1].trim())];
+      }
+    }
+    // Hyphen without spaces as separator (e.g., 2025/01/01-2025/01/10 or 20250101-20250110)
+    const noSpaceHyphenMatch = trimmed.match(/(.+)-(.+)/);
+    if (noSpaceHyphenMatch && noSpaceHyphenMatch[1] && noSpaceHyphenMatch[2]) {
+      const left = parseDate(noSpaceHyphenMatch[1].trim());
+      const right = parseDate(noSpaceHyphenMatch[2].trim());
+      if (left && right) {
+        return [left, right];
+      }
+    }
+    // Fallback: detect two date-like tokens in the string
+    const dateTokens =
+      trimmed.match(/\d{4}[-\/]?\d{1,2}[-\/]?\d{1,2}/g) ||
+      trimmed.match(/\d{8}/g) ||
+      [];
+    if (dateTokens.length >= 2) {
+      return [parseDate(dateTokens[0]), parseDate(dateTokens[1])];
+    }
+    return [null, null];
+  }
+
   function validateAndUpdateInput() {
     const value = input.value.trim();
     
@@ -574,60 +603,52 @@ function initializeRangeDatePicker(component) {
       return;
     }
 
-    // Check if it's a date range format (contains " - ")
-    if (value.includes(' - ')) {
-      const parts = value.split(' - ');
-      const parsedStart = parseDate(parts[0].trim());
-      const parsedEnd = parseDate(parts[1].trim());
+    // Try to read a date range (supports " - " or two date tokens in text)
+    const [parsedStart, parsedEnd] = extractRangeDates(value);
+    if (parsedStart && isValidDate(parsedStart) && parsedEnd && isValidDate(parsedEnd)) {
+      // Normalize order
+      if (parsedStart.getTime() > parsedEnd.getTime()) {
+        startDate = parsedEnd;
+        endDate = parsedStart;
+      } else {
+        startDate = parsedStart;
+        endDate = parsedEnd;
+      }
+      selectingStart = true;
+      currentDate = new Date(startDate);
+      input.value = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+      component.classList.remove('error');
+      input.classList.remove('error');
+      renderCalendar();
       
-      if (parsedStart && isValidDate(parsedStart) && parsedEnd && isValidDate(parsedEnd)) {
-        // Both dates are valid
-        if (parsedStart.getTime() <= parsedEnd.getTime()) {
-          startDate = parsedStart;
-          endDate = parsedEnd;
-          selectingStart = true;
-          currentDate = new Date(startDate);
-          input.value = `${formatDate(startDate)} - ${formatDate(endDate)}`;
-          component.classList.remove('error');
-          input.classList.remove('error');
-          renderCalendar();
-          
-          // Trigger custom event
-          const event = new CustomEvent('date-range-selected', {
-            detail: { 
-              startDate: startDate, 
-              endDate: endDate,
-              formatted: `${formatDate(startDate)} - ${formatDate(endDate)}`
-            }
-          });
-          component.dispatchEvent(event);
-        } else {
-          // End date is before start date - invalid
-          component.classList.add('error');
-          input.classList.add('error');
+      // Trigger custom event
+      const event = new CustomEvent('date-range-selected', {
+        detail: { 
+          startDate: startDate, 
+          endDate: endDate,
+          formatted: `${formatDate(startDate)} - ${formatDate(endDate)}`
         }
-      } else {
-        // Invalid date format
-        component.classList.add('error');
-        input.classList.add('error');
-      }
+      });
+      component.dispatchEvent(event);
+      return;
+    }
+
+    // Fallback: single date as start (allow trailing hyphen while typing second date)
+    const firstTokenMatch = value.match(/\d{4}[-\/]?\d{1,2}[-\/]?\d{1,2}/);
+    const parsedDate = parseDate(firstTokenMatch ? firstTokenMatch[0] : value);
+    if (parsedDate && isValidDate(parsedDate)) {
+      startDate = parsedDate;
+      endDate = null;
+      selectingStart = false;
+      currentDate = new Date(parsedDate);
+      // Keep user input intact to allow typing "-" and second date
+      component.classList.remove('error');
+      input.classList.remove('error');
+      renderCalendar();
     } else {
-      // Single date input - treat as start date
-      const parsedDate = parseDate(value);
-      if (parsedDate && isValidDate(parsedDate)) {
-        startDate = parsedDate;
-        endDate = null;
-        selectingStart = false;
-        currentDate = new Date(parsedDate);
-        input.value = formatDate(parsedDate);
-        component.classList.remove('error');
-        input.classList.remove('error');
-        renderCalendar();
-      } else {
-        // Invalid date
-        component.classList.add('error');
-        input.classList.add('error');
-      }
+      // Invalid date
+      component.classList.add('error');
+      input.classList.add('error');
     }
   }
 
